@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
