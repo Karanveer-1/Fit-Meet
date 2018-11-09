@@ -38,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(myIntent);
     }
 
+    public void goToDatabase(View view)
+    {
+        Intent myIntent = new Intent(MainActivity.this, DatabaseTest.class);
+        MainActivity.this.startActivity(myIntent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu. This adds items to the app bar.
