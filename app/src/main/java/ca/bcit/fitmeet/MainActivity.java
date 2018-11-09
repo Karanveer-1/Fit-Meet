@@ -8,8 +8,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dashboard);
+
+
+
+    }
+
+    public void goToLogin(View view)
+    {
+        Intent myIntent = new Intent(MainActivity.this, Login.class);
+        MainActivity.this.startActivity(myIntent);
     }
 
     @Override
