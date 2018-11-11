@@ -1,6 +1,7 @@
 package ca.bcit.fitmeet;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -20,6 +21,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Map;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -84,6 +89,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            String userToken = user.getUid();
+                            String email = user.getEmail();
+
+                            //ADDS USER TO DATABASE
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("users");
+                            User createdUser = new User(email);
+                            Map<String, Object> createdUserMap = createdUser.toMap();
+                            myRef.child(userToken).setValue(createdUserMap);
+
+                            //USER ADDED
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -263,4 +279,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onStop();
         hideProgressDialog();
     }
+
+    public void goToEvents(View view){
+        Intent myIntent = new Intent(Login.this, DatabaseTest.class);
+        Login.this.startActivity(myIntent);
+    }
+
+
 }
