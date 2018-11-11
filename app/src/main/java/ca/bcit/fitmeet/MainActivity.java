@@ -32,17 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void goToLogin(View view)
-    {
-        Intent myIntent = new Intent(MainActivity.this, Login.class);
-        MainActivity.this.startActivity(myIntent);
-    }
-
-    public void goToDatabase(View view)
-    {
-        Intent myIntent = new Intent(MainActivity.this, DatabaseTest.class);
-        MainActivity.this.startActivity(myIntent);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
