@@ -1,6 +1,7 @@
 package ca.bcit.fitmeet;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -57,8 +58,10 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
                         "Create event activity",Toast.LENGTH_LONG).show();
                 break;
             case R.id.fab1:
+                startActivity(new Intent(getActivity().getApplicationContext(),TestActivity.class));
                 break;
             case R.id.fab2:
+                startActivity(new Intent(getActivity().getApplicationContext(),Test2Activity.class));
                 break;
         }
     }
@@ -66,17 +69,17 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
     public void animateFAB(){
         if(isFabOpen){
             fab.startAnimation(rotate_backward);
-//            fab1.startAnimation(fab_close);
-//            fab2.startAnimation(fab_close);
-//            fab1.setClickable(false);
-//            fab2.setClickable(false);
+            fab1.startAnimation(fab_close);
+            fab2.startAnimation(fab_close);
+            fab1.setClickable(false);
+            fab2.setClickable(false);
             isFabOpen = false;
         } else {
             fab.startAnimation(rotate_forward);
-//            fab1.startAnimation(fab_open);
-//            fab2.startAnimation(fab_open);
-//            fab1.setClickable(true);
-//            fab2.setClickable(true);
+            fab1.startAnimation(fab_open);
+            fab2.startAnimation(fab_open);
+            fab1.setClickable(true);
+            fab2.setClickable(true);
             isFabOpen = true;
         }
     }

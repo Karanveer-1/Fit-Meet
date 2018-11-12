@@ -15,7 +15,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
+    private FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener authListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +34,21 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dashboard);
 
+        auth = FirebaseAuth.getInstance();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        authListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    startActivity(new Intent(MainActivity.this, LoginActivityMain.class));
+                    finish();
+                }
+            }
+        };
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,13 +61,27 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.logout:
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                auth.signOut();
                 return true;
             case R.id.settings:
-                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(authListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (authListener != null) {
+            auth.removeAuthStateListener(authListener);
         }
     }
 

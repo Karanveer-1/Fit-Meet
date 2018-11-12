@@ -4,12 +4,14 @@
 
     <item android:id="@+id/logout"
         android:title="@string/logout"
+        android:icon="@drawable/ic_action_exit_to_app"
         android:orderInCategory="1"
-        app:showAsAction="collapseActionView" />
+        app:showAsAction="collapseActionView|ifRoom" />
 
     <item android:id="@+id/settings"
         android:title="@string/settings"
+        android:icon="@drawable/ic_action_settings"
         android:orderInCategory="2"
-        app:showAsAction="collapseActionView" />
+        app:showAsAction="collapseActionView|ifRoom" />
 
 </menu>
