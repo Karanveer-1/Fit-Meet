@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,16 +22,22 @@ public class Test2Activity extends AppCompatActivity {
     ListView listview;
     DatabaseReference dref;
     ArrayAdapter<String> adapter;
+    private FirebaseAuth mAuth;
+    private String userToken;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test2);
-        dref = FirebaseDatabase.getInstance().getReference("testData");
+        dref = FirebaseDatabase.getInstance().getReference("events");
         testDataArray = new ArrayList<>();
         testDataArray = retrieve();
         listview=(ListView)findViewById(R.id.list_test_data);
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,testDataArray);
         listview.setAdapter(adapter);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        userToken = currentUser.getUid();
     }
 
     //READ
@@ -68,14 +76,21 @@ public class Test2Activity extends AppCompatActivity {
 
     private void fetchData(DataSnapshot dataSnapshot)
     {
-        String name = "";
-        for (DataSnapshot ds : dataSnapshot.getChildren())
-        {
-            String component = ds.getValue(String.class);
 
-            name = name +   component + " " ;
+        //USE THIS IF YOU WANT TO ISOLATE CURRENT USER CREATED EVENTS
+        String hostToken = dataSnapshot.child("hostToken").getValue(String.class);
+        if(hostToken.equals(userToken)){
+
+
+            String name = "";
+            for (DataSnapshot ds : dataSnapshot.getChildren())
+            {
+                String component = ds.getValue(String.class);
+
+                name = name +   component + " " ;
+            }
+            testDataArray.add(name);
         }
-        testDataArray.add(name);
 
     }
 }
