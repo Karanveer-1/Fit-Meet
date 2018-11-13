@@ -33,9 +33,9 @@ public class Event implements Serializable {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
+        result.put("hostToken", hostToken);
         result.put("eventId", eventId);
         result.put("eventName", eventName);
-        result.put("hostToken", hostToken);
         result.put("time", time);
         result.put("location", location);
         result.put("description", description);
