@@ -2,9 +2,9 @@ package ca.bcit.fitmeet;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,6 +23,10 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        userToken = currentUser.getUid();
+        TextView tokenView = findViewById(R.id.event_host_token);
+        tokenView.setText(userToken);
 
     }
 
@@ -30,32 +34,36 @@ public class TestActivity extends AppCompatActivity {
     public void testAddData(View v){
 
 
-        EditText one =  findViewById(R.id.test_editText_1);
-        EditText two =  findViewById(R.id.test_editText_2);
-        EditText three =  findViewById(R.id.test_editText_3);
+        EditText description =  findViewById(R.id.event_description);
+        EditText name =  findViewById(R.id.event_name);
+        EditText location =  findViewById(R.id.event_location);
+        EditText time =  findViewById(R.id.event_time);
 
-        String oneString = one.getText().toString();
-        String twoString = two.getText().toString();
-        String threeString = three.getText().toString();
+        String descriptionString = description.getText().toString();
+        String nameString = name.getText().toString();
+        String locationString = location.getText().toString();
+        String timeString = location.getText().toString();
+        addTestData(descriptionString, nameString, locationString, timeString);
 
-        addTestData(oneString, twoString, threeString);
 
     }
 
 
-    public void addTestData(String one, String two, String three){
+    public void addTestData(String description, String name, String location, String time){
         FirebaseUser currentUser = mAuth.getCurrentUser();
         userToken = currentUser.getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("testData");
+        DatabaseReference myRef = database.getReference("events");
         //This line is to allow duplicate data, by creating data under a new leaf node every time
         DatabaseReference pushedPostRef = myRef.push();
         String dataEntryID = pushedPostRef.getKey();
+
+
+        //Create event
+        Event event = new Event(dataEntryID, name, userToken, time, location, description);
         //Firebase takes a map to insert dat into its leaf nodes
-        HashMap<String, Object> testDataMap = new HashMap<>();
-        testDataMap.put("1", one);
-        testDataMap.put("2", two);
-        testDataMap.put("3", three);
+        Map<String, Object> testDataMap = event.toMap();
+
         //Puts map data into child of testData
         myRef.child(dataEntryID).setValue(testDataMap);
 
