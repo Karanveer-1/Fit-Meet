@@ -1,6 +1,8 @@
 package ca.bcit.fitmeet.dashboard;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +15,21 @@ import java.util.ArrayList;
 import ca.bcit.fitmeet.R;
 
 public class DashboardAdapter extends BaseAdapter {
-    private final ArrayList<Item> mItems = new ArrayList<>();
+
+    private final ArrayList<DashboardCategory> mItems = new ArrayList<>();
     private LayoutInflater mInflater;
 
-    public DashboardAdapter(Context context) {
+    private Fragment fragment;
+
+    public DashboardAdapter(Fragment fragment, Context context) {
+        this.fragment = fragment;
+
         mInflater = LayoutInflater.from(context);
 
-        mItems.add(new Item("Cultural Events", R.drawable.dashboard_culturalevents));
-        mItems.add(new Item("Off Leash Dog Areas", R.drawable.dashboard_offleashdogarea));
-        mItems.add(new Item("Parks", R.drawable.dashboard_park));
-        mItems.add(new Item("Sports Fields", R.drawable.dashboard_sportsfield));
+        mItems.add(DashboardCategory.CulturalEvents);
+        mItems.add(DashboardCategory.OffLeashDogAreas);
+        mItems.add(DashboardCategory.Parks);
+        mItems.add(DashboardCategory.SportsFields);
     }
 
     @Override
@@ -31,7 +38,7 @@ public class DashboardAdapter extends BaseAdapter {
     }
 
     @Override
-    public Item getItem(int i) {
+    public DashboardCategory getItem(int i) {
         return mItems.get(i);
     }
 
@@ -46,6 +53,8 @@ public class DashboardAdapter extends BaseAdapter {
         ImageView picture;
         TextView name;
 
+        final int selection = i;
+
         if (v == null) {
             v = mInflater.inflate(R.layout.dashboard_category, viewGroup, false);
             v.setTag(R.id.picture, v.findViewById(R.id.picture));
@@ -55,21 +64,24 @@ public class DashboardAdapter extends BaseAdapter {
         picture = (ImageView) v.getTag(R.id.picture);
         name = (TextView) v.getTag(R.id.text);
 
-        Item item = getItem(i);
+        final DashboardCategory item = getItem(selection);
 
         picture.setImageResource(item.drawableId);
-        name.setText(item.name);
+        name.setText(item.categoryName);
+
+        picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            ShowCategoryListActivity(item.categoryName);
+            }
+        });
 
         return v;
     }
 
-    private static class Item {
-        public final String name;
-        public final int drawableId;
-
-        Item(String name, int drawableId) {
-            this.name = name;
-            this.drawableId = drawableId;
-        }
+    public void ShowCategoryListActivity(String categoryName) {
+        Intent i = new Intent(fragment.getActivity(), DashboardCategoryListActivity.class);
+        i.putExtra("categoryName", categoryName);
+        fragment.getActivity().startActivity(i);
     }
 }

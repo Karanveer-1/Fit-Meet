@@ -35,6 +35,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".TestActivity" />
         <activity android:name=".Test2Activity" />
+        <activity android:name=".dashboard.DashboardCategoryListActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package ca.bcit.fitmeet;
+package ca.bcit.fitmeet.dashboard;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-import ca.bcit.fitmeet.dashboard.DashboardAdapter;
+import ca.bcit.fitmeet.R;
 
 public class DashboardFragment extends Fragment {
 
@@ -34,6 +34,6 @@ public class DashboardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         GridView gridView = view.findViewById(R.id.grid_dashboard);
-        gridView.setAdapter(new DashboardAdapter(view.getContext()));
+        gridView.setAdapter(new DashboardAdapter(this, view.getContext()));
     }
 }
