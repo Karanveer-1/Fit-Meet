@@ -2,7 +2,7 @@ package ca.bcit.fitmeet.dashboard.model;
 
 import java.util.List;
 
-public class SportsFields {
+public class SportsFields extends Category {
     private String name;
 
     private String type;

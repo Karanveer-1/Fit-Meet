@@ -48,12 +48,9 @@ public class DashboardAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        View v = view;
-        ImageView picture;
-        TextView name;
+    public View getView(int position, View view, ViewGroup viewGroup) {
 
-        final int selection = i;
+        View v = view;
 
         if (v == null) {
             v = mInflater.inflate(R.layout.dashboard_category, viewGroup, false);
@@ -61,25 +58,26 @@ public class DashboardAdapter extends BaseAdapter {
             v.setTag(R.id.text, v.findViewById(R.id.text));
         }
 
-        picture = (ImageView) v.getTag(R.id.picture);
-        name = (TextView) v.getTag(R.id.text);
+        ImageView picture = (ImageView) v.getTag(R.id.picture);
+        TextView name = (TextView) v.getTag(R.id.text);
 
-        final DashboardCategory item = getItem(selection);
+        final DashboardCategory dashboardCategory = getItem(position);
 
-        picture.setImageResource(item.drawableId);
-        name.setText(item.categoryName);
+        picture.setImageResource(dashboardCategory.drawableId);
+        name.setText(dashboardCategory.categoryName);
 
-        picture.setOnClickListener(new View.OnClickListener() {
+        v.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-            ShowCategoryListActivity(item.categoryName);
+                ShowCategoryListActivity(dashboardCategory.categoryName);
             }
         });
 
         return v;
     }
 
-    public void ShowCategoryListActivity(String categoryName) {
+    private void ShowCategoryListActivity(String categoryName) {
         Intent i = new Intent(fragment.getActivity(), DashboardCategoryListActivity.class);
         i.putExtra("categoryName", categoryName);
         fragment.getActivity().startActivity(i);

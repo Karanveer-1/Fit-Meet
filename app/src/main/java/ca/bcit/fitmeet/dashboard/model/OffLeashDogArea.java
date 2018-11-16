@@ -2,7 +2,7 @@ package ca.bcit.fitmeet.dashboard.model;
 
 import java.util.List;
 
-public class OffLeashDogArea {
+public class OffLeashDogArea extends Category {
     private String name;
 
     private String type;
