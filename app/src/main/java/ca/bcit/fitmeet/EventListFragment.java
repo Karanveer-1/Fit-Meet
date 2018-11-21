@@ -3,25 +3,37 @@ package ca.bcit.fitmeet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.Toast;
 
-public class EventListFragment extends Fragment implements View.OnClickListener  {
+import java.util.ArrayList;
+
+import ca.bcit.fitmeet.adapter.RecyclerViewDataAdapter;
+import ca.bcit.fitmeet.model.SectionEventModel;
+import ca.bcit.fitmeet.model.SingleEventModel;
+
+public class EventListFragment extends Fragment {
 
     private Boolean isFabOpen = false;
     private FloatingActionButton fab,fab1,fab2;
     private Animation fab_open,fab_close,rotate_forward,rotate_backward;
 
-    public EventListFragment() {
-        // Required empty public constructor
-    }
+    private RecyclerView recyclerView;
+    private Button create;
+
+
+    public EventListFragment() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,60 +41,66 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_event_list, container, false);
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        fab = view.findViewById(R.id.fab);
-        fab1 = view.findViewById(R.id.fab1);
-        fab2 = view.findViewById(R.id.fab2);
-        fab_open = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.fab_open);
-        fab_close = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),R.anim.fab_close);
-        rotate_forward = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),R.anim.rotate_forward);
-        rotate_backward = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),R.anim.rotate_backward);
-        fab.setOnClickListener(this);
-        fab1.setOnClickListener(this);
-        fab2.setOnClickListener(this);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        allSampleData = new ArrayList<>();
+        create = view.findViewById(R.id.createEvent);
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), CreateEventActivity.class));
+            }
+        });
+
+        createDummyData();
+
+        recyclerView = view.findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(allSampleData, getActivity());
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id){
-            case R.id.fab:
-                animateFAB();
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "Create event activity",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.fab1:
-                startActivity(new Intent(getActivity().getApplicationContext(),TestActivity.class));
-                break;
-            case R.id.fab2:
-                startActivity(new Intent(getActivity().getApplicationContext(),Test2Activity.class));
-                break;
+    private ArrayList<SectionEventModel> allSampleData;
+
+    private void createDummyData() {
+        for (int i = 1; i <= 20; i++) {
+            SectionEventModel dm = new SectionEventModel();
+            dm.setSectionHeading("Section " + i);
+            ArrayList<SingleEventModel> singleItemModels = new ArrayList<>();
+            for (int j = 1; j <= 10; j++) {
+                singleItemModels.add(new SingleEventModel("heading", "discreption","datatime"));
+            }
+            dm.setEvent(singleItemModels);
+            allSampleData.add(dm);
         }
+
     }
 
-    public void animateFAB(){
-        if(isFabOpen){
-            fab.startAnimation(rotate_backward);
-            fab1.startAnimation(fab_close);
-            fab2.startAnimation(fab_close);
-            fab1.setClickable(false);
-            fab2.setClickable(false);
-            isFabOpen = false;
-        } else {
-            fab.startAnimation(rotate_forward);
-            fab1.startAnimation(fab_open);
-            fab2.startAnimation(fab_open);
-            fab1.setClickable(true);
-            fab2.setClickable(true);
-            isFabOpen = true;
-        }
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

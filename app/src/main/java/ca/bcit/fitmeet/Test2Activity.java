@@ -24,13 +24,18 @@ public class Test2Activity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     private FirebaseAuth mAuth;
     private String userToken;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test2);
+
         dref = FirebaseDatabase.getInstance().getReference("events");
+
         testDataArray = new ArrayList<>();
+
         testDataArray = retrieve();
+
         listview=(ListView)findViewById(R.id.list_test_data);
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,testDataArray);
         listview.setAdapter(adapter);
@@ -41,8 +46,8 @@ public class Test2Activity extends AppCompatActivity {
     }
 
     //READ
-    public ArrayList<String> retrieve()
-    {
+    public ArrayList<String> retrieve() {
+
         dref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -74,23 +79,20 @@ public class Test2Activity extends AppCompatActivity {
         return testDataArray;
     }
 
-    private void fetchData(DataSnapshot dataSnapshot)
-    {
+    private void fetchData(DataSnapshot dataSnapshot) {
 
         //USE THIS IF YOU WANT TO ISOLATE CURRENT USER CREATED EVENTS
         String hostToken = dataSnapshot.child("hostToken").getValue(String.class);
+
         if(hostToken.equals(userToken)){
-
-
             String name = "";
-            for (DataSnapshot ds : dataSnapshot.getChildren())
-            {
+            for (DataSnapshot ds : dataSnapshot.getChildren()) {
                 String component = ds.getValue(String.class);
-
                 name = name +   component + " " ;
             }
+
             testDataArray.add(name);
         }
-
     }
+
 }
