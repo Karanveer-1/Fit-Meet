@@ -116,7 +116,7 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
                 startActivity(new Intent(getActivity(),CreateEventActivity.class));
                 break;
             case R.id.fab2:
-                startActivity(new Intent(getActivity(),CreateEventActivity.class));
+                startActivity(new Intent(getActivity(),TestDateActivity.class));
                 break;
         }
     }

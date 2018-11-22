@@ -40,9 +40,10 @@
         <activity android:name=".TestActivity" />
         <activity android:name=".Test2Activity" />
         <activity android:name=".EventDetailsActivity" />
-        <activity android:name=".MoreEventsActivity"></activity>
+        <activity android:name=".MoreEventsActivity" />
         <activity android:name=".dashboard.DashboardCategoryListActivity" />
-        <activity android:name=".dashboard.CEFeatureActivity"></activity>
+        <activity android:name=".dashboard.CEFeatureActivity" />
+        <activity android:name=".TestDateActivity"></activity>
     </application>
 
 </manifest>

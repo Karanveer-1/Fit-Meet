@@ -92,10 +92,11 @@
 
                 <EditText
                     android:id="@+id/event_date"
+                    android:focusableInTouchMode="false"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/event_date"
-                    android:inputType="datetime" />
+                    android:hint="@string/event_date" />
 
             </android.support.design.widget.TextInputLayout>
 
