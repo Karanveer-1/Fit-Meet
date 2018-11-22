@@ -165,6 +165,12 @@
     <string name="email_fmt">Email: %s</string>
     <string name="title_activity_database_test">DatabaseTest</string>
 
+    <string name="CulturalEvents">Cultural Events</string>
+    <string name="OffLeashDogAreas">Off Leash Dog Areas</string>
+    <string name="Parks">Parks</string>
+    <string name="SportsFields">Sports Fields</string>
+    <string name="GlenbrookRavine">Glenbrook Ravine</string>
+
 </resources>
 
 

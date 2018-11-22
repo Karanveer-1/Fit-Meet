@@ -1,0 +1,630 @@
+{
+	"name" : "EVENTS",
+	"type" : "FeatureCollection",
+	"features" : [
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91038961873096, 49.20211249105147 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "",
+				"Name" : "W. Ruth Kozak (WAVES WRITERS)",
+				"Address" : "715 Columbia Street",
+				"Descriptn" : "Several of our group participate in other literary events in New Westminster including Poetic Justice at the Heritage Grill, storytelling groups, standup comedy and literary reading/ music events at Renaissance Books.",
+				"id" : "49",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3M 1B2",
+				"fax" : "",
+				"website" : "http://www.ruthkozak.com",
+				"social_networks" : "-1",
+				"summary" : "WAVES Writers is a $5 drop-in group \"Write From the Heart\" mostly memoir writng but also other prose and some poetry meeting every Monday 10 - noon at WAVES coffee shop.",
+				"catname" : "Events",
+				"X" : "-122.91038961873096",
+				"Y" : "49.20211249105147"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.92258837243747, 49.212516026920895 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "604-529-5139",
+				"Name" : "New Westminster Festival of Volunteers",
+				"Address" : "610 Sixth Street",
+				"Descriptn" : "LAST SATURDAY IN JANUARY! Over 30 New Westminster community organizations come together to showcase their volunteer opportunities. From tutoring children, to helping seniors live independently, to caring for homeless animals, to protecting our natural environment, there are many ways to get involved and make New Westminster a better place. The New Westminster Festival of Volunteers has been a part of New Westminster's event-scape since 2001. We boast a full day of stage entertainment from local performers.  Festival-goers have the chance to win a $500 shopping spree at the Royal City Centre by visiting at least 10 different organizations and getting their \"Passport to Volunteering\" stamped.  The Festival of Volunteers celebrates the work we do together to create a strong and vibrant New Westminster, and offers everyone ways to get involved.",
+				"id" : "50",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3L 5V1",
+				"fax" : "",
+				"website" : "",
+				"social_networks" : "-1",
+				"summary" : "LAST SATURDAY IN JANUARY!  Over 30 New Westminster community organizations come together to showcase their volunteer opportunities. From tutoring children, to helping seniors live independently, to caring for homeless animals, to protecting our natural environment, there are many ways to get involved and make New Westminster a better place.",
+				"catname" : "Events",
+				"kml_name" : "New Westminster Festival of Volunteers",
+				"X" : "-122.92258837243747",
+				"Y" : "49.212516026920895"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91943209637832, 49.20590682792619 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "604-526-7672",
+				"Name" : "Lester Event Management",
+				"Address" : "",
+				"Descriptn" : "Services incude venue selection, stage management and other required services.",
+				"id" : "104",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "",
+				"prov" : "",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "",
+				"social_networks" : "-1",
+				"summary" : "Organization and management of events including theatre, dance and cultural activities.",
+				"catname" : "Events",
+				"kml_name" : "Lester Event Management",
+				"X" : "-122.91943209637832",
+				"Y" : "49.20590682792619"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91191471190898, 49.20012922207776 ]
+			},
+			"properties" : {
+				"email" : "events@rivermarket.ca",
+				"phone" : "604-520-3881",
+				"Name" : "River Market",
+				"Address" : "810 Quayside Drive",
+				"Descriptn" : "Craft and Art: Our monthly artisan fair brings together local makers showcasing and selling hand-made crafts and artwork. Craft and Art: Our community-oriented flea market, Curious Flea, is held four times a year and brings together a myriad of vendors selling fabulous wares from antiques to Mid-Century modern furniture and decor and everything in between. Culinary Art: Every Tuesday morning Pamola Bakery teaches children ages 5 an under how to roll cookies, decorate cupcakes, and make other amazing treats. Culinary Art: Chefs of River Market restaurants regularly hold cooking classes and demonstrations. Culinary Art: BBQ Battle is an annual cooking competition among River Market restaurants.",
+				"id" : "119",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3M 6B9",
+				"fax" : "",
+				"website" : "http://rivermarket.ca/",
+				"social_networks" : "-1",
+				"summary" : "Feast and fun come together everyday at River Market where the hungry and curious gather to eat, shop, and play. It showcases 25 of BC's best independent restaurants, shops, and schools all under one roof. River Market hosts regular cultural events that bring together people of different age and interests.",
+				"catname" : "Events",
+				"X" : "-122.91191471190898",
+				"Y" : "49.20012922207776"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.92270658946019, 49.2147868906421 ]
+			},
+			"properties" : {
+				"email" : "ariadnes@uniserve.com",
+				"phone" : "604-526-4729",
+				"Name" : "World Poetry New Westminster Night Out",
+				"Address" : "716 Sixth Street",
+				"Descriptn" : "The World Poetry Reading Series Society and World Poetry Canada & International was originally  created by Ariadne Sawyer and Alejandro Mujica-Olea and has been in existence for over 13 years. The goal is to provide a venue where multi-cultural, multi-national poets, writers, and those in other artistic disciplines  of all ages and levels could perform in English and in their language of origin in an atmosphere of respect, honour and empowerment. World Poetry New Westminster Night Out: The fourth Wednesday at the New Westminster Public Library, our honoured partners, from 6:30-8:30pm. Four featured poets, rotating hosts, open mike, music, special events such as the World Poetry Peace Poetathon, The Timeline Project, Life Celebrations, the Peace Poetathon Tree, International Women's Day, Black History Month and others have been during our four years at the library. The World Poetry Cafe Radio Show features guests and also the site www.worldpoetry.ca presents them on site. Ongoing partnerships with VAHMS and a number of others create exciting possibilities.",
+				"id" : "125",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3M 2B3",
+				"fax" : "",
+				"website" : "http://worldpoetry.ca",
+				"social_networks" : "-1",
+				"summary" : "World Poetry New Westminster Night Out: The fourth Wednesday at the New Westminster Public Library, our honoured partners, from 6:30-8:30pm. Featured poets, hosts, open mike, music, special events such as the World Poetry Peace Poetathon, The Timeline Project, Life Celebrations, International Women's Day and Black History Month.",
+				"catname" : "Events",
+				"X" : "-122.92270658946019",
+				"Y" : "49.2147868906421"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91325422203313, 49.20725389648306 ]
+			},
+			"properties" : {
+				"email" : "execdirector@hyack.bc.ca",
+				"phone" : "604-522-6894",
+				"Name" : "Hyack Festival Associaton",
+				"Address" : "204 Sixth Street",
+				"Descriptn" : "Throughout the year, Hyack events and festivals offer opportunities to engage individuals of all ages living in our community and provide a fun-filled atmosphere that also recognizes our time-honoured traditions and exceptional community spirit.  In cooperation with the City of New Westminster, and supported by our stakeholders and community partners, our most well-known and popular initiative is our Hyack Festival week that has been celebrated for 42 years and includes our popular International Parade.  The Hyack Festival Association also organizes the New Westminster Ambassador program.  As a member of the Pacific Northwest Festival Hosting Association, the Hyack float travels to festivals and participates in community parades to promote the City of New Westminster to the hundreds of thousands of people who line the parade routes and the viewers watching on major Canadian and US television stations.",
+				"id" : "135",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3L 3A1",
+				"fax" : "604-522-6094",
+				"website" : "http://www.hyack.bc.ca",
+				"social_networks" : "-1",
+				"summary" : "Hyack Festival Association organizes a wide range of events to help preserve the city's history and traditions and to help foster a positive image and promote the City of New Westminster, both locally and internationally.",
+				"catname" : "Events",
+				"X" : "-122.91325422203313",
+				"Y" : "49.20725389648306"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.92780266117882, 49.2156372711026 ]
+			},
+			"properties" : {
+				"email" : "info@masseytheatre.com",
+				"phone" : "604-517-5900",
+				"Name" : "Massey Theatre",
+				"Address" : "735 Eighth Avenue",
+				"Descriptn" : "Massey Theatre opened in 1949 as British Columbia's largest theatre. Since then its lights have shone on Broadway touring companies and international stars of dance and music. Today, Massey Theatre proudly hosts professional orchestras like the Vancouver Symphony, stars like singing sensation Jewel, and stunning productions like Hello Dolly! by the Renowned Royal City Musical Theatre. The Massey Theatre boasts production workshops, a full-size stage, an audience chamber of 1260 seats and a visual arts gallery. It is located in the geographic centre of the Metro Vancouver area and adjacent to BC's largest high school, the 2000 student campus of New Westminster Secondary School.  Community groups, Competitions, Festivals, student performances and performers of culturally diverse communities are among the over 200 events presented at Massey each season.  Governed as a registered non-profit Society by an independent board of directors, Massey Theatre is neither a civic nor a school facility but a free-standing organization which works to support the performing arts throughout the Metro Vancouver Region.",
+				"id" : "238",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3M 2R2",
+				"fax" : "",
+				"website" : "http://www.masseytheatre.com",
+				"social_networks" : "-1",
+				"summary" : "Massey Theatre opened in 1949 as BC's largest theatre. Since then its lights have shone on Broadway touring companies and international stars of dance and music. Today, Massey Theatre proudly hosts professional orchestras like the Vancouver Symphony and stunning productions like Hello Dolly! by the Renowned Royal City Musical Theatre.",
+				"catname" : "Events",
+				"X" : "-122.92780266117882",
+				"Y" : "49.2156372711026"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91373654123507, 49.20485926033478 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "778-233-2430",
+				"Name" : "Melodies in Mind Productions",
+				"Address" : "",
+				"Descriptn" : "We're a professional, honest, and reliable company.",
+				"id" : "260",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "",
+				"prov" : "",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "",
+				"social_networks" : "-1",
+				"summary" : "Services for Musicians, also available for event holders booking musical talent. The owner knows hundreds of great local talents.",
+				"catname" : "Events",
+				"kml_name" : "Melodies in Mind Productions",
+				"X" : "-122.91373654123507",
+				"Y" : "49.20485926033478"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.90606649836863, 49.20771534193525 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "604-527-4640",
+				"Name" : "A Very Victorian Christmas",
+				"Address" : "302 Royal Avenue",
+				"Descriptn" : "A Very Victorian Christmas features at historic Irving House from December through January. Visitors can enjoy seasonal music, traditional decorations, Victorian family teas, and hands-on heritage programs for children.",
+				"id" : "288",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3L 1H7",
+				"fax" : "",
+				"website" : "",
+				"social_networks" : "-1",
+				"summary" : "A Very Victorian Christmas features at historic Irving House from December through January. Visitors can enjoy seasonal music, traditional decorations, Victorian family teas, and hands-on heritage programs for children.",
+				"catname" : "Events",
+				"kml_name" : "A Very Victorian Christmas",
+				"X" : "-122.90606649836863",
+				"Y" : "49.20771534193525"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.90664503505513, 49.2042713008876 ]
+			},
+			"properties" : {
+				"email" : "secretary@rclas.com",
+				"phone" : "",
+				"Name" : "Poetic Justice",
+				"Address" : "447 Columbia Street",
+				"Descriptn" : "Poetic Justice is presented by The Royal City Literary Arts Society. Poetic Justice is a weekly gathering of poets to promote poetry, friendship and networking within the poetic literary community. Three featured poet readings each Sunday with an open mic session. We welcome everyone to join in the entertainment and camaraderie. See our website poeticjustice.ca for full schedule. We are closed holiday weekends and July/August.",
+				"id" : "300",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3L 1A9",
+				"fax" : "",
+				"website" : "http://poeticjustice.ca/",
+				"social_networks" : "-1",
+				"summary" : "Poetic Justice is a weekly gathering of poets to promote poetry, friendship and networking within the poetic literary community. Featured poets and open mic welcome everyone to join in the entertainment and camaraderie.",
+				"catname" : "Events",
+				"X" : "-122.90664503505513",
+				"Y" : "49.2042713008876"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.9328402053329, 49.20909973571428 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "604-521-5209",
+				"Name" : "Heritage Homes Tour and Tea",
+				"Address" : "700 Twelfth Street",
+				"Descriptn" : "An annual event. Participants tour several beautiful heritage venues and enjoy a light lunch.",
+				"id" : "303",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3M 1A1",
+				"fax" : "",
+				"website" : "http://www.newwestheritage.org",
+				"social_networks" : "-1",
+				"summary" : "An annual event. Participants tour several beautiful heritage venues and enjoy a light lunch.",
+				"catname" : "Events",
+				"X" : "-122.9328402053329",
+				"Y" : "49.20909973571428"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91251494207862, 49.20765138063476 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "",
+				"Name" : "Music@Queens Concert Series",
+				"Address" : "529 Queens Avenue",
+				"Descriptn" : "The Music Queens concert series makes creative use of the magnificent acoustics of the Queens Avenue United Church. It provides a venue for rising stars as well as established musical groups.",
+				"id" : "349",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3L 1K2",
+				"fax" : "",
+				"website" : "",
+				"social_networks" : "-1",
+				"summary" : "The Music Queens concert series makes creative use of the magnificent acoustics of the Queens Avenue United Church. It provides a venue for rising stars as well as established musical groups.",
+				"catname" : "Events",
+				"kml_name" : "Music@Queens Concert Series",
+				"X" : "-122.91251494207862",
+				"Y" : "49.20765138063476"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91038137881273, 49.22443615135068 ]
+			},
+			"properties" : {
+				"email" : "anvilbattery@senseofhistory.com",
+				"phone" : "",
+				"Name" : "Ancient and Honourable Hyack Anvil Battery",
+				"Address" : "",
+				"Descriptn" : "Communities have always found ways to welcome visitors and to mark special days. In early British Columbia, such occasions were often marked by firing cannons, ringing bells, and three hearty cheers. But another form of recognition was used in BC and other places as well the firing of anvils! The firing of anvils as a form of salute has a long history. In BC they frequently welcomed the arrival of a new stern wheel steamboat. Here and in other places they marked special days and festivities. The process involves placing a little gunpowder between two anvils and igniting it. In the resulting explosion, the top anvil flies upward, a lot of smoke surrounds the park, and the noise is similar to cannon fire.  In the late 1800s, a group of men in New Westminster fired an anvil salute to the sovereign when other more recognized means were not available. That annual salute, continued from that time until today, is now carried out by the renowned Ancient and Honourable Hyack Anvil Battery, to mark Victoria Day in honour of the reigning monarch and the memory of Queen Victoria. The salute has also been fired on special occasions such as a visit by Royalty, and the shots are always carried out in a formal, dignified manner as befits a proper salute. Don't miss this proud group in scarlet uniforms reminiscent of an early fire brigade, as they proudly continue an important part of the local cultural heritage and history.",
+				"id" : "379",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "",
+				"prov" : "",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "",
+				"social_networks" : "-1",
+				"summary" : "The Ancient and Honourable Hyack Anvil Battery traces its roots to the 1880s and the community's desire to salute and honour the reigning monarch. Watch for regal and vice regal salutes during the year with the highlight being the traditional 21 gun salute on Victoria Day.",
+				"catname" : "Events",
+				"kml_name" : "Ancient and Honourable Hyack Anvil Battery",
+				"X" : "-122.91038137881273",
+				"Y" : "49.22443615135068"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.93506957324733, 49.21131296527339 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "",
+				"Name" : "12th Street Music Festival",
+				"Address" : "Twelfth Street",
+				"Descriptn" : "The annual 12th Street Music Festival takes place in the summer and features live music on four stages, and activities such as a charity pig roast, craft tent, heritage tours, pony rides, a dunk tank and more!",
+				"id" : "287",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "http://www.newweba.ca",
+				"social_networks" : "-1",
+				"summary" : "The annual 12th Street Music Festival takes place in the summer and features live music on four stages, and activities such as a charity pig roast, craft tent, heritage tours, pony rides, a dunk tank and more!",
+				"catname" : "Events",
+				"X" : "-122.93506957324733",
+				"Y" : "49.21131296527339"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91810626786406, 49.20047785917677 ]
+			},
+			"properties" : {
+				"email" : "info@quaysideboard.com",
+				"phone" : "",
+				"Name" : "Quayside Community Board",
+				"Address" : "Quayside Promenade",
+				"Descriptn" : "The Lower Mainland's largest outdoor sidewalk sale and festival features hundred of tables with used and new goods from local strata owners along with vendors, food merchants, live music, kidz zone and so much more. A great time under the sun and alongside the mighty Fraser River in the Quay area of New Westminster. Takes place every year the third Saturday of August. Rain or shine but has always shined. Come out and support the many charities that participate, city of New Westminster information booths, pet vendors and fundraising activities.",
+				"id" : "129",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3M 6C6",
+				"fax" : "",
+				"website" : "",
+				"social_networks" : "-1",
+				"summary" : "The Lower Mainland's largest outdoor sidewalk sale and festival features hundreds of personal tables, vendors, food, live music, kidz zone and so much more. A great time under the sun and alongside the mighty Fraser River in the Quay area of New Westminster.",
+				"catname" : "Events",
+				"kml_name" : "Quayside Community Board",
+				"X" : "-122.91810626786406",
+				"Y" : "49.20047785917677"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.89856241263824, 49.23165573687347 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "",
+				"Name" : "New Westminster Cultural Crawl",
+				"Address" : "",
+				"Descriptn" : "The annual New Westminster Cultural Crawl is a two-day citywide cultural experience that showcases local art and artists. During the crawl, new and established artists open their studios to visitors to show off their craft.",
+				"id" : "289",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "http://newwestculturalcrawl.com/index.asp",
+				"social_networks" : "-1",
+				"summary" : "The annual New Westminster Cultural Crawl is a two-day citywide cultural experience that showcases local art and artists. During the crawl, new and established artists open their studios to visitors and to show off their craft.",
+				"catname" : "Events",
+				"X" : "-122.89856241263824",
+				"Y" : "49.23165573687347"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.9103965950605, 49.201848087664 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "",
+				"Name" : "Key West Ford Show and Shine",
+				"Address" : "",
+				"Descriptn" : "The annual Key West Ford Show and Shine brings cool cars and great performances to downtown New Westminster.",
+				"id" : "304",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "",
+				"prov" : "",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "http://www.downtownnewwest.ca",
+				"social_networks" : "-1",
+				"summary" : "The annual Key West Ford Show and Shine brings cool cars and great performances to downtown New Westminster.",
+				"catname" : "Events",
+				"X" : "-122.9103965950605",
+				"Y" : "49.201848087664"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.90966727420047, 49.20728390513058 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "",
+				"Name" : "Pride Week",
+				"Address" : "",
+				"Descriptn" : "The annual Pride Week festivities celebrate LGBT culture in New Westminster.",
+				"id" : "305",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "http://www.royalcitypridesociety.com/index.asp",
+				"social_networks" : "-1",
+				"summary" : "The annual Pride Week festivities celebrate LGBT culture in New Westminster.",
+				"catname" : "Events",
+				"X" : "-122.90966727420047",
+				"Y" : "49.20728390513058"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91100540716037, 49.20007686409996 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "604-521-6677",
+				"Name" : "Quayside Boardwalk Festival and Sale",
+				"Address" : "",
+				"Descriptn" : "The annual Quayside Boardwalk Festival and Sale features over 100 unique vendors and takes place rain or shine every summer.",
+				"id" : "306",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "",
+				"prov" : "",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "http://www.quaysideboard.com",
+				"social_networks" : "-1",
+				"summary" : "The annual Quayside Boardwalk Festival and Sale features over 100 unique vendors and takes place rain or shine every summer.",
+				"catname" : "Events",
+				"X" : "-122.91100540716037",
+				"Y" : "49.20007686409996"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91040690665679, 49.200238869197136 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "",
+				"Name" : "RiverFest",
+				"Address" : "",
+				"Descriptn" : "The annual RiverFest celebrates the Fraser River with music, crafts and activities. It's a free, family-friendly activity with something for everyone.",
+				"id" : "307",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "http://www.fraserriverdiscovery.org",
+				"social_networks" : "-1",
+				"summary" : "The annual RiverFest celebrates the Fraser River with music, crafts and activities. It's a free, family-friendly activity with something for everyone.",
+				"catname" : "Events",
+				"X" : "-122.91040690665679",
+				"Y" : "49.200238869197136"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.89271405622792, 49.22801543337481 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "",
+				"Name" : "Sapperton Day Street Festival",
+				"Address" : "",
+				"Descriptn" : "The annual Sapperton Day Street Festival features food, entertainment and exciting activities.",
+				"id" : "310",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "",
+				"fax" : "",
+				"website" : "http://www.shopsapperton.com/",
+				"social_networks" : "-1",
+				"summary" : "The annual Sapperton Day Street Festival features food, entertainment and exciting activities.",
+				"catname" : "Events",
+				"X" : "-122.89271405622792",
+				"Y" : "49.22801543337481"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.90878894310464, 49.21722860879244 ]
+			},
+			"properties" : {
+				"email" : "",
+				"phone" : "",
+				"Name" : "Poetry In The Park",
+				"Address" : "Queen's Park Band Shell",
+				"Descriptn" : "This is a weekly event every Wednesday night from 6:30-8:30 PM July and August annually. It takes place at Queens Park band shell in New Westminster, BC. Each event has 2 -3 featured poets and then open mic. Poetry In The Park (PIP) began in 2011 and was created by Candice James, Poet Laureate of New Westminster. Presented by the Royal City Literary Arts Society and sponsored by The Arts Council of New Westminster and Silver Bow Publishing.",
+				"id" : "319",
+				"category" : 2,
+				"company" : null,
+				"address2" : "",
+				"city" : "New Westminster",
+				"prov" : "BC",
+				"pcode" : "V3M 3X2",
+				"fax" : "",
+				"website" : "",
+				"social_networks" : "-1",
+				"summary" : "This is a weekly event every Wednesday night from 6:30-8:30 PM July and August annually. It takes place at Queens Park band shell in New Westminster, BC. Each event has 2 -3 featured poets and then open mic. Poetry In The Park (PIP) began in 2011 created by Candice James.",
+				"catname" : "Events",
+				"kml_name" : "Poetry In The Park",
+				"X" : "-122.90878894310464",
+				"Y" : "49.21722860879244"
+			}
+		}
+	]
+}
