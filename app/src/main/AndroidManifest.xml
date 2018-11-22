@@ -25,6 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CreateEventActivity"
+            android:label="@string/event_heading" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".SettingsActivity" />
@@ -35,7 +38,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".TestActivity" />
         <activity android:name=".Test2Activity" />
-        <activity android:name=".CreateEventActivity" />
+        <activity android:name=".EventDetailsActivity" />
+        <activity android:name=".MoreEventsActivity"></activity>
     </application>
 
 </manifest>

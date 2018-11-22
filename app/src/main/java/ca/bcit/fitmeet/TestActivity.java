@@ -32,8 +32,6 @@ public class TestActivity extends AppCompatActivity {
 
 
     public void testAddData(View v){
-
-
         EditText description =  findViewById(R.id.event_description);
         EditText name =  findViewById(R.id.event_name);
         EditText location =  findViewById(R.id.event_location);
@@ -54,18 +52,19 @@ public class TestActivity extends AppCompatActivity {
         userToken = currentUser.getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("events");
+
         //This line is to allow duplicate data, by creating data under a new leaf node every time
         DatabaseReference pushedPostRef = myRef.push();
         String dataEntryID = pushedPostRef.getKey();
 
 
         //Create event
-        Event event = new Event(dataEntryID, name, userToken, time, location, description);
-        //Firebase takes a map to insert dat into its leaf nodes
-        Map<String, Object> testDataMap = event.toMap();
-
-        //Puts map data into child of testData
-        myRef.child(dataEntryID).setValue(testDataMap);
+//        Event event = new Event(dataEntryID, name, userToken, time, location, description);
+//        //Firebase takes a map to insert dat into its leaf nodes
+//        Map<String, Object> testDataMap = event.toMap();
+//
+//        //Puts map data into child of testData
+//        myRef.child(dataEntryID).setValue(testDataMap);
 
     }
 

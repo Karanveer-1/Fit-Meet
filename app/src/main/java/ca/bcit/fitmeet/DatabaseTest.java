@@ -60,9 +60,9 @@ public class DatabaseTest extends AppCompatActivity {
         String eventId = pushedPostRef.getKey();
         Log.e("addEvent", eventId);
 
-        Event event = new Event(eventId, eventName, userToken, time, location, description);
-        Map<String, Object> eventMap =  event.toMap();
-        myRef.child(eventId).setValue(eventMap);
+//        Event event = new Event(eventId, eventName, userToken, time, location, description);
+//        Map<String, Object> eventMap =  event.toMap();
+//        myRef.child(eventId).setValue(eventMap);
 
     }
 

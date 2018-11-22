@@ -110,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
         if (fragment != null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, fragment);
-            //transaction.addToBackStack(null);  need to search about this. Dont know if need it or not??
+            //transaction.addToBackStack(null);   this basically add fragments on stack and we can click back to go to last()
+            //transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             transaction.commit();
             return true;
         }
