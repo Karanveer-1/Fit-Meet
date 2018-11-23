@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Map;
 
 public class LoginActivityMain extends AppCompatActivity {
     private FirebaseAuth auth;
@@ -94,12 +100,26 @@ public class LoginActivityMain extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressBar.setVisibility(View.GONE);
                         if (!task.isSuccessful()) {
+
                             if (password.length() < 6) {
                                 inputPassword.setError(getString(R.string.minimum_password));
                             } else {
                                 Toast.makeText(LoginActivityMain.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                             }
                         } else {
+                            FirebaseUser user = auth.getCurrentUser();
+                            String userToken = user.getUid();
+                            String email = user.getEmail();
+
+                            //ADDS USER TO DATABASE
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("users");
+                            User createdUser = new User(email);
+                            Map<String, Object> createdUserMap = createdUser.toMap();
+                            myRef.child(userToken).setValue(createdUserMap);
+
+                            //USER ADDED
+
                             Intent intent = new Intent(LoginActivityMain.this, MainActivity.class);
                             startActivity(intent);
                             finish();
