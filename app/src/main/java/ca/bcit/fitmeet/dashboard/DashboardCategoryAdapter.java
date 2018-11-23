@@ -12,12 +12,22 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.dashboard.model.Feature;
 
 public class DashboardCategoryAdapter extends ArrayAdapter {
+
+    public static Map<String, Integer> locationImage = new HashMap<>();
+
+    static {
+        locationImage.put("feature_festival_of_volunteers", R.drawable.feature_festival_of_volunteers);
+        locationImage.put("feature_kozak", R.drawable.feature_kozak);
+        locationImage.put("feature_lester_event_management", R.drawable.feature_lester_event_management);
+    }
 
     private Context context;
     private List<Feature> features;
@@ -44,6 +54,19 @@ public class DashboardCategoryAdapter extends ArrayAdapter {
         final Feature feature = features.get(position);
 
         picture.setImageResource(R.drawable.parks_glenbrook_ravine);
+
+        if (feature.getProperties().getName().equals("New Westminster Festival of Volunteers")) {
+            picture.setImageResource(locationImage.get("feature_festival_of_volunteers"));
+        }
+
+        if (feature.getProperties().getName().equals("W. Ruth Kozak (WAVES WRITERS)")) {
+            picture.setImageResource(locationImage.get("feature_kozak"));
+        }
+
+        if (feature.getProperties().getName().equals("Lester Event Management")) {
+            picture.setImageResource(locationImage.get("feature_lester_event_management"));
+        }
+
         textView.setText(feature.getProperties().getName());
 
         v.setOnClickListener(new View.OnClickListener(){
