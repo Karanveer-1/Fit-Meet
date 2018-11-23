@@ -1,7 +1,9 @@
-package ca.bcit.fitmeet;
+package ca.bcit.fitmeet.event;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import ca.bcit.fitmeet.R;
 
 public class MoreEventsActivity extends AppCompatActivity {
 

@@ -1,7 +1,6 @@
-package ca.bcit.fitmeet;
+package ca.bcit.fitmeet.event;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
@@ -13,12 +12,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,10 +28,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-import java.util.Map;
 import java.util.TimeZone;
 
-import ca.bcit.fitmeet.model.Event;
+import ca.bcit.fitmeet.login.LoginActivityMain;
+import ca.bcit.fitmeet.R;
+import ca.bcit.fitmeet.event.model.Event;
 
 public class CreateEventActivity extends AppCompatActivity {
     private static final String TAG = "Sample";
@@ -116,7 +112,7 @@ public class CreateEventActivity extends AppCompatActivity {
         String descriptionString = description.getText().toString();
         String locationString = location.getText().toString();
         String dateTimeString = dateTime.getText().toString();
-        String tagsString = "";
+        String tagsString = tags.getText().toString();
         addToDB(eventNameString, descriptionString, locationString, dateTimeString, tagsString);
     }
 
@@ -126,7 +122,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
         String eventID = eventReference.push().getKey();
 
-        Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, new ArrayList<String>(Arrays.asList("Running", "Yoga")));
+        Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, new ArrayList<String>(Arrays.asList(tagsString.split(" "))));
         if (eventID != null) {
             Task setValueTask = eventReference.child(eventID).setValue(newEvent);
             finish();

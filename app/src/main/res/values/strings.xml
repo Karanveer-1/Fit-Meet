@@ -164,6 +164,36 @@
     <string name="id_fmt">User ID: %s</string>
     <string name="email_fmt">Email: %s</string>
     <string name="title_activity_database_test">DatabaseTest</string>
+    <string-array name="demo_array">
+        <item>Aphex Twin</item>
+        <item>Autechre</item>
+        <item>B12</item>
+        <item>The Black Dog</item>
+        <item>Boards of Canada</item>
+        <item>Brian Eno</item>
+        <item>Broadcast</item>
+        <item>Brothomstates</item>
+        <item>Clark</item>
+        <item>DJ Mink</item>
+        <item>Disjecta</item>
+        <item>Drexciya</item>
+        <item>Freeform</item>
+        <item>Jake Slazenger</item>
+        <item>Leila</item>
+        <item>LFO</item>
+        <item>Luke Vibert</item>
+        <item>Mira Calix</item>
+        <item>Nightmares on Wax</item>
+        <item>Plaid</item>
+        <item>Plone</item>
+        <item>Prefuse 73</item>
+        <item>Sabres of Paradise</item>
+        <item>Seefeel</item>
+        <item>Speedy J</item>
+        <item>Squarepusher</item>
+        <item>Sweet Exorcist</item>
+        <item>Tricky Disco</item>
+    </string-array>
 
     <string name="CulturalEvents">Cultural Events</string>
     <string name="OffLeashDogAreas">Off Leash Dog Areas</string>

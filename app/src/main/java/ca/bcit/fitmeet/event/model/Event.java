@@ -1,10 +1,9 @@
-package ca.bcit.fitmeet.model;
+package ca.bcit.fitmeet.event.model;
 
 import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;

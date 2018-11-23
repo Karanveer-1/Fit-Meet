@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import ca.bcit.fitmeet.dashboard.DashboardFragment;
+import ca.bcit.fitmeet.event.EventListFragment;
+import ca.bcit.fitmeet.login.LoginActivityMain;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;

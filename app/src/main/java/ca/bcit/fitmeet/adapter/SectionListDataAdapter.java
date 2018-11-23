@@ -8,13 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
-import ca.bcit.fitmeet.EventDetailsActivity;
+import ca.bcit.fitmeet.event.EventDetailsActivity;
 import ca.bcit.fitmeet.R;
-import ca.bcit.fitmeet.model.Event;
+import ca.bcit.fitmeet.event.model.Event;
 
 public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListDataAdapter.SingleItemRowHolder>{
     private List<Event> events;

@@ -1,6 +1,7 @@
 package ca.bcit.fitmeet.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,8 +14,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.bcit.fitmeet.event.MoreEventsActivity;
 import ca.bcit.fitmeet.R;
-import ca.bcit.fitmeet.model.EventSection;
+import ca.bcit.fitmeet.event.model.EventSection;
 
 public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDataAdapter.ItemRowHolder>{
     private ArrayList<EventSection> sectionList;
@@ -51,7 +53,7 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
         holder.btnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mContext.startActivity(new Intent(mContext, MoreEventsActivity.class));
                 Toast.makeText(view.getContext(), "Button More Clicked!" + sectionName, Toast.LENGTH_SHORT).show();
             }
         });

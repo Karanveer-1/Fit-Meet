@@ -1,4 +1,4 @@
-package ca.bcit.fitmeet.model;
+package ca.bcit.fitmeet.event.model;
 
 import java.util.ArrayList;
 
