@@ -1,4 +1,4 @@
-package ca.bcit.fitmeet.adapter;
+package ca.bcit.fitmeet.event.adapter;
 
 import android.content.Context;
 import android.content.Intent;
