@@ -1,4 +1,4 @@
-package ca.bcit.fitmeet;
+package ca.bcit.fitmeet.event;
 
 
 import android.content.Intent;
@@ -24,9 +24,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
+import ca.bcit.fitmeet.R;
+import ca.bcit.fitmeet.TestDateActivity;
 import ca.bcit.fitmeet.adapter.RecyclerViewDataAdapter;
-import ca.bcit.fitmeet.event.CreateEventActivity;
 import ca.bcit.fitmeet.event.model.Event;
 import ca.bcit.fitmeet.event.model.EventSection;
 
@@ -40,9 +43,12 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
     DatabaseReference databaseReference;
 
     private RecyclerView recyclerView;
-    private ArrayList<EventSection> allSampleData;
+    private ArrayList<EventSection> eventSections;
     RecyclerViewDataAdapter adapter;
-    ArrayList<Event> events = new ArrayList<>();
+    ArrayList<Event> recent = new ArrayList<>();
+    ArrayList<Event> animals = new ArrayList<>();
+    ArrayList<Event> running = new ArrayList<>();
+    ArrayList<Event> meditation = new ArrayList<>();
 
 
     public EventListFragment() { }
@@ -60,7 +66,7 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
         databaseReference.addValueEventListener(listener);
 
-        allSampleData = new ArrayList<>();
+        eventSections = new ArrayList<>();
     }
 
     @Override
@@ -78,7 +84,7 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
 
         recyclerView = view.findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
-        adapter = new RecyclerViewDataAdapter(allSampleData, getActivity());
+        adapter = new RecyclerViewDataAdapter(eventSections, getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
     }
@@ -139,42 +145,79 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
     ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            allSampleData.clear();
-            events.clear();
+            recent.clear();
+            animals.clear();
+            meditation.clear();
+            running.clear();
 
             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                 Event event = ds.getValue(Event.class);
-                events.add(event);
+                Calendar c = Calendar.getInstance();
+                c.setFirstDayOfWeek(Calendar.MONDAY);
+                c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                c.set(Calendar.HOUR_OF_DAY, 0);
+                c.set(Calendar.MINUTE, 0);
+                c.set(Calendar.SECOND, 0);
+                c.set(Calendar.MILLISECOND, 0);
+                Date monday = c.getTime();
+                Date nextMonday= new Date(monday.getTime()+7*24*60*60*1000);
+
+                if (event.getDateTime().after(monday) && event.getDateTime().before(nextMonday)) {
+                    recent.add(event);
+                }
+                if (event.getEventTags().contains("running")) {
+                    running.add(event);
+                }
+                if (event.getEventTags().contains("meditation")) {
+                    meditation.add(event);
+                }
+                if (event.getEventTags().contains("animals")) {
+                    animals.add(event);
+                }
             }
-
-            EventSection section = new EventSection();
-            section.setSectionHeading("TEST");
-            section.setEvents(events);
-            allSampleData.add(section);
-            allSampleData.add(section);
-
+            populateSections();
             adapter.notifyDataSetChanged();
-
         }
 
         @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
+        public void onCancelled(@NonNull DatabaseError databaseError) { }
     };
 
+    private void populateSections() {
+        eventSections.clear();
+        EventSection recentEvents = new EventSection();
+        EventSection runningSec = new EventSection();
+        EventSection meditationSec = new EventSection();
+        EventSection animalsSec = new EventSection();
 
-    private void createDummyData() {
-        for (int i = 1; i <= 3; i++) {
-            EventSection dm = new EventSection();
-            dm.setSectionHeading("Section " + i);
-            for (int j = 1; j <= 7; j++) {
-                events.add(new Event());
-            }
-            dm.setEvents(events);
-            allSampleData.add(dm);
-        }
+        recentEvents.setSectionHeading("This Week");
+        runningSec.setSectionHeading("Running");
+        meditationSec.setSectionHeading("Meditation");
+        animalsSec.setSectionHeading("Animals");
+
+        recentEvents.setEvents(recent);
+        runningSec.setEvents(running);
+        meditationSec.setEvents(meditation);
+        animalsSec.setEvents(animals);
+
+        eventSections.add(recentEvents);
+        eventSections.add(runningSec);
+        eventSections.add(meditationSec);
+        eventSections.add(animalsSec);
     }
+
+
+//    private void createDummyData() {
+//        for (int i = 1; i <= 3; i++) {
+//            EventSection dm = new EventSection();
+//            dm.setSectionHeading("Section " + i);
+//            for (int j = 1; j <= 7; j++) {
+//                events.add(new Event());
+//            }
+//            dm.setEvents(events);
+//            eventSections.add(dm);
+//        }
+//    }
 
 
 
