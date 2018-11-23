@@ -117,7 +117,6 @@ public class LoginActivityMain extends AppCompatActivity {
                             User createdUser = new User(email);
                             Map<String, Object> createdUserMap = createdUser.toMap();
                             myRef.child(userToken).setValue(createdUserMap);
-
                             //USER ADDED
 
                             Intent intent = new Intent(LoginActivityMain.this, MainActivity.class);
