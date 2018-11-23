@@ -1,6 +1,6 @@
 package ca.bcit.fitmeet.dashboard.model;
 
-public class CEProperties {
+public class CEProperties extends Property {
     private String email;
 
     private String phone;

@@ -28,7 +28,8 @@ public class DashboardAdapter extends BaseAdapter {
 
         mItems.add(DashboardCategory.CulturalEvents);
         mItems.add(DashboardCategory.OffLeashDogAreas);
-        mItems.add(DashboardCategory.Parks);
+        mItems.add(DashboardCategory.PRandCSP);
+        /*mItems.add(DashboardCategory.Parks);*/
         mItems.add(DashboardCategory.SportsFields);
     }
 
