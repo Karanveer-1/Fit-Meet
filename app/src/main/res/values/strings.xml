@@ -12,6 +12,16 @@
     <string name="settings">Settings</string>
     <string name="logout">Log out</string>
 
+    <string name="event_heading">Organise An Event</string>
+    <string name="event_name">Event Name</string>
+    <string name="event_description">Description</string>
+    <string name="event_location">Location</string>
+    <string name="event_date">Date</string>
+    <string name="event_tags">Event Tags</string>
+
+
+    <string name="placeholder">Placeholder</string>
+
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="btn_login">LOGIN</string>
@@ -24,6 +34,7 @@
     <string name="btn_reset_password">Reset Password</string>
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+
 
     <!-- TODO: Add strings below for testing. DONOT delete anything above this. -->
 
@@ -153,6 +164,42 @@
     <string name="id_fmt">User ID: %s</string>
     <string name="email_fmt">Email: %s</string>
     <string name="title_activity_database_test">DatabaseTest</string>
+    <string-array name="demo_array">
+        <item>Aphex Twin</item>
+        <item>Autechre</item>
+        <item>B12</item>
+        <item>The Black Dog</item>
+        <item>Boards of Canada</item>
+        <item>Brian Eno</item>
+        <item>Broadcast</item>
+        <item>Brothomstates</item>
+        <item>Clark</item>
+        <item>DJ Mink</item>
+        <item>Disjecta</item>
+        <item>Drexciya</item>
+        <item>Freeform</item>
+        <item>Jake Slazenger</item>
+        <item>Leila</item>
+        <item>LFO</item>
+        <item>Luke Vibert</item>
+        <item>Mira Calix</item>
+        <item>Nightmares on Wax</item>
+        <item>Plaid</item>
+        <item>Plone</item>
+        <item>Prefuse 73</item>
+        <item>Sabres of Paradise</item>
+        <item>Seefeel</item>
+        <item>Speedy J</item>
+        <item>Squarepusher</item>
+        <item>Sweet Exorcist</item>
+        <item>Tricky Disco</item>
+    </string-array>
+
+    <string name="CulturalEvents">Cultural Events</string>
+    <string name="OffLeashDogAreas">Off Leash Dog Areas</string>
+    <string name="Parks">Parks</string>
+    <string name="SportsFields">Sports Fields</string>
+    <string name="GlenbrookRavine">Glenbrook Ravine</string>
 
 </resources>
 

@@ -8,15 +8,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import ca.bcit.fitmeet.dashboard.DashboardFragment;
+import ca.bcit.fitmeet.event.EventListFragment;
+import ca.bcit.fitmeet.login.LoginActivityMain;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
@@ -110,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
         if (fragment != null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, fragment);
-            //transaction.addToBackStack(null);  need to search about this. Dont know if need it or not??
+            //transaction.addToBackStack(null);   this basically add fragments on stack and we can click back to go to last()
+            //transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             transaction.commit();
             return true;
         }
