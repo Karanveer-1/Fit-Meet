@@ -1,0 +1,386 @@
+{
+	"name" : "PARKS_RECREATION_AND_COMMUNITY_SCHOOL_PROGRAMMING",
+	"type" : "FeatureCollection",
+	"features" : [
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91669415335146, 49.20449979069257 ]
+			},
+			"properties" : {
+				"Name" : "Fraser River Middle School - Youth Drop-In",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Mondays, Wednesdays, and Fridays",
+				"Location" : "800 Queens Ave",
+				"PC" : "V3M 0J2",
+				"Phone" : "604-515-3801",
+				"Email" : null,
+				"Website" : "https://www.newwestyouth.ca/",
+				"X" : "-122.91669415335146",
+				"Y" : "49.20449979069257"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.920455471798, 49.212217450947115 ]
+			},
+			"properties" : {
+				"Name" : "Fraserside Community - Subsidy Programs",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Hours vary by program, please visit website for more details",
+				"Location" : "2/F - 519 Seventh St",
+				"PC" : "V3L 3B7",
+				"Phone" : "604-522-3722 (ext 120)",
+				"Email" : "info@fraserside.bc.ca",
+				"Website" : "http://www.fraserside.bc.ca/mental-health-and-counselling/community-desk/",
+				"X" : "-122.920455471798",
+				"Y" : "49.212217450947115"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91132614091241, 49.22070089854204 ]
+			},
+			"properties" : {
+				"Name" : "Glenbrook Middle School - Youth Drop-In",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Open late on Fridays",
+				"Location" : "701 Park Cres",
+				"PC" : "V3L 5V4",
+				"Phone" : "604-515-3801",
+				"Email" : null,
+				"Website" : "https://www.newwestyouth.ca/",
+				"X" : "-122.91132614091241",
+				"Y" : "49.22070089854204"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91176561673026, 49.19955078662105 ]
+			},
+			"properties" : {
+				"Name" : "Museum and Archives - Samson V",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Wednesday-Thursday, 3:00pm - 8:00 pm, Friday-Sunday, 12:00 pm - 5:00 pm (May 19 - September 2), Victoria Day and Labour Day Mondays, 12:00 pm - 5:00 pm",
+				"Location" : "880 Quayside Dr",
+				"PC" : "V3M 6B9",
+				"Phone" : null,
+				"Email" : "museum@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/services/arts-and-heritage/museums-and-archives",
+				"X" : "-122.91176561673026",
+				"Y" : "49.19955078662105"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.9112649353695, 49.201781761920685 ]
+			},
+			"properties" : {
+				"Name" : "Museum and Archives - Anvil Centre",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Monday-Sunday, 10:00 am - 5:00 pm, Thursday, 10:00 am - 8:00 pm",
+				"Location" : "777 Columbia St",
+				"PC" : "V3M 1B6",
+				"Phone" : "604-527-4660",
+				"Email" : "museum@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/services/arts-and-heritage/museums-and-archives",
+				"X" : "-122.9112649353695",
+				"Y" : "49.201781761920685"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91597232271187, 49.20391497554177 ]
+			},
+			"properties" : {
+				"Name" : "New Westminster Community Schools",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : null,
+				"Location" : "811 Ontario St",
+				"PC" : "V3M 0J7",
+				"Phone" : "Rick Bloudell (778-874-5457), Robin Stewart (778-874-4700)",
+				"Email" : "District Community School Coordinators: Robin Stewart (rstewart@sd40.bc.ca), Rick Bloudell (rabloudell@sd40.bc.ca)",
+				"Website" : "https://newwestschools.ca/programs-services/family-and-community/community-schools/",
+				"X" : "-122.91597232271187",
+				"Y" : "49.20391497554177"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.90618433318106, 49.20762944899767 ]
+			},
+			"properties" : {
+				"Name" : "Museum and Archives - Irving House",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Wednesday - Sunday, 12:00 pm - 5:00 pm (May 19-September 2 only)",
+				"Location" : "302 Royal Ave",
+				"PC" : "V3L 1H7",
+				"Phone" : "604-527-4640",
+				"Email" : "museum@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/services/arts-and-heritage/museums-and-archives",
+				"X" : "-122.90618433318106",
+				"Y" : "49.20762944899767"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.90773922571712, 49.22169123305114 ]
+			},
+			"properties" : {
+				"Name" : "Canada Games Pool",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Facility is open on Monday-Thursday, 6:00 am - 9:55 pm, Friday, 6:00 am - 10:25 pm, Saturday, 8:00 am - 8:25 pm, Sunday, 8:00 am - 9:55 pm , hours for particular programs and services vary",
+				"Location" : "65 E Sixth Ave",
+				"PC" : "V3L 4G6",
+				"Phone" : "604-526-4281",
+				"Email" : "active@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/canada-games-pool",
+				"X" : "-122.90773922571712",
+				"Y" : "49.22169123305114"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.90773922571712, 49.22169123305114 ]
+			},
+			"properties" : {
+				"Name" : "Centennial Community Centre",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Monday-Friday, 9:00 am - 8:30 pm, Friday, 9:00 am - 8:00 pm, Saturday, 8:00 am - 1:00 pm, Sunday, 8:30 am - 12:00 pm",
+				"Location" : "65 E Sixth Ave",
+				"PC" : "V3L 4G6",
+				"Phone" : "604-777-5100",
+				"Email" : "active@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/centennial-community-centre",
+				"X" : "-122.90773922571712",
+				"Y" : "49.22169123305114"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.92609125314297, 49.21175628935308 ]
+			},
+			"properties" : {
+				"Name" : "Century House",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Monday-Friday, 9:00 am - 9:00 pm, Saturday, 9:00 am - 4:00 pm, Sunday, 12:00 pm - 4:00 pm (reduced hours during July & August)",
+				"Location" : "620 Eighth St",
+				"PC" : "V3M 3S2",
+				"Phone" : "604-519-1066",
+				"Email" : null,
+				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/century-house",
+				"X" : "-122.92609125314297",
+				"Y" : "49.21175628935308"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.89174558767459, 49.23318782041552 ]
+			},
+			"properties" : {
+				"Name" : "Hume Park Outdoor Pool",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Variable (weather-dependent) but usually open from late June to Labour Day from 1:15 pm - 8:00 pm",
+				"Location" : "660 E Columbia St",
+				"PC" : null,
+				"Phone" : "604-526-4281",
+				"Email" : "active@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/canada-games-pool/articles/4977.php",
+				"X" : "-122.89174558767459",
+				"Y" : "49.23318782041552"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.9261783718952, 49.21556332422588 ]
+			},
+			"properties" : {
+				"Name" : "Moody Park Arena",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Hours vary depending on season. Typically open Monday, 8:30am-8:30pm, Tuesday-Friday, 8:30am-4:30pm and Sunday, 11:30am-3:30pm",
+				"Location" : "701 Eighth Ave",
+				"PC" : "V3M 2R2",
+				"Phone" : "604-525-5301",
+				"Email" : "active@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/moody-park-arena",
+				"X" : "-122.9261783718952",
+				"Y" : "49.21556332422588"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.92816347757771, 49.21131823811966 ]
+			},
+			"properties" : {
+				"Name" : "Moody Park Outdoor Pool",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Variable (weather-dependent) but usually open from late June to Labour Day from 1:15 pm - 8:00 pm",
+				"Location" : "701 Tenth St",
+				"PC" : null,
+				"Phone" : "604-526-4281",
+				"Email" : "active@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/canada-games-pool/articles/4977.php",
+				"X" : "-122.92816347757771",
+				"Y" : "49.21131823811966"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.9057725467226, 49.214826986315074 ]
+			},
+			"properties" : {
+				"Name" : "Queens Park Arena",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Office Hours: Monday-Friday, 9:00am-4:00pm",
+				"Location" : "600 First St",
+				"PC" : null,
+				"Phone" : "604-777-5111",
+				"Email" : "active@newwestcity.ca",
+				"Website" : "http://www.newwestpcr.ca/recreation/recreation_centres/queens_park_arena.php",
+				"X" : "-122.9057725467226",
+				"Y" : "49.214826986315074"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.90799343131864, 49.21606910082704 ]
+			},
+			"properties" : {
+				"Name" : "Queen's Park Petting Farm",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "May 19 - September 3, 10:00am-5:30pm",
+				"Location" : "600 First St",
+				"PC" : null,
+				"Phone" : null,
+				"Email" : null,
+				"Website" : "https://www.newwestcity.ca/parks-and-recreation/parks/amenities#petting-farm",
+				"X" : "-122.90799343131864",
+				"Y" : "49.21606910082704"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.9436168718548, 49.18588392554472 ]
+			},
+			"properties" : {
+				"Name" : "Queensborough Community Centre",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Monday-Friday, 7:00 am - 9:30 pm, Saturday, 8:30 am - 5:30 pm, Sunday, 8:30 am - 8:30 pm",
+				"Location" : "920 Ewen Ave",
+				"PC" : "V3M 5C8",
+				"Phone" : "604-527-7388",
+				"Email" : "active@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/queensborough-community-centre#about",
+				"X" : "-122.9436168718548",
+				"Y" : "49.18588392554472"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.92609125314297, 49.21175628935308 ]
+			},
+			"properties" : {
+				"Name" : "Youth Centre",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Monday-Thursday, 3:15 pm - 9:00 pm, Friday-Saturday, 3:15pm-11:00pm, Summer hours: Monday-Saturday, 12:00pm-9:00pm",
+				"Location" : "620 Eighth St",
+				"PC" : "V3M 3S2",
+				"Phone" : "604-515-3801",
+				"Email" : null,
+				"Website" : "https://www.newwestyouth.ca/",
+				"X" : "-122.92609125314297",
+				"Y" : "49.21175628935308"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.92693850981581, 49.215154619414015 ]
+			},
+			"properties" : {
+				"Name" : "New Westminster Secondary - Youth Drop-In",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Friday, 7:00pm-11:00pm",
+				"Location" : "835 Eighth St",
+				"PC" : "V3M 3S9",
+				"Phone" : "604-515-3801",
+				"Email" : null,
+				"Website" : "https://www.newwestyouth.ca/",
+				"X" : "-122.92693850981581",
+				"Y" : "49.215154619414015"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.94093147077892, 49.18632001342384 ]
+			},
+			"properties" : {
+				"Name" : "Queensborough Middle School - Youth Drop-In",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Three days a week",
+				"Location" : "833 Salter St",
+				"PC" : "V3M 6G8",
+				"Phone" : "604-515-3801",
+				"Email" : null,
+				"Website" : "https://www.newwestyouth.ca/",
+				"X" : "-122.94093147077892",
+				"Y" : "49.18632001342384"
+			}
+		}
+	]
+}

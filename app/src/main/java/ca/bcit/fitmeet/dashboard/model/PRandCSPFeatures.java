@@ -1,11 +1,11 @@
 package ca.bcit.fitmeet.dashboard.model;
 
-public class CEFeatures extends Feature {
+public class PRandCSPFeatures extends Feature {
     private String type;
 
-    private CEGeometry geometry;
+    private PRandCSPGeometry geometry;
 
-    private CEProperties properties;
+    private PRandCSPProperties properties;
 
     public void setType(String type) {
         this.type = type;
@@ -15,19 +15,20 @@ public class CEFeatures extends Feature {
         return this.type;
     }
 
-    public void setGeometry(CEGeometry geometry) {
+    public void setGeometry(PRandCSPGeometry geometry) {
         this.geometry = geometry;
     }
 
-    public CEGeometry getGeometry() {
+    public PRandCSPGeometry getGeometry() {
         return this.geometry;
     }
 
-    public void setProperties(CEProperties properties) {
+    public void setProperties(PRandCSPProperties properties) {
         this.properties = properties;
     }
 
-    public CEProperties getProperties() {
+    public PRandCSPProperties getProperties() {
         return this.properties;
     }
 }
+

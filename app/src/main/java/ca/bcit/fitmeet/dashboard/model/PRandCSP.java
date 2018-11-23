@@ -2,12 +2,12 @@ package ca.bcit.fitmeet.dashboard.model;
 
 import java.util.List;
 
-public class Parks extends Category {
+public class PRandCSP extends Category {
     private String name;
 
     private String type;
 
-    private List<PFeatures> features;
+    private List<PRandCSPFeatures> features;
 
     public void setName(String name) {
         this.name = name;
@@ -25,12 +25,11 @@ public class Parks extends Category {
         return this.type;
     }
 
-    public void setFeatures(List<PFeatures> features) {
+    public void setFeatures(List<PRandCSPFeatures> features) {
         this.features = features;
     }
 
-    public List<PFeatures> getFeatures() {
+    public List<PRandCSPFeatures> getFeatures() {
         return this.features;
     }
 }
-

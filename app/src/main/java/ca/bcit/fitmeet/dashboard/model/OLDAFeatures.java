@@ -1,11 +1,11 @@
 package ca.bcit.fitmeet.dashboard.model;
 
-public class CEFeatures extends Feature {
+public class OLDAFeatures extends Feature {
     private String type;
 
-    private CEGeometry geometry;
+    private OLDAGeometry geometry;
 
-    private CEProperties properties;
+    private OLDAProperties properties;
 
     public void setType(String type) {
         this.type = type;
@@ -15,19 +15,19 @@ public class CEFeatures extends Feature {
         return this.type;
     }
 
-    public void setGeometry(CEGeometry geometry) {
+    public void setGeometry(OLDAGeometry geometry) {
         this.geometry = geometry;
     }
 
-    public CEGeometry getGeometry() {
+    public OLDAGeometry getGeometry() {
         return this.geometry;
     }
 
-    public void setProperties(CEProperties properties) {
+    public void setProperties(OLDAProperties properties) {
         this.properties = properties;
     }
 
-    public CEProperties getProperties() {
+    public OLDAProperties getProperties() {
         return this.properties;
     }
 }
