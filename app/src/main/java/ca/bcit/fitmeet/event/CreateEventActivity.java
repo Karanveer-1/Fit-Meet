@@ -2,18 +2,22 @@ package ca.bcit.fitmeet.event;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,6 +37,9 @@ import java.util.TimeZone;
 import ca.bcit.fitmeet.login.LoginActivityMain;
 import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.event.model.Event;
+import fisk.chipcloud.ChipCloud;
+import fisk.chipcloud.ChipCloudConfig;
+import fisk.chipcloud.ChipListener;
 
 public class CreateEventActivity extends AppCompatActivity {
     private static final String TAG = "Sample";
@@ -44,6 +51,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private FloatingActionButton saveEvent;
     private EditText dateTime;
     private Date eventDate;
+    private ArrayList<String> tags = new ArrayList<String>();
     private SwitchDateTimeDialogFragment dateTimeFragment;
 
     @Override
@@ -75,7 +83,37 @@ public class CreateEventActivity extends AppCompatActivity {
         saveEvent = findViewById(R.id.save_event);
         setListener();
         initialiseDateTime();
+        initialiseTagCloud();
 
+    }
+
+    private void initialiseTagCloud() {
+        FlexboxLayout flexbox = (FlexboxLayout) findViewById(R.id.flexbox);
+
+        ChipCloudConfig config = new ChipCloudConfig()
+                .selectMode(ChipCloud.SelectMode.multi)
+                .checkedChipColor(Color.parseColor("#ddaa00"))
+                .checkedTextColor(Color.parseColor("#ffffff"))
+                .uncheckedChipColor(Color.parseColor("#e0e0e0"))
+                .uncheckedTextColor(Color.parseColor("#000000"));
+
+        final ChipCloud chipCloud = new ChipCloud(this, flexbox, config);
+        // chipCloud.addChip("HelloWorld!");
+        String[] demoArray = getResources().getStringArray(R.array.demo_array);
+        chipCloud.addChips(demoArray);
+        // chipCloud.setChecked(2);
+        //String label = chipCloud.getLabel(2);
+        //Log.d(TAG, "Label at index 2: " + label);
+
+        chipCloud.setListener(new ChipListener() {
+            @Override
+            public void chipCheckedChange(int index, boolean checked, boolean userClick) {
+                if(userClick) {
+                    tags.add(chipCloud.getLabel(index));
+                    Log.d(TAG, String.format("chipCheckedChange Label at index: %d checked: %s", index, checked));
+                }
+            }
+        });
     }
 
     private void setListener() {
@@ -105,24 +143,57 @@ public class CreateEventActivity extends AppCompatActivity {
         EditText eventName = findViewById(R.id.event_name);
         EditText description = findViewById(R.id.event_description);
         EditText location = findViewById(R.id.event_location);
-        EditText tags = findViewById(R.id.event_tags);
         dateTime = findViewById(R.id.event_date);
+
+        TextInputLayout eventNameLayout = findViewById(R.id.name_layout);
+        TextInputLayout descriptionLayout = findViewById(R.id.description_layout);
+        TextInputLayout locationLayout = findViewById(R.id.location_layout);
+        TextInputLayout dateLayout = findViewById(R.id.date_layout);
 
         String eventNameString = eventName.getText().toString();
         String descriptionString = description.getText().toString();
         String locationString = location.getText().toString();
         String dateTimeString = dateTime.getText().toString();
-        String tagsString = tags.getText().toString();
-        addToDB(eventNameString, descriptionString, locationString, dateTimeString, tagsString);
+        boolean error = false;
+
+        if(TextUtils.isEmpty(eventNameString)) {
+            error = true;
+            eventNameLayout.setError("Please fill");
+        } else {
+            eventNameLayout.setError(null);
+        }
+        if(TextUtils.isEmpty(descriptionString)) {
+            error = true;
+            descriptionLayout.setError("Please fill");
+        }  else {
+            descriptionLayout.setError(null);
+        }
+        if(TextUtils.isEmpty(locationString)) {
+            error = true;
+            locationLayout.setError("Please fill");
+        }
+        else {
+            locationLayout.setError(null);
+        }
+        if(TextUtils.isEmpty(dateTimeString)) {
+            error = true;
+            dateLayout.setError("Please fill");
+        } else {
+            dateLayout.setError(null);
+        }
+        if(!error) {
+            addToDB(eventNameString, descriptionString, locationString, dateTimeString);
+        }
+
     }
 
-    private void addToDB(String eventNameString, String descriptionString, String locationString, String dateTimeString, String tagsString) {
+    private void addToDB(String eventNameString, String descriptionString, String locationString, String dateTimeString) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference eventReference = database.getReference("events");
 
         String eventID = eventReference.push().getKey();
 
-        Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, new ArrayList<String>(Arrays.asList(tagsString.split(" "))));
+        Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, tags);
         if (eventID != null) {
             Task setValueTask = eventReference.child(eventID).setValue(newEvent);
             finish();
@@ -199,12 +270,23 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
 
+    public void gotoLocation(View v) {
+        Intent intent = new Intent(this, LocationActivity.class);
+        startActivityForResult(intent, 0);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-
-
-
-
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String returnString = data.getStringExtra("keyName");
+                EditText location = findViewById(R.id.event_location);
+                location.setText(returnString);
+            }
+        }
+    }
 
 
 

@@ -6,4 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".event.MoreEventsActivity">
 
+    <include layout="@layout/toolbar_main" android:id="@+id/toolbar" />
+
+
+
 </android.support.constraint.ConstraintLayout>

@@ -19,6 +19,7 @@ import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.event.model.EventSection;
 
 public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDataAdapter.ItemRowHolder>{
+    private static String section = "Section";
     private ArrayList<EventSection> sectionList;
     private Context mContext;
     private RecyclerView.RecycledViewPool recycledViewPool;
@@ -38,9 +39,9 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
     }
 
     @Override
-    public void onBindViewHolder(ItemRowHolder holder, int position) {
+    public void onBindViewHolder(ItemRowHolder holder, final int position) {
         final String sectionName = sectionList.get(position).getSectionHeading();
-        List singleSectionItems = sectionList.get(position).getEvents();
+        final List singleSectionItems = sectionList.get(position).getEvents();
         holder.itemTitle.setText(sectionName);
 
         SectionListDataAdapter adapter = new SectionListDataAdapter(singleSectionItems, mContext);
@@ -53,8 +54,9 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
         holder.btnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, MoreEventsActivity.class));
-                Toast.makeText(view.getContext(), "Button More Clicked!" + sectionName, Toast.LENGTH_SHORT).show();
+                Intent intent =  new Intent(mContext, MoreEventsActivity.class);
+                intent.putExtra(section, sectionList.get(position).getSectionHeading());
+                mContext.startActivity(intent);
             }
         });
     }

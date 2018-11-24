@@ -14,19 +14,6 @@
         android:scrollbars="none"/>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="160dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:visibility="invisible"
-        app:backgroundTint="@color/colorPrimary"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        android:src="@drawable/ic_action_add" />
-
-    <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +24,7 @@
         app:elevation="6dp"
         app:backgroundTint="@color/colorPrimaryDark"
         app:pressedTranslationZ="12dp"
-        android:src="@drawable/ic_action_add" />
+        android:src="@drawable/ic_action_create" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

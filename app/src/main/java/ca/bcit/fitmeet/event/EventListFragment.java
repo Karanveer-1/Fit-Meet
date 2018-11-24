@@ -35,7 +35,7 @@ import ca.bcit.fitmeet.event.model.EventSection;
 
 public class EventListFragment extends Fragment implements View.OnClickListener {
     private Boolean isFabOpen = false;
-    private FloatingActionButton fab,fab1,fab2;
+    private FloatingActionButton fab,fab1;
     private Animation fab_open,fab_close,rotate_forward,rotate_backward;
 
     private FirebaseAuth mAuth;
@@ -45,11 +45,11 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
     private RecyclerView recyclerView;
     private ArrayList<EventSection> eventSections;
     RecyclerViewDataAdapter adapter;
+
     ArrayList<Event> recent = new ArrayList<>();
     ArrayList<Event> animals = new ArrayList<>();
     ArrayList<Event> running = new ArrayList<>();
     ArrayList<Event> meditation = new ArrayList<>();
-
 
     public EventListFragment() { }
 
@@ -92,13 +92,11 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
     private void setListeners() {
         fab.setOnClickListener(this);
         fab1.setOnClickListener(this);
-        fab2.setOnClickListener(this);
     }
 
     private void initialiseFabButtons(View view) {
         fab = view.findViewById(R.id.fab);
         fab1 = view.findViewById(R.id.fab1);
-        fab2 = view.findViewById(R.id.fab2);
     }
 
     private void loadAnimations() {
@@ -117,27 +115,21 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
                 break;
             case R.id.fab1:
                 startActivity(new Intent(getActivity(),CreateEventActivity.class));
-                break;
-            case R.id.fab2:
-                startActivity(new Intent(getActivity(),TestDateActivity.class));
+                animateFAB();
                 break;
         }
     }
 
-    public void animateFAB(){
+     public void animateFAB(){
         if(isFabOpen){
             fab.startAnimation(rotate_backward);
             fab1.startAnimation(fab_close);
-            fab2.startAnimation(fab_close);
             fab1.setClickable(false);
-            fab2.setClickable(false);
             isFabOpen = false;
         } else {
             fab.startAnimation(rotate_forward);
             fab1.startAnimation(fab_open);
-            fab2.startAnimation(fab_open);
             fab1.setClickable(true);
-            fab2.setClickable(true);
             isFabOpen = true;
         }
     }
@@ -165,13 +157,13 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
                 if (event.getDateTime().after(monday) && event.getDateTime().before(nextMonday)) {
                     recent.add(event);
                 }
-                if (event.getEventTags().contains("running")) {
+                if (event.getEventTags().contains("Running")) {
                     running.add(event);
                 }
-                if (event.getEventTags().contains("meditation")) {
-                    meditation.add(event);
+                if (event.getEventTags().contains("Meditation")) {
+                    meditation.add( event);
                 }
-                if (event.getEventTags().contains("animals")) {
+                if (event.getEventTags().contains("Animals")) {
                     animals.add(event);
                 }
             }

@@ -18,8 +18,7 @@
     <string name="event_location">Location</string>
     <string name="event_date">Date</string>
     <string name="event_tags">Event Tags</string>
-
-
+    <string name="search">Search</string>
     <string name="placeholder">Placeholder</string>
 
     <string name="hint_email">Email</string>
@@ -34,6 +33,12 @@
     <string name="btn_reset_password">Reset Password</string>
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+
+    <string name="CulturalEvents">Cultural Events</string>
+    <string name="OffLeashDogAreas">Off Leash Dog Areas</string>
+    <string name="Parks">Parks</string>
+    <string name="SportsFields">Sports Fields</string>
+    <string name="GlenbrookRavine">Glenbrook Ravine</string>
 
 
     <!-- TODO: Add strings below for testing. DONOT delete anything above this. -->
@@ -54,41 +59,6 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array name="test">
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-        <item>List</item>
-    </string-array>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -165,41 +135,23 @@
     <string name="email_fmt">Email: %s</string>
     <string name="title_activity_database_test">DatabaseTest</string>
     <string-array name="demo_array">
-        <item>Aphex Twin</item>
-        <item>Autechre</item>
-        <item>B12</item>
-        <item>The Black Dog</item>
-        <item>Boards of Canada</item>
-        <item>Brian Eno</item>
-        <item>Broadcast</item>
-        <item>Brothomstates</item>
-        <item>Clark</item>
-        <item>DJ Mink</item>
-        <item>Disjecta</item>
-        <item>Drexciya</item>
-        <item>Freeform</item>
-        <item>Jake Slazenger</item>
-        <item>Leila</item>
-        <item>LFO</item>
-        <item>Luke Vibert</item>
-        <item>Mira Calix</item>
-        <item>Nightmares on Wax</item>
-        <item>Plaid</item>
-        <item>Plone</item>
-        <item>Prefuse 73</item>
-        <item>Sabres of Paradise</item>
-        <item>Seefeel</item>
-        <item>Speedy J</item>
-        <item>Squarepusher</item>
-        <item>Sweet Exorcist</item>
-        <item>Tricky Disco</item>
+        <item>Running</item>
+        <item>Meditation</item>
+        <item>Outdoors</item>
+        <item>Hiking</item>
+        <item>Sports</item>
+        <item>Soccer</item>
+        <item>Beach</item>
+        <item>Recreational Activities</item>
+        <item>Baseball</item>
+        <item>Football</item>
+        <item>Adventure</item>
+        <item>Fitness</item>
+        <item>Fun</item>
+        <item>Any age</item>
+        <item>Children</item>
+        <item>Animals</item>
     </string-array>
-
-    <string name="CulturalEvents">Cultural Events</string>
-    <string name="OffLeashDogAreas">Off Leash Dog Areas</string>
-    <string name="Parks">Parks</string>
-    <string name="SportsFields">Sports Fields</string>
-    <string name="GlenbrookRavine">Glenbrook Ravine</string>
 
 </resources>
 
