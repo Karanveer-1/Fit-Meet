@@ -45,7 +45,7 @@
         <activity android:name=".dashboard.DashboardCategoryListActivity" />
         <activity android:name=".TestDateActivity" />
         <activity android:name=".dashboard.FeatureActivity" />
-        <activity android:name=".event.LocationActivity"></activity>
+        <activity android:name=".event.LocationActivity" android:parentActivityName=".event.CreateEventActivity"/>
         <activity android:name=".event.EditEventActivity"></activity>
     </application>
 

@@ -13,10 +13,12 @@
     <string name="logout">Log out</string>
 
     <string name="event_heading">Organise An Event</string>
+    <string name="event_subheading">subheading</string>
     <string name="event_name">Event Name</string>
     <string name="event_description">Description</string>
     <string name="event_location">Location</string>
     <string name="event_date">Date</string>
+    <string name="event_date_time">Date/Time</string>
     <string name="event_tags">Event Tags</string>
     <string name="search">Search</string>
     <string name="placeholder">Placeholder</string>
@@ -33,6 +35,8 @@
     <string name="btn_reset_password">Reset Password</string>
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
 
     <string name="CulturalEvents">Cultural Events</string>
     <string name="OffLeashDogAreas">Off Leash Dog Areas</string>

@@ -102,23 +102,19 @@ public class LoginActivityMain extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressBar.setVisibility(View.GONE);
                         if (!task.isSuccessful()) {
-
-                            if (password.length() < 6) {
-                                inputPassword.setError(getString(R.string.minimum_password));
-                            } else {
-                                Toast.makeText(LoginActivityMain.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
-                            }
+                            Toast.makeText(LoginActivityMain.this,
+                                    getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                         } else {
-                            FirebaseUser user = auth.getCurrentUser();
-                            String userToken = user.getUid();
-                            String email = user.getEmail();
-
-                            //ADDS USER TO DATABASE
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference myRef = database.getReference("users");
-                            User createdUser = new User(email);
-                            Map<String, Object> createdUserMap = createdUser.toMap();
-                            myRef.child(userToken).setValue(createdUserMap);
+//                            FirebaseUser user = auth.getCurrentUser();
+//                            String userToken = user.getUid();
+//                            String email = user.getEmail();
+//
+//                            //ADDS USER TO DATABASE
+//                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                            DatabaseReference myRef = database.getReference("users");
+//                            User createdUser = new User(email);
+//                            Map<String, Object> createdUserMap = createdUser.toMap();
+//                            myRef.child(userToken).setValue(createdUserMap);
                             //USER ADDED
 
                             Intent intent = new Intent(LoginActivityMain.this, MainActivity.class);

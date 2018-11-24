@@ -50,6 +50,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private String userToken;
     private FloatingActionButton saveEvent;
     private EditText dateTime;
+    private EditText location;
     private Date eventDate;
     private ArrayList<String> tags = new ArrayList<String>();
     private SwitchDateTimeDialogFragment dateTimeFragment;
@@ -79,6 +80,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
         dateTimeFragment = (SwitchDateTimeDialogFragment) getSupportFragmentManager().findFragmentByTag(TAG_DATETIME_FRAGMENT);
         dateTime = findViewById(R.id.event_date);
+        location = findViewById(R.id.event_location);
         dateTime.setInputType(InputType.TYPE_NULL);
         saveEvent = findViewById(R.id.save_event);
         setListener();
@@ -131,6 +133,17 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         });
 
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InputMethodManager imm = (InputMethodManager) CreateEventActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+                Intent intent = new Intent(CreateEventActivity.this, LocationActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
         saveEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,7 +155,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private void getEnteredData() {
         EditText eventName = findViewById(R.id.event_name);
         EditText description = findViewById(R.id.event_description);
-        EditText location = findViewById(R.id.event_location);
+        location = findViewById(R.id.event_location);
         dateTime = findViewById(R.id.event_date);
 
         TextInputLayout eventNameLayout = findViewById(R.id.name_layout);
@@ -282,6 +295,7 @@ public class CreateEventActivity extends AppCompatActivity {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
                 String returnString = data.getStringExtra("keyName");
+                tags.add(data.getStringExtra("loc"));
                 EditText location = findViewById(R.id.event_location);
                 location.setText(returnString);
             }

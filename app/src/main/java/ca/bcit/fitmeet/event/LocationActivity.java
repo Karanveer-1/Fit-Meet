@@ -62,8 +62,18 @@ public class LocationActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView tv = (TextView) view;
+                String location = tv.getText().toString();
                 Intent intent = new Intent();
-                intent.putExtra("keyName", tv.getText().toString());
+                intent.putExtra("keyName", location);
+
+                if (sfLocations.contains(location)) {
+                    intent.putExtra("loc", "Sports");
+                } else if (OLDLocations.contains(location)) {
+                    intent.putExtra("loc", "Animals");
+                } else {
+                    intent.putExtra("loc", "Recreational");
+                }
+
                 setResult(RESULT_OK, intent);
                 finish();
             }
@@ -75,20 +85,6 @@ public class LocationActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.search_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.logout:
-//                auth.signOut();
-//                return true;
-//            case R.id.settings:
-//                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 
     private void readDataFromJSON() {
         Category category = null;
@@ -139,5 +135,28 @@ public class LocationActivity extends AppCompatActivity {
             OLDLocations.add(f.getProperties().getName());
         }
     }
+
+
+
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.logout:
+//                auth.signOut();
+//                return true;
+//            case R.id.settings:
+//                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
+
+
+
+
+
+
 
 }
