@@ -43,8 +43,9 @@
         <activity android:name=".event.EventDetailsActivity" />
         <activity android:name=".event.MoreEventsActivity" />
         <activity android:name=".dashboard.DashboardCategoryListActivity" />
-        <activity android:name=".TestDateActivity"></activity>
-        <activity android:name=".dashboard.FeatureActivity"></activity>
+        <activity android:name=".TestDateActivity" />
+        <activity android:name=".dashboard.FeatureActivity" />
+        <activity android:name=".event.EditEventActivity"></activity>
     </application>
 
 </manifest>
