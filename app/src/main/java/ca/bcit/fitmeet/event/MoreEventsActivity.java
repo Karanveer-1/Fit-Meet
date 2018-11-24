@@ -5,8 +5,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ca.bcit.fitmeet.R;
+import ca.bcit.fitmeet.event.model.Event;
 
 public class MoreEventsActivity extends AppCompatActivity {
     private static String section = "Section";
@@ -27,6 +32,15 @@ public class MoreEventsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String section = intent.getStringExtra("section");
 
+        ListView moreEvents = findViewById(R.id.more_events);
+        ArrayList<Event> str = new ArrayList<Event>();
+        str.add(new Event());
+        str.add(new Event());
+        str.add(new Event());
+        str.add(new Event());
+        MoreEventsAdapter adapter = new MoreEventsAdapter(MoreEventsActivity.this, str);
+
+        moreEvents.setAdapter(adapter);
 
     }
 }

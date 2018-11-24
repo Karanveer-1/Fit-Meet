@@ -30,7 +30,7 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseAuth auth;
 
     private EditText inputEmail, inputPassword, inputFirstName, inputLastName;
-    private Button btnSignIn, btnSignUp, btnResetPassword;
+    private Button btnSignUp;
     private ProgressBar progressBar;
 
     @Override
@@ -41,38 +41,16 @@ public class SignupActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         initialiseLayoutFields();
-        setResetListener();
-        setLoginListener();
         setSignUpListener();
     }
 
     private void initialiseLayoutFields() {
-        btnSignIn = findViewById(R.id.sign_in_button);
         btnSignUp = findViewById(R.id.sign_up_button);
         inputFirstName = findViewById(R.id.fn);
         inputLastName = findViewById(R.id.ln);
         inputEmail = findViewById(R.id.email);
         inputPassword = findViewById(R.id.password);
         progressBar = findViewById(R.id.progressBar);
-        btnResetPassword = findViewById(R.id.btn_reset_password);
-    }
-
-    private void setLoginListener() {
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-
-    private void setResetListener() {
-        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
-            }
-        });
     }
 
     private void setSignUpListener() {

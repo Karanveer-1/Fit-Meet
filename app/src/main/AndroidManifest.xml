@@ -30,6 +30,7 @@
         <activity
             android:name=".event.CreateEventActivity"
             android:label="@string/event_heading" />
+        <activity android:name=".login.PostLoginActivity" />
         <activity android:name=".login.SignupActivity" />
         <activity android:name=".login.ResetPasswordActivity" />
         <activity android:name=".SettingsActivity" />
@@ -45,8 +46,11 @@
         <activity android:name=".dashboard.DashboardCategoryListActivity" />
         <activity android:name=".TestDateActivity" />
         <activity android:name=".dashboard.FeatureActivity" />
-        <activity android:name=".event.LocationActivity" android:parentActivityName=".event.CreateEventActivity"/>
-        <activity android:name=".event.EditEventActivity"></activity>
+        <activity
+            android:name=".event.LocationActivity"
+            android:parentActivityName=".event.CreateEventActivity" />
+        <activity android:name=".event.EditEventActivity" />
+
     </application>
 
 </manifest>
