@@ -17,8 +17,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
 import ca.bcit.fitmeet.R;
+import ca.bcit.fitmeet.event.model.Event;
 
 public class EventDetailsActivity extends AppCompatActivity {
     private FirebaseDatabase db;
@@ -40,6 +43,8 @@ public class EventDetailsActivity extends AppCompatActivity {
         String text = i.getStringExtra("s");
         eventId = i.getStringExtra("eventId");
         hostId = i.getStringExtra("hostId");
+
+
         TextView tv = findViewById(R.id.textView4);
         tv.setText(text);
 
@@ -49,6 +54,8 @@ public class EventDetailsActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         userToken = currentUser.getUid();
+
+
 
         final Button joinEventButton = findViewById(R.id.joinEventButton);
         joinEventButton.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +84,29 @@ public class EventDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 deleteEvent();
                 Intent i = new Intent(EventDetailsActivity.this, MoreEventsActivity.class);
+
+                startActivity(i);
+                finish();
+            }
+        });
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EventDetailsActivity.this, EditEventActivity.class);
+
+                Event event = (Event) getIntent().getSerializableExtra("event");
+                String originalEventName = event.getEventName();
+                String originalEventLocation = event.getLocation();
+                ArrayList<String> originalEventTag = event.getEventTags();
+                String originalEventDescription = event.getDescription();
+                Date originalEventDateTime= event.getDateTime();
+                i.putExtra("eventId", eventId);
+                i.putExtra("location", originalEventLocation);
+                i.putExtra("eventName", originalEventName);
+                i.putExtra("eventTags", Arrays.asList(originalEventTag).toString());
+                i.putExtra("dateTime", originalEventDateTime.toString());
+                i.putExtra("description", originalEventDescription);
                 startActivity(i);
                 finish();
             }
