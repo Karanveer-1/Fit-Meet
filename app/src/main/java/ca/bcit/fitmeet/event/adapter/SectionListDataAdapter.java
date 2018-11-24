@@ -2,12 +2,19 @@ package ca.bcit.fitmeet.event.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -32,11 +39,26 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     }
 
     @Override
-    public void onBindViewHolder(SingleItemRowHolder holder, int position) {
+    public void onBindViewHolder(final SingleItemRowHolder holder, int position) {
         final Event event = events.get(position);
+        StorageReference storageReference= FirebaseStorage.getInstance().getReference();;
+
+        final StorageReference ref = storageReference.child(event.getImageReference());
+
+        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                 Uri downloadUrl = uri;
+                Picasso.with(mContext).load(downloadUrl).fit().centerCrop().into(holder.image);
+            }
+        });
+
+
         holder.title.setText(event.getEventName());
         holder.dateTime.setText(event.getDateTime().toString());
         holder.caption.setText(event.getDescription());
+        Picasso.with(mContext).load(event.getImageReference()).into(holder.image);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

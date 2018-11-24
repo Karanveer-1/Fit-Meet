@@ -16,10 +16,11 @@ public class Event implements Serializable {
     private String location;
     private Date dateTime;
     private ArrayList<String> eventTags;
+    private String imageReference;
 
     public Event() { }
 
-    public Event(String eventId, String hostToken, String eventName, String description, String location, Date dateTime, ArrayList<String> eventTags) {
+    public Event(String eventId, String hostToken, String eventName, String description, String location, Date dateTime, ArrayList<String> eventTags, String imageReference) {
         this.eventId = eventId;
         this.hostToken = hostToken;
         this.eventName = eventName;
@@ -27,6 +28,7 @@ public class Event implements Serializable {
         this.location = location;
         this.dateTime = dateTime;
         this.eventTags = eventTags;
+        this.imageReference = imageReference;
     }
 
     public String getEventId() {
@@ -85,6 +87,14 @@ public class Event implements Serializable {
         this.eventTags = eventTags;
     }
 
+    public String getImageReference() {
+        return imageReference;
+    }
+
+    public void setImageReference(String imageReference) {
+        this.imageReference = imageReference;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -110,20 +120,5 @@ public class Event implements Serializable {
                 ", eventTags=" + eventTags +
                 '}';
     }
-
-    //    static String eventID = "ID";
-//    static String user = "ID";
-//    public static ArrayList<Event> sampleData = new ArrayList<Event>(Arrays.asList(
-//            new Event(eventID, "Football Match", user, new Date(2018, 11, 24), "location", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", new ArrayList<String>(Arrays.asList("Running", "Sports"))),
-//            new Event(eventID, "Meditation", user,  new Date(2018, 11, 24), "location", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",  new ArrayList<String>(Arrays.asList("Yoga"))),
-//            new Event(eventID, "Dog traning", user, new Date(2018, 11, 24), "location", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",  new ArrayList<String>(Arrays.asList("Fun", "animals"))),
-//            new Event(eventID, "Football Match", user, new Date(2018, 11, 24), "location", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", new ArrayList<String>(Arrays.asList("Running", "Sports"))),
-//            new Event(eventID, "Meditation", user, new Date(2018, 11, 24), "location", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",  new ArrayList<String>(Arrays.asList("Yoga"))),
-//            new Event(eventID, "Dog traning", user, new Date(2018, 11, 24), "location", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",  new ArrayList<String>(Arrays.asList("Fun", "animals"))),
-//            new Event(eventID, "Football Match", user, new Date(2018, 11, 24), "location", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", new ArrayList<String>(Arrays.asList("Running", "Sports"))),
-//            new Event(eventID, "Meditation", user, new Date(2018, 11, 24), "location", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",  new ArrayList<String>(Arrays.asList("Yoga"))),
-//            new Event(eventID, "Dog traning", user, new Date(2018, 11, 24), "location", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",  new ArrayList<String>(Arrays.asList("Fun", "animals"))),
-//            new Event()
-//    ));
 
 }

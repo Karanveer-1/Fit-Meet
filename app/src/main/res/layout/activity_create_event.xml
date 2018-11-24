@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/placeholder"
+                android:src="@drawable/album2"
                 android:contentDescription="@string/placeholder"
                 app:layout_collapseMode="parallax"/>
 
@@ -106,6 +106,32 @@
                     android:hint="@string/event_date_time" />
 
             </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="Upload Image"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/btn_upload_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="upload image"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/upload_error_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="Please Upload Image"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
