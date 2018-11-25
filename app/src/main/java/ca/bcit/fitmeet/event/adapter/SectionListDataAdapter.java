@@ -46,7 +46,6 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     public void onBindViewHolder(final SingleItemRowHolder holder, int position) {
         final Event event = events.get(position);
         StorageReference storageReference= FirebaseStorage.getInstance().getReference();;
-
         final StorageReference ref = storageReference.child(event.getImageReference());
 
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -66,10 +65,7 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(mContext, EventDetailsActivity.class);
-                i.putExtra("s", event.toString());
-                i.putExtra("eventId", event.getEventId());
                 i.putExtra("event", event);
-                i.putExtra("hostId", event.getHostToken());
                 mContext.startActivity(i);
             }
         });
