@@ -5,7 +5,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "181 McBride Blvd, New Westminster, BC V3L, Canada",
 				"coordinates" : [ -122.90475598771567, 49.21532992882933 ]
 			},
 			"properties" : {
@@ -19,7 +19,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "220 First St, New Westminster, BC V3L 2G5, Canada",
 				"coordinates" : [ -122.90492354032453, 49.21285490409985 ]
 			},
 			"properties" : {
@@ -33,7 +33,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "220 First St, New Westminster, BC V3L 2G5, Canada",
 				"coordinates" : [ -122.94321682603703, 49.20245122515399 ]
 			},
 			"properties" : {
@@ -47,7 +47,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "1821 Nanaimo St, New Westminster, BC V3M 2G8, Canada",
 				"coordinates" : [ -122.88966775552288, 49.234281945970174 ]
 			},
 			"properties" : {
@@ -61,7 +61,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "800 Ontario St, New Westminster, BC V3M 3P7, Canada",
 				"coordinates" : [ -122.91667453428478, 49.20368115312709 ]
 			},
 			"properties" : {
@@ -75,7 +75,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "120 Carter St, New Westminster, BC V3M 0B8, Canada",
 				"coordinates" : [ -122.94075667076835, 49.18430904823367 ]
 			},
 			"properties" : {
@@ -89,7 +89,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "174 Viscount Pl, New Westminster, BC V3M 6L4, Canada",
 				"coordinates" : [ -122.94035000203428, 49.18583621581061 ]
 			},
 			"properties" : {
@@ -103,7 +103,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "715 McBride Blvd, New Westminster, BC V3L 5T4, Canada",
 				"coordinates" : [ -122.908985875294, 49.22113855136346 ]
 			},
 			"properties" : {
@@ -117,7 +117,8 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "
+				Sapperton Park, 351 E Columbia St, New Westminster, BC V3L 3W8, Canada",
 				"coordinates" : [ -122.89339030020552, 49.227406436135254 ]
 			},
 			"properties" : {
@@ -131,7 +132,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "Westbound 8th Ave @ McBride Blvd, New Westminster, BC V3L 1X5, Canada",
 				"coordinates" : [ -122.91229385648187, 49.22152284269355 ]
 			},
 			"properties" : {
@@ -145,7 +146,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "Mercer Stadium Park, 830 6th St, New Westminster, BC V3L 3C8, Canada",
 				"coordinates" : [ -122.92763399079067, 49.216686320029545 ]
 			},
 			"properties" : {
@@ -159,7 +160,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "110 Tenth Ave, New Westminster, BC V3M 3S9, Canada",
 				"coordinates" : [ -122.92872515545315, 49.217531121606804 ]
 			},
 			"properties" : {
@@ -173,7 +174,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "801-939 6th St, New Westminster, BC V3L 3C8, Canada",
 				"coordinates" : [ -122.92738159864328, 49.21767689159591 ]
 			},
 			"properties" : {
@@ -187,7 +188,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "Moody Park, 600 8th St, New Westminster, BC V3M 3S2, Canada",
 				"coordinates" : [ -122.92729407146493, 49.21146517817018 ]
 			},
 			"properties" : {
@@ -201,7 +202,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "Old Schoolhouse Park, 518 Ewen Ave, New Westminster, BC V3M 5B1, Canada",
 				"coordinates" : [ -122.93438843452984, 49.190703848395735 ]
 			},
 			"properties" : {
@@ -215,7 +216,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "3rd Ave, New Westminster, BC V3L, Canada",
 				"coordinates" : [ -122.9034558223469, 49.214377639787905 ]
 			},
 			"properties" : {
@@ -229,7 +230,7 @@
 		{
 			"type" : "Feature",
 			"geometry" : {
-				"type" : "Point",
+				"type" : "2G3, 835 Surrey St, New Westminster, BC, Canada",
 				"coordinates" : [ -122.90359709824071, 49.21249480644571 ]
 			},
 			"properties" : {

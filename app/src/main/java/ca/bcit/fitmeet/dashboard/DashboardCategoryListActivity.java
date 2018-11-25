@@ -29,8 +29,6 @@ public class DashboardCategoryListActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
         ListView listView = findViewById(R.id.category_listview);
         listView.setAdapter(new DashboardCategoryAdapter(this, category.getFeatures(), category));
     }

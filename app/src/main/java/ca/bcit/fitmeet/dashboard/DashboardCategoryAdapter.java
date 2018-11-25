@@ -90,7 +90,7 @@ public class DashboardCategoryAdapter extends ArrayAdapter {
                 details.setText(((OLDAFeatures) feature).getProperties().getNeighbourhood());
                 break;
             case "PARKS_RECREATION_AND_COMMUNITY_SCHOOL_PROGRAMMING":
-                details.setText(((PRandCSPFeatures) feature).getProperties().getHours());
+                details.setText(((PRandCSPFeatures) feature).getProperties().getWebsite());
                 break;
             case "SPORTS_FIELDS":
                 details.setText(((SFFeatures) feature).getProperties().getACTIVITIES().replace(";", ", "));

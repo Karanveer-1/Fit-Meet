@@ -16,7 +16,7 @@
 				]
 			},
 			"properties" : {
-				"StrName" : "DUNCAN ST",
+				"StrName" : "41 Duncan St, New Westminster, BC V3M 5G3, Canada",
 				"StrNum" : "62",
 				"OBJECTID" : 53,
 				"Name" : "Queensborough Off Leash Dog Area",
@@ -51,7 +51,7 @@
 				]
 			},
 			"properties" : {
-				"StrName" : "CARNARVON ST",
+				"StrName" : "817 Carnarvon St, New Westminster, BC V3M 1E9, Canada",
 				"StrNum" : "813",
 				"OBJECTID" : 82,
 				"Name" : "Downtown Off Leash Dog Area",
@@ -83,7 +83,7 @@
 				]
 			},
 			"properties" : {
-				"StrName" : "QUAYSIDE DR",
+				"StrName" : "6 Rialto Ct, New Westminster, BC V3M 7A8, Canada",
 				"StrNum" : "1400",
 				"OBJECTID" : 83,
 				"Name" : "Quayside Off Leash Dog Area",
@@ -114,7 +114,7 @@
 				]
 			},
 			"properties" : {
-				"StrName" : "E TENTH AVE",
+				"StrName" : "200 E 10th Ave, Burnaby, BC V3L, Canada",
 				"StrNum" : "200",
 				"OBJECTID" : 84,
 				"Name" : "Westburnco Off Leash Dog Area",
@@ -175,7 +175,7 @@
 				]
 			},
 			"properties" : {
-				"StrName" : "THIRD AVE",
+				"StrName" : "2G3, 835 Surrey St, New Westminster, BC, Canada",
 				"StrNum" : "51",
 				"OBJECTID" : 85,
 				"Name" : "Queen's Park Off Leash Dog Area",
@@ -242,7 +242,7 @@
 				]
 			},
 			"properties" : {
-				"StrName" : "E COLUMBIA ST",
+				"StrName" : "523 Garrett St, New Westminster, BC V3L 3S5, Canada",
 				"StrNum" : "660",
 				"OBJECTID" : 86,
 				"Name" : "Hume Park Off Leash Dog Area",
@@ -470,7 +470,7 @@
 				]
 			},
 			"properties" : {
-				"StrName" : null,
+				"StrName" : "2205 Seventh Ave, New Westminster, BC V3M 2L9, Canada",
 				"StrNum" : null,
 				"OBJECTID" : 281,
 				"Name" : "West Side Off Leash Dog Area",
@@ -502,7 +502,7 @@
 				]
 			},
 			"properties" : {
-				"StrName" : "EIGHTH ST",
+				"StrName" : "820 Sixth Ave, New Westminster, BC V3M 3S2, Canada",
 				"StrNum" : "600",
 				"OBJECTID" : 300,
 				"Name" : "Moody Park Off Leash Dog Area",

@@ -2,16 +2,13 @@ package ca.bcit.fitmeet.dashboard;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
-
 import ca.bcit.fitmeet.R;
-import ca.bcit.fitmeet.dashboard.model.CEFeatures;
 import ca.bcit.fitmeet.dashboard.model.Feature;
 import ca.bcit.fitmeet.dashboard.model.OLDAFeatures;
 import ca.bcit.fitmeet.dashboard.model.PRandCSPFeatures;
@@ -30,12 +27,10 @@ public class FeatureActivity extends AppCompatActivity {
 
         switch (featureClass) {
             case "PRandCSPFeatures":
-                setContentView(R.layout.activity_prandcspfeatures);
-                feature = new Gson().fromJson(json, PRandCSPFeatures.class);
+                SetupPRandCSPFeatures(new Gson().fromJson(json, PRandCSPFeatures.class));
                 break;
             case "OLDAFeatures":
-                // setContentView(R.layout.activity_oldafeatures);
-                feature = new Gson().fromJson(json, OLDAFeatures.class);
+                SetupOLDAFeatures(new Gson().fromJson(json, OLDAFeatures.class));
                 break;
             case "SFFeatures":
                 SetupSFFeatures(new Gson().fromJson(json, SFFeatures.class));
@@ -43,16 +38,89 @@ public class FeatureActivity extends AppCompatActivity {
         }
     }
 
+    private void SetupOLDAFeatures(OLDAFeatures oldaFeatures) {
+        setContentView(R.layout.activity_oldafeatures);
+
+        ImageView imageView = findViewById(R.id.collapsable_image);
+
+        if (oldaFeatures.getProperties().getName().equals("Queen's Park - North Field")) {
+            imageView.setImageResource(
+                    DashboardCategoryAdapter.locationImage.get(
+                            DashboardCategoryAdapter.locationTitle.get(oldaFeatures.getProperties().getStrName())));
+        }
+
+        String title = oldaFeatures.getProperties().getName();
+        ((TextView) findViewById(R.id.feature_title)).setText(title);
+
+        String location = oldaFeatures.getProperties().getStrName();
+        String[] split = location.split(",");
+        location = split[0] + " " + split[1] + "\n" + split[2].trim() + " " + split[3];
+        ((TextView) findViewById(R.id.location_textView)).setText(Format3CommaLocation(location));
+
+        ((TextView) findViewById(R.id.neighbourhood)).setText(oldaFeatures.getProperties().getNeighbourhood());
+
+    }
+
+    private void SetupPRandCSPFeatures(PRandCSPFeatures pRandCSPFeatures) {
+        setContentView(R.layout.activity_prandcspfeatures);
+
+        ImageView imageView = findViewById(R.id.collapsable_image);
+        /*imageView.setImageResource(
+                DashboardCategoryAdapter.locationImage.get(
+                        DashboardCategoryAdapter.locationTitle.get(pRandCSPFeatures.getProperties().getName())));
+*/
+        String title = pRandCSPFeatures.getProperties().getName();
+        ((TextView) findViewById(R.id.feature_title)).setText(title);
+
+        ((TextView) findViewById(R.id.location_textView)).setText(pRandCSPFeatures.getProperties().getLocation());
+        ((TextView) findViewById(R.id.hours)).setText(pRandCSPFeatures.getProperties().getHours());
+        ((TextView) findViewById(R.id.phone)).setText(pRandCSPFeatures.getProperties().getPhone());
+        ((TextView) findViewById(R.id.email)).setText(pRandCSPFeatures.getProperties().getEmail());
+        ((TextView) findViewById(R.id.website)).setText(pRandCSPFeatures.getProperties().getWebsite());
+        /*        ((TextView) findViewById(R.id.description)).setText(pRandCSPFeatures.getProperties().getDescription());*/
+    }
+
     private void SetupSFFeatures(SFFeatures sfFeatures) {
 
         setContentView(R.layout.activity_sffeatures);
 
         ImageView imageView = findViewById(R.id.collapsable_image);
-        imageView.setImageResource(
-                DashboardCategoryAdapter.locationImage.get(
-                        DashboardCategoryAdapter.locationTitle.get(sfFeatures.getProperties().getName())));
 
-        ((TextView) findViewById(R.id.feature_title)).setText(sfFeatures.getProperties().getName());
+        if (sfFeatures.getProperties().getName().equals("Queen's Park - North Field")) {
+            imageView.setImageResource(
+                    DashboardCategoryAdapter.locationImage.get(
+                            DashboardCategoryAdapter.locationTitle.get(sfFeatures.getProperties().getName())));
+        }
 
+        String title = sfFeatures.getProperties().getName();
+        ((TextView) findViewById(R.id.feature_title)).setText(title);
+
+        String location = sfFeatures.getGeometry().getType();
+        ((TextView) findViewById(R.id.location_textView)).setText(Format3CommaLocation(location));
+
+        ((TextView) findViewById(R.id.activities)).setText(sfFeatures.getProperties().getACTIVITIES().replace(";", ", "));
+    }
+
+    private String Format3CommaLocation(String location) {
+
+        String[] split = location.split(",");
+
+        String tempLocation = "";
+
+        try {
+
+            if(split[0].length() < 30) {
+                location = split[0] + " " + split[1] + "\n" + split[2].trim() + " " + split[3];
+            }
+            else {
+                location = split[0] + "\n" + split[1].trim() + " " + split[2] + " " + split[3];
+            }
+        }
+        catch(ArrayIndexOutOfBoundsException ex) {
+
+            Log.d("OoB", ex.getMessage());
+        }
+
+        return location;
     }
 }
