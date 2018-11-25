@@ -40,6 +40,7 @@
     <string name="background_image">Background Image for Login Acitvity</string>
     <string name="logo">App Logo</string>
     <string name="create_event_image">Create Event Image</string>
+    <string name="explore_events">Explore Events</string>
 
     <string name="date">date</string>
     <string name="ok">ok</string>

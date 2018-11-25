@@ -17,10 +17,11 @@ public class Event implements Serializable {
     private Date dateTime;
     private ArrayList<String> eventTags;
     private String imageReference;
+    private String caption;
 
     public Event() { }
 
-    public Event(String eventId, String hostToken, String eventName, String description, String location, Date dateTime, ArrayList<String> eventTags, String imageReference) {
+    public Event(String eventId, String hostToken, String eventName, String description, String location, Date dateTime, ArrayList<String> eventTags, String imageReference, String caption) {
         this.eventId = eventId;
         this.hostToken = hostToken;
         this.eventName = eventName;
@@ -29,6 +30,15 @@ public class Event implements Serializable {
         this.dateTime = dateTime;
         this.eventTags = eventTags;
         this.imageReference = imageReference;
+        this.caption = caption;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 
     public String getEventId() {

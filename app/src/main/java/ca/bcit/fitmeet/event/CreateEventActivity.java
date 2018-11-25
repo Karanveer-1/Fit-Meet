@@ -64,7 +64,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
     private SwitchDateTimeDialogFragment dateTimeFragment;
     private FloatingActionButton saveEvent;
-    private EditText dateTime, eventName, description, location;
+    private EditText dateTime, eventName, description, location, caption;
     private Button uploadButton;
     private ProgressDialog progressDialog;
 
@@ -128,11 +128,13 @@ public class CreateEventActivity extends AppCompatActivity {
     private void getEnteredData() {
         TextInputLayout eventNameLayout = findViewById(R.id.name_layout);
         TextInputLayout descriptionLayout = findViewById(R.id.description_layout);
+        TextInputLayout captionLayout = findViewById(R.id.caption_layout);
 
         String eventNameString = eventName.getText().toString();
         String descriptionString = description.getText().toString();
         String locationString = location.getText().toString();
         String dateTimeString = dateTime.getText().toString();
+        String captionString = caption.getText().toString();
 
         boolean error = false;
 
@@ -148,6 +150,13 @@ public class CreateEventActivity extends AppCompatActivity {
             descriptionLayout.setError("Please fill");
         }  else {
             descriptionLayout.setError(null);
+        }
+
+        if(TextUtils.isEmpty(captionString)) {
+            error = true;
+            captionLayout.setError("Please fill");
+        }  else {
+            captionLayout.setError(null);
         }
 
         if(TextUtils.isEmpty(locationString)) {
@@ -178,12 +187,12 @@ public class CreateEventActivity extends AppCompatActivity {
         }
 
         if(!error) {
-            addToDB(eventNameString, descriptionString, locationString);
+            addToDB(eventNameString, descriptionString, locationString, captionString);
         }
 
     }
 
-    private void addToDB(final String eventNameString, final String descriptionString, final String locationString) {
+    private void addToDB(final String eventNameString, final String descriptionString, final String locationString, final String caption) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
@@ -221,7 +230,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 Toast.makeText(CreateEventActivity.this,"Saved",Toast.LENGTH_SHORT).show();
 
-                Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, tags, imageID);
+                Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption);
 
                 if (eventID != null) {
                     Task setValueTask = eventReference.child(eventID).setValue(newEvent);
@@ -308,6 +317,7 @@ public class CreateEventActivity extends AppCompatActivity {
         description = findViewById(R.id.event_description);
         location = findViewById(R.id.event_location);
         dateTime = findViewById(R.id.event_date);
+        caption = findViewById(R.id.event_caption);
         saveEvent = findViewById(R.id.save_event);
         uploadButton = findViewById(R.id.btn_upload_image);
         tags = new ArrayList<String>();

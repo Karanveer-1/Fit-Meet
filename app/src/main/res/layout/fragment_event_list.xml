@@ -7,8 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".event.EventListFragment">
 
+    <TextView
+        android:id="@+id/heading"
+        style="@style/indented_heading"
+        android:text="@string/explore_events"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"/>

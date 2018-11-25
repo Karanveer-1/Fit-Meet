@@ -66,6 +66,10 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="indented_heading" parent="heading">
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
 </resources>
 
 

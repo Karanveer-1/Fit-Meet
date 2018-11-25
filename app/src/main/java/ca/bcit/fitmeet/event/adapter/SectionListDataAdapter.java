@@ -11,12 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import ca.bcit.fitmeet.event.EventDetailsActivity;
@@ -50,15 +53,14 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
             @Override
             public void onSuccess(Uri uri) {
                 Uri downloadUrl = uri;
-                Glide.with(mContext).load(downloadUrl).into(holder.image);
+                Glide.with(mContext).load(downloadUrl).apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).into(holder.image);
             }
         });
 
-
+        final SimpleDateFormat myDateFormat = new SimpleDateFormat("EEE MMM d, hh:mm a", java.util.Locale.getDefault());
+        holder.dateTime.setText(myDateFormat.format(event.getDateTime()));
         holder.title.setText(event.getEventName());
-        holder.dateTime.setText(event.getDateTime().toString());
-        holder.caption.setText(event.getDescription());
-        Picasso.with(mContext).load(event.getImageReference()).into(holder.image);
+        holder.caption.setText(event.getCaption());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
