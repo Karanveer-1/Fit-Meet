@@ -32,24 +32,23 @@ import ca.bcit.fitmeet.TestDateActivity;
 import ca.bcit.fitmeet.event.adapter.RecyclerViewDataAdapter;
 import ca.bcit.fitmeet.event.model.Event;
 import ca.bcit.fitmeet.event.model.EventSection;
+import ca.bcit.fitmeet.event.model.EventTagData;
 
 public class EventListFragment extends Fragment implements View.OnClickListener {
-    private Boolean isFabOpen = false;
+    private static final int LIST_SIZE = 10;
+    private boolean isFabOpen = false;
     private FloatingActionButton fab,fab1;
     private Animation fab_open,fab_close,rotate_forward,rotate_backward;
+    private RecyclerViewDataAdapter adapter;
 
-    private FirebaseAuth mAuth;
-    private String userToken;
-    DatabaseReference databaseReference;
-
-    private RecyclerView recyclerView;
     private ArrayList<EventSection> eventSections;
-    RecyclerViewDataAdapter adapter;
-
-    ArrayList<Event> recent = new ArrayList<>();
-    ArrayList<Event> animals = new ArrayList<>();
-    ArrayList<Event> running = new ArrayList<>();
-    ArrayList<Event> meditation = new ArrayList<>();
+    ArrayList<Event> comingSoon = new ArrayList<Event>();
+    ArrayList<Event> outdoors = new ArrayList<Event>();
+    ArrayList<Event> relaxing = new ArrayList<Event>();
+    ArrayList<Event> OffLeashDogArea = new ArrayList<Event>();
+    ArrayList<Event> sports = new ArrayList<Event>();
+    ArrayList<Event> cultural= new ArrayList<Event>();
+    ArrayList<Event> other = new ArrayList<Event>();
 
     public EventListFragment() { }
 
@@ -57,13 +56,13 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            userToken = currentUser.getUid();
+            String userToken = currentUser.getUid();
         }
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("events");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("events");
         databaseReference.addValueEventListener(listener);
 
         eventSections = new ArrayList<>();
@@ -79,10 +78,9 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
         initialiseFabButtons(view);
         loadAnimations();
         setListeners();
+        EventTagData.init();
 
-        //createDummyData();
-
-        recyclerView = view.findViewById(R.id.my_recycler_view);
+        RecyclerView recyclerView = view.findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
         adapter = new RecyclerViewDataAdapter(eventSections, getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -137,36 +135,30 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
     ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            recent.clear();
-            animals.clear();
-            meditation.clear();
-            running.clear();
+            clearList();
 
             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                 Event event = ds.getValue(Event.class);
-                Calendar c = Calendar.getInstance();
-                c.setFirstDayOfWeek(Calendar.MONDAY);
-                c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-                c.set(Calendar.HOUR_OF_DAY, 0);
-                c.set(Calendar.MINUTE, 0);
-                c.set(Calendar.SECOND, 0);
-                c.set(Calendar.MILLISECOND, 0);
-                Date monday = c.getTime();
+                Date monday = getCalender().getTime();
                 Date nextMonday= new Date(monday.getTime()+7*24*60*60*1000);
 
-                if (event.getDateTime().after(monday) && event.getDateTime().before(nextMonday)) {
-                    recent.add(event);
-                }
-                if (event.getEventTags().contains("Running")) {
-                    running.add(event);
-                }
-                if (event.getEventTags().contains("Meditation")) {
-                    meditation.add( event);
-                }
-                if (event.getEventTags().contains("Animals")) {
-                    animals.add(event);
+                if (event.getDateTime().after(monday) && event.getDateTime().before(nextMonday) && comingSoon.size() < LIST_SIZE) {
+                    comingSoon.add(event);
+                }else if (EventTagData.hasOutdoorTags(event.getEventTags()) && outdoors.size() < LIST_SIZE) {
+                    outdoors.add(event);
+                }else if (EventTagData.hasRalxingTags(event.getEventTags()) && outdoors.size() < LIST_SIZE) {
+                    relaxing.add( event);
+                }else if (EventTagData.hasAnimalTags(event.getEventTags()) && outdoors.size() < LIST_SIZE) {
+                    OffLeashDogArea.add(event);
+                } else if(EventTagData.hasSportsTags(event.getEventTags()) && outdoors.size() < LIST_SIZE) {
+                    sports.add(event);
+                } else if(EventTagData.hasCulturalTags(event.getEventTags()) && outdoors.size() < LIST_SIZE) {
+                    cultural.add(event);
+                } else if(other.size() < LIST_SIZE) {
+                    other.add(event);
                 }
             }
+
             populateSections();
             adapter.notifyDataSetChanged();
         }
@@ -177,96 +169,60 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
 
     private void populateSections() {
         eventSections.clear();
-        EventSection recentEvents = new EventSection();
-        EventSection runningSec = new EventSection();
-        EventSection meditationSec = new EventSection();
-        EventSection animalsSec = new EventSection();
+        EventSection comingSoonSection = new EventSection();
+        EventSection outdoorSection = new EventSection();
+        EventSection meditationSection = new EventSection();
+        EventSection animalsSection = new EventSection();
+        EventSection sportsSection = new EventSection();
+        EventSection cultureSection = new EventSection();
+        EventSection otherSection = new EventSection();
 
-        recentEvents.setSectionHeading("This Week");
-        runningSec.setSectionHeading("Running");
-        meditationSec.setSectionHeading("Meditation");
-        animalsSec.setSectionHeading("Animals");
+        comingSoonSection.setSectionHeading("This Week");
+        outdoorSection.setSectionHeading("Outdoors");
+        animalsSection.setSectionHeading("Off-Leash Dog Area");
+        meditationSection.setSectionHeading("Meditation/Yoga");
+        sportsSection.setSectionHeading("Sports");
+        cultureSection.setSectionHeading("Cultural Events");
+        otherSection.setSectionHeading("Others");
 
-        recentEvents.setEvents(recent);
-        runningSec.setEvents(running);
-        meditationSec.setEvents(meditation);
-        animalsSec.setEvents(animals);
 
-        eventSections.add(recentEvents);
-        eventSections.add(runningSec);
-        eventSections.add(meditationSec);
-        eventSections.add(animalsSec);
+        comingSoonSection.setEvents(comingSoon);
+        outdoorSection.setEvents(outdoors);
+        animalsSection.setEvents(OffLeashDogArea);
+        meditationSection.setEvents(relaxing);
+        sportsSection.setEvents(sports);
+        cultureSection.setEvents(cultural);
+        otherSection.setEvents(other);
+
+        eventSections.add(comingSoonSection);
+        eventSections.add(outdoorSection);
+        eventSections.add(animalsSection);
+        eventSections.add(meditationSection);
+        eventSections.add(sportsSection);
+        eventSections.add(cultureSection);
+        eventSections.add(otherSection);
     }
 
+    private Calendar getCalender() {
+        Calendar c = Calendar.getInstance();
+        c.setFirstDayOfWeek(Calendar.MONDAY);
+        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        return c;
+    }
 
-//    private void createDummyData() {
-//        for (int i = 1; i <= 3; i++) {
-//            EventSection dm = new EventSection();
-//            dm.setSectionHeading("Section " + i);
-//            for (int j = 1; j <= 7; j++) {
-//                events.add(new Event());
-//            }
-//            dm.setEvents(events);
-//            eventSections.add(dm);
-//        }
-//    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //READ
-//    public ArrayList<Event> retrieve() {
-//
-//        dref.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                fetchData(dataSnapshot);
-//                adapter.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        return events;
-//    }
-//
-//    private void fetchData(DataSnapshot dataSnapshot) {
-//        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//            Event event = ds.getValue(Event.class);
-//            events.add(event);
-//        }
-//    }
+    private void clearList() {
+        comingSoon.clear();
+        outdoors.clear();
+        OffLeashDogArea.clear();
+        relaxing.clear();
+        sports.clear();
+        cultural.clear();
+        other.clear();
+    }
 
 
 }

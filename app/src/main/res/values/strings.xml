@@ -39,6 +39,13 @@
     <string name="lastname">Last Name</string>
     <string name="background_image">Background Image for Login Acitvity</string>
     <string name="logo">App Logo</string>
+    <string name="create_event_image">Create Event Image</string>
+
+    <string name="date">date</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+    <string name="clear">clear</string>
+
 
     <string name="CulturalEvents">Cultural Events</string>
     <string name="OffLeashDogAreas">Off Leash Dog Areas</string>
@@ -157,6 +164,15 @@
         <item>Any age</item>
         <item>Children</item>
         <item>Animals</item>
+        <item>Dog</item>
+        <item>park</item>
+        <item>Cat</item>
+        <item>Sports Field</item>
+        <item>Cricket</item>
+        <item>Yoga</item>
+        <item>Dance</item>
+        <item>Off Leash Dog Area</item>
+        <item>Cutural</item>
     </string-array>
 
 </resources>

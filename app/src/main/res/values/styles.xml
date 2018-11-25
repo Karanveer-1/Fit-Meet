@@ -52,4 +52,20 @@
         <item name="android:textSize">36sp</item>
     </style>
 
+    <style name="lineBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:background">#c0c0c0</item>
+    </style>
+
+    <style name="heading">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
+
+
