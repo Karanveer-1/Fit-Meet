@@ -17,25 +17,40 @@ import java.util.List;
 import java.util.Map;
 
 import ca.bcit.fitmeet.R;
+import ca.bcit.fitmeet.dashboard.model.Category;
 import ca.bcit.fitmeet.dashboard.model.Feature;
+import ca.bcit.fitmeet.dashboard.model.OLDAFeatures;
+import ca.bcit.fitmeet.dashboard.model.OffLeashDogArea;
+import ca.bcit.fitmeet.dashboard.model.PRandCSP;
+import ca.bcit.fitmeet.dashboard.model.PRandCSPFeatures;
+import ca.bcit.fitmeet.dashboard.model.SFFeatures;
+import ca.bcit.fitmeet.dashboard.model.SportsFields;
 
 public class DashboardCategoryAdapter extends ArrayAdapter {
 
     public static Map<String, Integer> locationImage = new HashMap<>();
 
     static {
-        locationImage.put("feature_festival_of_volunteers", R.drawable.feature_festival_of_volunteers);
-        locationImage.put("feature_kozak", R.drawable.feature_kozak);
-        locationImage.put("feature_lester_event_management", R.drawable.feature_lester_event_management);
+        locationImage.put("feature_queens_park_north_field", R.drawable.feature_queens_park_north_field);
+        locationImage.put("feature_queens_park_south_field", R.drawable.feature_queens_park_south_field);
+        locationImage.put("feature_grimson_park", R.drawable.feature_grimson_park);
+    }
+
+    public static Map<String, String> locationTitle = new HashMap<>();
+
+    static {
+        locationTitle.put("Queen's Park - North Field", "feature_queens_park_north_field");
     }
 
     private Context context;
     private List<Feature> features;
+    private Category category;
 
-    public DashboardCategoryAdapter(@NonNull Context context, List<Feature> features) {
+    public DashboardCategoryAdapter(@NonNull Context context, List<Feature> features, Category category) {
         super(context, 0, features);
         this.context = context;
         this.features = features;
+        this.category = category;
     }
 
     @NonNull
@@ -49,27 +64,41 @@ public class DashboardCategoryAdapter extends ArrayAdapter {
         }
 
         ImageView picture = v.findViewById(R.id.myImageView);
-        TextView textView = v.findViewById(R.id.name);
 
         final Feature feature = features.get(position);
 
         picture.setImageResource(R.drawable.parks_glenbrook_ravine);
 
-        if (feature.getProperties().getName().equals("New Westminster Festival of Volunteers")) {
-            picture.setImageResource(locationImage.get("feature_festival_of_volunteers"));
+        if (feature.getProperties().getName().equals("Queen's Park - North Field")) {
+            picture.setImageResource(locationImage.get("feature_queens_park_north_field"));
         }
 
-        if (feature.getProperties().getName().equals("W. Ruth Kozak (WAVES WRITERS)")) {
-            picture.setImageResource(locationImage.get("feature_kozak"));
+        if (feature.getProperties().getName().equals("Queen's Park - South Field")) {
+            picture.setImageResource(locationImage.get("feature_queens_park_south_field"));
         }
 
-        if (feature.getProperties().getName().equals("Lester Event Management")) {
-            picture.setImageResource(locationImage.get("feature_lester_event_management"));
+        if (feature.getProperties().getName().equals("Grimson Park")) {
+            picture.setImageResource(locationImage.get("feature_grimson_park"));
         }
 
-        textView.setText(feature.getProperties().getName());
+        ((TextView) v.findViewById(R.id.name)).setText(feature.getProperties().getName());
 
-        v.setOnClickListener(new View.OnClickListener(){
+        TextView details = v.findViewById(R.id.details);
+
+        switch (category.getName()) {
+            case "OFFLEASH_DOG_AREAS":
+                details.setText(((OLDAFeatures) feature).getProperties().getNeighbourhood());
+                break;
+            case "PARKS_RECREATION_AND_COMMUNITY_SCHOOL_PROGRAMMING":
+                details.setText(((PRandCSPFeatures) feature).getProperties().getHours());
+                break;
+            case "SPORTS_FIELDS":
+                details.setText(((SFFeatures) feature).getProperties().getACTIVITIES().replace(";", ", "));
+                break;
+        }
+
+
+        v.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -83,8 +112,8 @@ public class DashboardCategoryAdapter extends ArrayAdapter {
     private void ShowFeature(Feature feature) {
 
         Intent i = new Intent(getContext(), FeatureActivity.class);
-        i.putExtra("feature", new Gson().toJson(feature));
         i.putExtra("featureClass", feature.getClass().getSimpleName());
+        i.putExtra("feature", new Gson().toJson(feature));
         context.startActivity(i);
     }
 }
