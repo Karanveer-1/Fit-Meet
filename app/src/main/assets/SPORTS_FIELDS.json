@@ -67,7 +67,7 @@
 			"properties" : {
 				"TYPE" : "Sports Field",
 				"name" : "Simcoe Park",
-				"ACTIVITIES" : null,
+				"ACTIVITIES" : "",
 				"X" : "-122.91667453428478",
 				"Y" : "49.20368115312709"
 			}
@@ -207,7 +207,7 @@
 			"properties" : {
 				"TYPE" : "Sports Field",
 				"name" : "Old Schoolhouse Park",
-				"ACTIVITIES" : "Soccer;",
+				"ACTIVITIES" : "Soccer",
 				"X" : "-122.93438843452984",
 				"Y" : "49.190703848395735"
 			}
@@ -221,7 +221,7 @@
 			"properties" : {
 				"TYPE" : "Sports Field",
 				"name" : "Queen's Park - East Field",
-				"ACTIVITIES" : null,
+				"ACTIVITIES" : "",
 				"X" : "-122.9034558223469",
 				"Y" : "49.214377639787905"
 			}
