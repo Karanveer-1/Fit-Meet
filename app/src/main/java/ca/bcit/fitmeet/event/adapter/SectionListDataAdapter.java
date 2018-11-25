@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -48,8 +49,8 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                 Uri downloadUrl = uri;
-                Picasso.with(mContext).load(downloadUrl).fit().centerCrop().into(holder.image);
+                Uri downloadUrl = uri;
+                Glide.with(mContext).load(downloadUrl).into(holder.image);
             }
         });
 
