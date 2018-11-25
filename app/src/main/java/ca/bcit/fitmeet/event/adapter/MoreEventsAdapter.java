@@ -1,4 +1,4 @@
-package ca.bcit.fitmeet.event;
+package ca.bcit.fitmeet.event.adapter;
 
 import android.content.Context;
 import android.net.Uri;
