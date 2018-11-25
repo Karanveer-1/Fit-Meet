@@ -27,16 +27,11 @@ public class EventTagData {
         OUTDOORS.add("Adventure");
         OUTDOORS.add("Park");
         OUTDOORS.add("Recreational Activities");
-        OUTDOORS.add("Soccer");
-        OUTDOORS.add("Cricket");
-        OUTDOORS.add("Football");
         OUTDOORS.add("Fitness");
-        OUTDOORS.add("Baseball");
 
         RELAXING.add("Meditation");
         RELAXING.add("Yoga");
         RELAXING.add("Dance");
-        RELAXING.add("Animals");
         RELAXING.add("Fitness");
         RELAXING.add("Beach");
 
