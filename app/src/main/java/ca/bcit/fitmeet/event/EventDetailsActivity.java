@@ -3,6 +3,7 @@ package ca.bcit.fitmeet.event;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -74,6 +75,7 @@ public class EventDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 joinEvent(event.getEventId(), userToken);
+                participants = getParticipants(event.getEventId());
             }
         });
 
@@ -81,6 +83,7 @@ public class EventDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 unjoinEvent(event.getEventId(), userToken);
+                participants = getParticipants(event.getEventId());
             }
         });
     }
@@ -236,7 +239,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
     public ArrayList<String> getParticipants(String eventId) {
 
-        final ArrayList<String> participants = new ArrayList<String>();
+        final ArrayList<String> participants2 = new ArrayList<String>();
 
         ValueEventListener messageListener = new ValueEventListener() {
             @Override
@@ -246,11 +249,25 @@ public class EventDetailsActivity extends AppCompatActivity {
                     Log.e("KEY", dataSnapshot.getKey());
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         String component = ds.getKey();
-                        if(!participants.contains(component)){
-                            participants.add(component);
+                        if(!participants2.contains(component)){
+                            participants2.add(component);
                         }
                     }
                 }
+                if(participants2.contains(userToken)){
+                    Button joinButton = findViewById(R.id.join_event);
+                    joinButton.setVisibility(View.INVISIBLE);
+                    Button unjoinButton = findViewById(R.id.unjoin_event);
+                    unjoinButton.setVisibility(View.VISIBLE);
+                } else {
+                    Button joinButton = findViewById(R.id.join_event);
+                    joinButton.setVisibility(View.VISIBLE);
+                    Button unjoinButton = findViewById(R.id.unjoin_event);
+                    unjoinButton.setVisibility(View.INVISIBLE);
+                }
+
+                TextView going = findViewById(R.id.goingcount);
+                going.setText(("Number of people going: " + participants2.size()));
             }
 
             @Override
@@ -258,7 +275,7 @@ public class EventDetailsActivity extends AppCompatActivity {
         };
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId);
         ref.addValueEventListener(messageListener);
-        return participants;
+        return participants2;
     }
 
 
