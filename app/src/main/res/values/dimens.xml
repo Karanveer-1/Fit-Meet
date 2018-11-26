@@ -13,6 +13,7 @@
 
     <dimen name="collapse_toolbar_height">250dp</dimen>
     <dimen name="nested_scroll_view">20dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 
     <dimen name="textInputLayoutPadding">5dp</dimen>
 

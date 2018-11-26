@@ -50,7 +50,6 @@
             android:name=".event.LocationActivity"
             android:parentActivityName=".event.CreateEventActivity" />
         <activity android:name=".event.EditEventActivity" />
-
     </application>
 
 </manifest>
