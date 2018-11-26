@@ -1,5 +1,6 @@
 package ca.bcit.fitmeet.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import ca.bcit.fitmeet.R;
+import ca.bcit.fitmeet.event.EventDetailsActivity;
 import ca.bcit.fitmeet.event.model.Event;
 
 
@@ -26,7 +29,7 @@ import ca.bcit.fitmeet.event.model.Event;
 public class ProfileEventListFragment extends Fragment {
     private ListView listView;
     private ProfileEventAdapter adapter;
-    ArrayList<Event> testDataArray;
+    ArrayList<Event> eventArrayList;
     private String userToken;
     private int section;
 
@@ -48,12 +51,11 @@ public class ProfileEventListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         userToken = FirebaseAuth.getInstance().getUid();
         View rootView = inflater.inflate(R.layout.fragment_profile_event_list2, container, false);
-        listView =(ListView) rootView.findViewById(R.id.list_data);
-        testDataArray = new ArrayList<Event>();
+        listView = rootView.findViewById(R.id.list_data);
+        eventArrayList = new ArrayList<Event>();
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         if(section == 1){
@@ -63,11 +65,23 @@ public class ProfileEventListFragment extends Fragment {
 
         }
 
-        adapter = new ProfileEventAdapter(getActivity(), testDataArray);
+        setListener();
+
+        adapter = new ProfileEventAdapter(getActivity(), eventArrayList);
         listView.setAdapter(adapter);
         return rootView;
     }
 
+    private void setListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(), EventDetailsActivity.class);
+                intent.putExtra("event", eventArrayList.get(i));
+                startActivity(intent);
+            }
+        });
+    }
 
 
     ValueEventListener listener = new ValueEventListener() {
@@ -76,7 +90,7 @@ public class ProfileEventListFragment extends Fragment {
             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                 Event event = ds.getValue(Event.class);
                 if(event.getHostToken().equals(userToken)){
-                    testDataArray.add(event);
+                    eventArrayList.add(event);
                 }
             }
             adapter.notifyDataSetChanged();
@@ -101,7 +115,7 @@ public class ProfileEventListFragment extends Fragment {
                 if(eventList.contains(event.getEventId())){
                     Log.e("Added", event.getEventName());
                     Log.e("Added2", event.getLocation());
-                    testDataArray.add(event);
+                    eventArrayList.add(event);
                 }
             }
             adapter.notifyDataSetChanged();

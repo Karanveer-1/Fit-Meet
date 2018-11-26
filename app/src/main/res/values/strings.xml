@@ -56,6 +56,7 @@
     <string name="created_event">Created Events</string>
     <string name="joined_event">Joined Events</string>
     <string name="profile_description">Profile Picture</string>
+    <string name="edit_profile">Edit Profile</string>
 
 
     <string name="CulturalEvents">Cultural Events</string>
