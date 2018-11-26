@@ -183,7 +183,7 @@ public class EventListFragment extends Fragment implements View.OnClickListener 
         meditationSection.setSectionHeading("Meditation/Yoga");
         sportsSection.setSectionHeading("Sports");
         cultureSection.setSectionHeading("Cultural Events");
-        otherSection.setSectionHeading("Others");
+        otherSection.setSectionHeading("Any");
 
 
         comingSoonSection.setEvents(comingSoon);

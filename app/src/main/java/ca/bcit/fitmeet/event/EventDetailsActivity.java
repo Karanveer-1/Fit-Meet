@@ -1,13 +1,24 @@
 package ca.bcit.fitmeet.event;
 
 import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -15,7 +26,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -24,104 +38,172 @@ import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.event.model.Event;
 
 public class EventDetailsActivity extends AppCompatActivity {
-    private FirebaseDatabase db;
-    DatabaseReference userRef;
-    DatabaseReference eventRef;
-    private FirebaseAuth mAuth;
+    private Event event;
+    private Button join;
+    private Button unjoin;
     private String userToken;
-    private String eventId;
-    private String hostId;
-    FirebaseUser currentUser;
+    private FirebaseDatabase db;
+    private DatabaseReference userRef;
+    private DatabaseReference eventRef;
+
     ArrayList<String> participants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initialiseFirebase();
+        Intent i = getIntent();
+        event = (Event) i.getSerializableExtra("event");
         setContentView(R.layout.activity_event_details);
 
-        Intent i = getIntent();
-        String text = i.getStringExtra("s");
-        eventId = i.getStringExtra("eventId");
-        hostId = i.getStringExtra("hostId");
+        Toolbar toolbar_main = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar_main);
 
-
-        TextView tv = findViewById(R.id.textView4);
-        tv.setText(text);
-
-        participants = getParticipants(eventId);
-        userRef = FirebaseDatabase.getInstance().getReference("users");
-        eventRef = FirebaseDatabase.getInstance().getReference("events");
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        userToken = currentUser.getUid();
-
-
-
-        final Button joinEventButton = findViewById(R.id.joinEventButton);
-        joinEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                joinEvent(eventId, userToken);
-            }
-        });
-        final Button unjoinEventButton = findViewById(R.id.unjoinEventButton);
-        unjoinEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                unjoinEvent(eventId, userToken);
-            }
-        });
-
-        final Button editButton  = findViewById(R.id.editEventButton);
-        final Button deleteButton = findViewById(R.id.deleteEventButton);
-        if(!userToken.equals(hostId)){
-            editButton.setVisibility(View.GONE);
-            deleteButton.setVisibility(View.GONE);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteEvent();
-                Intent i = new Intent(EventDetailsActivity.this, MoreEventsActivity.class);
+        participants = getParticipants(event.getEventId());
+        fillValues();
+        setListener();
+    }
 
-                startActivity(i);
-                finish();
+    private void setListener() {
+        join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                joinEvent(event.getEventId(), userToken);
             }
         });
 
-        editButton.setOnClickListener(new View.OnClickListener() {
+        unjoin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(EventDetailsActivity.this, EditEventActivity.class);
-
-                Event event = (Event) getIntent().getSerializableExtra("event");
-                String originalEventName = event.getEventName();
-                String originalEventLocation = event.getLocation();
-                ArrayList<String> originalEventTag = event.getEventTags();
-                String originalEventDescription = event.getDescription();
-                Date originalEventDateTime= event.getDateTime();
-                i.putExtra("eventId", eventId);
-                i.putExtra("location", originalEventLocation);
-                i.putExtra("eventName", originalEventName);
-                i.putExtra("eventTags", Arrays.asList(originalEventTag).toString());
-                i.putExtra("dateTime", originalEventDateTime.toString());
-                i.putExtra("description", originalEventDescription);
-                startActivity(i);
-                finish();
+            public void onClick(View view) {
+                unjoinEvent(event.getEventId(), userToken);
             }
         });
     }
 
-    
+    private void initialiseFirebase() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        userToken = currentUser.getUid();
+        userRef = FirebaseDatabase.getInstance().getReference("users");
+        eventRef = FirebaseDatabase.getInstance().getReference("events");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (userToken.equals(event.getHostToken())) {
+            getMenuInflater().inflate(R.menu.event_details_menu, menu);
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            case R.id.delete:
+                deleteEvent();
+                finish();
+                return true;
+            case R.id.edit:
+//                Intent i = new Intent(EventDetailsActivity.this, EditEventActivity.class);
+//                Event event = (Event) getIntent().getSerializableExtra("event");
+//                String originalEventName = event.getEventName();
+//                String originalEventLocation = event.getLocation();
+//                ArrayList<String> originalEventTag = event.getEventTags();
+//                String originalEventDescription = event.getDescription();
+//                Date originalEventDateTime= event.getDateTime();
+//                i.putExtra("eventId", event.getEventId());
+//                i.putExtra("location", originalEventLocation);
+//                i.putExtra("eventName", originalEventName);
+//                i.putExtra("eventTags", Arrays.asList(originalEventTag).toString());
+//                i.putExtra("dateTime", originalEventDateTime.toString());
+//                i.putExtra("description", originalEventDescription);
+//                startActivity(i);
+//                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void fillValues() {
+        addImage();
+        String hostNameString = findUserName();
+        TextView name = findViewById(R.id.name);
+        TextView caption = findViewById(R.id.caption);
+        TextView going = findViewById(R.id.goingcount);
+        TextView date = findViewById(R.id.date);
+        TextView time = findViewById(R.id.time);
+        TextView location = findViewById(R.id.location);
+        TextView hostName = findViewById(R.id.hostName);
+        TextView description = findViewById(R.id.description);
+        join = findViewById(R.id.join_event);
+        unjoin = findViewById(R.id.unjoin_event);
+        checkifJoinedAlready();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE MMM d, yyyy", java.util.Locale.getDefault());
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", java.util.Locale.getDefault());
+
+        name.setText(event.getEventName());
+        caption.setText(event.getCaption());
+        going.setText(("Number of people going: " + participants.size()));
+        date.setText(dateFormat.format(event.getDateTime()));
+        time.setText(timeFormat.format(event.getDateTime()));
+        location.setText(event.getLocation());
+        hostName.setText(hostNameString);
+        description.setText(event.getDescription());
+
+    }
+
+    private String findUserName() {
+        return "username";
+    }
+
+    private void addImage() {
+        final ImageView image = findViewById(R.id.event_image);
+        StorageReference storageReference= FirebaseStorage.getInstance().getReference();;
+        final StorageReference ref = storageReference.child(event.getImageReference());
+        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(EventDetailsActivity.this).
+                        load(uri).
+                        apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).
+                        into(image);
+            }
+        });
+    }
+
+    private void checkifJoinedAlready() {
+    }
+
+    public void joinEvent(String eventId, String userId) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId).child("participants");
+        ref.child(userId).setValue(true);
+        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users").child(userToken).child("participating");
+        ref2.child(eventId).setValue(true);
+        Log.e("JOINED", eventId + " : " + userId);
+    }
+
+    public void unjoinEvent(String eventId, String userId) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId).child("participants");
+        ref.child(userId).setValue(null);
+        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users").child(userToken).child("participating");
+        ref2.child(eventId).setValue(null);
+        Log.e("UNJOINED", eventId + " : " + userId);
+    }
 
     public void deleteEvent(){
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(event.getEventId());
         ref.setValue(null);
         DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users");
-
-
-        //Delete event from users
 
         ValueEventListener messageListener = new ValueEventListener() {
             @Override
@@ -134,7 +216,7 @@ public class EventDetailsActivity extends AppCompatActivity {
                         if(ds.child("participating").exists()){
                             for (DataSnapshot participatingEvents : ds.child("participating").getChildren()) {
                                 Log.e("event", participatingEvents.getKey());
-                                if(participatingEvents.getKey().equals(eventId)){
+                                if(participatingEvents.getKey().equals(event.getEventId())){
                                     Log.e("Removing", participatingEvents.getKey() + " " + ref.child(user).child("participating").child(participatingEvents.getKey()).getKey());
                                     FirebaseDatabase.getInstance().getReference("users").child(userToken).child("participating").child(participatingEvents.getKey()).setValue(null);
 
@@ -146,38 +228,16 @@ public class EventDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Failed to read value
-            }
+            public void onCancelled(DatabaseError databaseError) { }
         };
-
         ref2.addValueEventListener(messageListener);
-
-
-    }
-
-    //JOINS CURRENT EVENT AS LOGGED IN USER
-    public void joinEvent(String eventId, String userId) {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId).child("participants");
-        ref.child(userId).setValue(true);
-        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users").child(userToken).child("participating");
-        ref2.child(eventId).setValue(true);
-        Log.e("JOINED", eventId + " : " + userId);
-    }
-
-    //JOINS CURRENT EVENT AS LOGGED IN USER
-    public void unjoinEvent(String eventId, String userId) {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId).child("participants");
-        ref.child(userId).setValue(null);
-        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users").child(userToken).child("participating");
-        ref2.child(eventId).setValue(null);
-        Log.e("UNJOINED", eventId + " : " + userId);
     }
 
 
-    //GETS PARTICIPANTS OF AN EVENT
     public ArrayList<String> getParticipants(String eventId) {
+
         final ArrayList<String> participants = new ArrayList<String>();
+
         ValueEventListener messageListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -191,26 +251,16 @@ public class EventDetailsActivity extends AppCompatActivity {
                         }
                     }
                 }
-                TextView participantsTextView = findViewById(R.id.participants);
-                String s = "";
-                for(String a : participants){
-                    s += a + "\n";
-                }
-                String par = participants.toString();
-                participantsTextView.setText(par);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Failed to read value
-            }
+            public void onCancelled(DatabaseError databaseError) { }
         };
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId);
-
         ref.addValueEventListener(messageListener);
         return participants;
     }
 
 
-
 }
+
