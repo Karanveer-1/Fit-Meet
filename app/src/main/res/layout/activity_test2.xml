@@ -7,7 +7,7 @@
     tools:context=".Test2Activity">
 
     <ListView
-        android:id="@+id/list_test_data"
+        android:id="@+id/list_data"
         android:layout_width="368dp"
         android:layout_height="551dp"
         android:layout_marginStart="8dp"

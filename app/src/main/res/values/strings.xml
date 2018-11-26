@@ -53,6 +53,9 @@
     <string name="cancel">cancel</string>
     <string name="clear">clear</string>
     <string name="see_all">See All</string>
+    <string name="created_event">Created Events</string>
+    <string name="joined_event">Joined Events</string>
+    <string name="profile_description">Profile Picture</string>
 
 
     <string name="CulturalEvents">Cultural Events</string>

@@ -1,4 +1,4 @@
-package ca.bcit.fitmeet.dashboard;
+package ca.bcit.fitmeet.profile;
 
 import android.content.Context;
 import android.graphics.Movie;
@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -24,9 +26,8 @@ import ca.bcit.fitmeet.event.model.Event;
 import ca.bcit.fitmeet.event.model.GlideApp;
 
 public class ProfileEventAdapter extends ArrayAdapter<Event> {
-
     private Context mContext;
-    private List<Event> eventList = new ArrayList<>();
+    private List<Event> eventList;
 
     public ProfileEventAdapter(@NonNull Context context, ArrayList<Event> list) {
         super(context, 0, list);
@@ -34,30 +35,34 @@ public class ProfileEventAdapter extends ArrayAdapter<Event> {
         eventList = list;
     }
 
+    @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
-        if(listItem == null)
-            listItem = LayoutInflater.from(mContext).inflate(R.layout.fragment_profile_event_list,parent,false);
+
+        if(listItem == null) {
+            listItem = LayoutInflater.from(mContext).inflate(R.layout.more_events_list_row, parent, false);
+        }
 
         Event currEvent = eventList.get(position);
 
-        ImageView image = (ImageView) listItem.findViewById(R.id.profile_event_image);
-        //image.setImageResource(currEvent.getImageReference());
+        ImageView image = listItem.findViewById(R.id.event_image);
+
         final StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(currEvent.getImageReference());
         Log.e("load", "loading");
-        GlideApp.with(listItem)
-                .load(storageReference)
-                .into(image);
-TextView name = (TextView) listItem.findViewById(R.id.profile_event_name);
+
+        GlideApp.with(listItem).load(storageReference).apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).into(image);
+
+        TextView name = listItem.findViewById(R.id.heading);
         name.setText(currEvent.getEventName());
 
-        TextView location = (TextView) listItem.findViewById(R.id.profile_event_location);
+        TextView location = listItem.findViewById(R.id.caption);
         location.setText(currEvent.getLocation());
 
-        TextView release = (TextView) listItem.findViewById(R.id.profile_event_date);
-        release.setText(currEvent.getDateTime().toString());
+        TextView date =  listItem.findViewById(R.id.timing);
+        date.setText(currEvent.getDateTime().toString());
 
         return listItem;
     }
+
 }

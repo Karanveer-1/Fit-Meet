@@ -48,6 +48,7 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
         StorageReference storageReference= FirebaseStorage.getInstance().getReference();;
         final StorageReference ref = storageReference.child(event.getImageReference());
 
+        // change thi based on Tommy's work.........
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {

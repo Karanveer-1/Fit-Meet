@@ -1,7 +1,5 @@
-package ca.bcit.fitmeet;
+package ca.bcit.fitmeet.profile;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -9,9 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,27 +18,20 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import ca.bcit.fitmeet.dashboard.ProfileEventAdapter;
+import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.event.model.Event;
 
 
 
 public class ProfileEventListFragment extends Fragment {
-
     private ListView listView;
     private ProfileEventAdapter adapter;
     ArrayList<Event> testDataArray;
     private String userToken;
     private int section;
 
-    public ProfileEventListFragment() {
-        // Required empty public constructor
-    }
+    public ProfileEventListFragment() { }
 
-    /**
-     * Returns a new instance of this fragment for the given section
-     * number.
-     */
     public static ProfileEventListFragment newInstance(int sectionNumber) {
         ProfileEventListFragment fragment = new ProfileEventListFragment();
         fragment.setSection(sectionNumber);
@@ -54,11 +43,16 @@ public class ProfileEventListFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         userToken = FirebaseAuth.getInstance().getUid();
         View rootView = inflater.inflate(R.layout.fragment_profile_event_list2, container, false);
-        listView =(ListView) rootView.findViewById(R.id.list_test_data);
+        listView =(ListView) rootView.findViewById(R.id.list_data);
         testDataArray = new ArrayList<Event>();
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -129,11 +123,5 @@ public class ProfileEventListFragment extends Fragment {
         ProfileEventListFragment fragment = new ProfileEventListFragment();
         return fragment;
     }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
 
 }

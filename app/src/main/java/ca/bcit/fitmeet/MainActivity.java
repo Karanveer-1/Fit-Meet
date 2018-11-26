@@ -1,7 +1,6 @@
 package ca.bcit.fitmeet;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -18,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import ca.bcit.fitmeet.dashboard.DashboardFragment;
 import ca.bcit.fitmeet.event.EventListFragment;
 import ca.bcit.fitmeet.login.LoginActivityMain;
+import ca.bcit.fitmeet.profile.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;

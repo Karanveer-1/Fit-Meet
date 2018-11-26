@@ -2,7 +2,6 @@ package ca.bcit.fitmeet;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -15,7 +14,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Test2Activity extends AppCompatActivity {
     private ArrayList<String> testDataArray;
@@ -36,7 +34,7 @@ public class Test2Activity extends AppCompatActivity {
 
         testDataArray = retrieve();
 
-        listview=(ListView)findViewById(R.id.list_test_data);
+        listview=(ListView)findViewById(R.id.list_data);
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,testDataArray);
         listview.setAdapter(adapter);
 
