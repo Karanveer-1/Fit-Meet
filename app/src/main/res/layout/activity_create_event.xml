@@ -51,7 +51,7 @@
                 style="@style/heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Give a name to your event. Describe what it is about and what you will do." />
+                android:text="@string/event_subheading" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/name_layout"
@@ -96,12 +96,14 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <View style="@style/Divider"/>
+
             <TextView
                 style="@style/heading"
                 android:id="@+id/location_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location" />
+                android:text="@string/event_location" />
 
             <EditText
                 android:id="@+id/event_location"
@@ -109,24 +111,26 @@
                 android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Select a location"
-                android:drawableStart="@drawable/ic_action_location"
+                android:hint="@string/location_hint"
+                android:drawableEnd="@drawable/ic_action_location"
                 android:inputType="text" />
 
             <TextView
+                style="@style/error"
                 android:id="@+id/location_error_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please select location"
-                android:textSize="16sp"
+                android:text="@string/location_error"
                 android:visibility="gone"/>
+
+            <View style="@style/Divider"/>
 
             <TextView
                 style="@style/heading"
                 android:id="@+id/datetime_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date/Time" />
+                android:text="@string/event_date_time" />
 
             <EditText
                 android:id="@+id/event_date"
@@ -134,38 +138,41 @@
                 android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="datetime"
-                android:inputType="text" />
+                android:hint="@string/dateTime_hint"
+                android:drawableEnd="@drawable/ic_action_access_time"/>
 
             <TextView
+                style="@style/error"
                 android:id="@+id/date_error_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please select date"
-                android:textSize="16sp"
+                android:text="@string/datetime_error"
                 android:visibility="gone"/>
+
+            <View style="@style/Divider"/>
 
             <TextView
                 style="@style/heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload Image" />
+                android:text="@string/upload" />
 
             <Button
                 android:id="@+id/btn_upload_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="upload image"
+                android:text="@string/upload"
                 android:textColor="@android:color/black" />
 
             <TextView
+                style="@style/error"
                 android:id="@+id/upload_error_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please Upload Image"
-                android:textSize="16sp"
+                android:text="@string/upload_error"
                 android:visibility="gone"/>
 
+            <View style="@style/Divider"/>
             <TextView
                 style="@style/heading"
                 android:layout_width="wrap_content"
@@ -180,7 +187,8 @@
                 app:alignItems="flex_start"
                 app:dividerDrawable="@drawable/div"
                 app:flexWrap="wrap"
-                app:showDivider="middle"/>
+                app:showDivider="middle"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
 

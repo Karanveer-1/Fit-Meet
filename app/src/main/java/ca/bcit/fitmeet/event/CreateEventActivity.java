@@ -130,31 +130,31 @@ public class CreateEventActivity extends AppCompatActivity {
         TextInputLayout descriptionLayout = findViewById(R.id.description_layout);
         TextInputLayout captionLayout = findViewById(R.id.caption_layout);
 
-        String eventNameString = eventName.getText().toString();
-        String descriptionString = description.getText().toString();
-        String locationString = location.getText().toString();
-        String dateTimeString = dateTime.getText().toString();
-        String captionString = caption.getText().toString();
+        String eventNameString = eventName.getText().toString().trim();
+        String descriptionString = description.getText().toString().trim();
+        String locationString = location.getText().toString().trim();
+        String dateTimeString = dateTime.getText().toString().trim();
+        String captionString = caption.getText().toString().trim();
 
         boolean error = false;
 
         if(TextUtils.isEmpty(eventNameString)) {
             error = true;
-            eventNameLayout.setError("Please fill");
+            eventNameLayout.setError("Please give your event a name!");
         } else {
             eventNameLayout.setError(null);
         }
 
         if(TextUtils.isEmpty(descriptionString)) {
             error = true;
-            descriptionLayout.setError("Please fill");
+            descriptionLayout.setError("Don't forget to tell people what it is about!");
         }  else {
             descriptionLayout.setError(null);
         }
 
         if(TextUtils.isEmpty(captionString)) {
             error = true;
-            captionLayout.setError("Please fill");
+            captionLayout.setError("Give a short caption to standout this event!");
         }  else {
             captionLayout.setError(null);
         }
@@ -230,13 +230,16 @@ public class CreateEventActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 Toast.makeText(CreateEventActivity.this,"Saved",Toast.LENGTH_SHORT).show();
 
-                Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption);
+                final Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption);
 
                 if (eventID != null) {
                     Task setValueTask = eventReference.child(eventID).setValue(newEvent);
                     setValueTask.addOnSuccessListener(new OnSuccessListener() {
                         @Override
                         public void onSuccess(Object o) {
+                            Intent i = new Intent(CreateEventActivity.this, EventDetailsActivity.class);
+                            i.putExtra("event", newEvent);
+                            startActivity(i);
                             finish();
                         }
                     });

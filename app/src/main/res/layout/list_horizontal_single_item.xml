@@ -20,7 +20,7 @@
             android:scaleType="fitXY" />
 
         <TextView
-            style="@style/heading"
+            style="@style/title"
             android:id="@+id/event_datetime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:textColor="@android:color/holo_orange_dark" />
 
         <TextView
-            style="@style/heading"
+            style="@style/title"
             android:id="@+id/event_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -52,22 +52,38 @@
         <item name="android:textSize">36sp</item>
     </style>
 
-    <style name="lineBar">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">2dp</item>
-        <item name="android:layout_marginBottom">20dp</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:background">#c0c0c0</item>
-    </style>
-
-    <style name="heading">
+    <!--DONT CHANGE THIS-->
+    <style name="Heading_Parent">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!-- Create Event Activity -->
+    <style name="heading" parent="Heading_Parent">
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1.5dp</item>
+        <item name="android:layout_marginBottom">17dp</item>
+        <item name="android:layout_marginTop">17dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="error">
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Event List Fragment (Horizontal row)    -->
     <style name="indented_heading" parent="heading">
         <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <style name="title" parent="Heading_Parent">
+
     </style>
 
 </resources>
