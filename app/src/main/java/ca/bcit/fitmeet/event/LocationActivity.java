@@ -19,9 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import ca.bcit.fitmeet.MainActivity;
 import ca.bcit.fitmeet.R;
-import ca.bcit.fitmeet.SettingsActivity;
 import ca.bcit.fitmeet.dashboard.FileReader;
 import ca.bcit.fitmeet.dashboard.model.Category;
 import ca.bcit.fitmeet.dashboard.model.Feature;

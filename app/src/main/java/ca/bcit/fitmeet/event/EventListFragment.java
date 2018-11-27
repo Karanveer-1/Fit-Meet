@@ -28,7 +28,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import ca.bcit.fitmeet.R;
-import ca.bcit.fitmeet.TestDateActivity;
 import ca.bcit.fitmeet.event.adapter.RecyclerViewDataAdapter;
 import ca.bcit.fitmeet.event.model.Event;
 import ca.bcit.fitmeet.event.model.EventSection;
