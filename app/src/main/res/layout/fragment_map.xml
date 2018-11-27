@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapFragment">
+
+    <com.mapquest.mapping.maps.MapView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/myMapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:mapquest_app_key="1s9ckarg16HM68yAvqyuG5xoxh9s6hMK" />
+
+</FrameLayout>

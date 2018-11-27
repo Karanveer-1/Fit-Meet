@@ -1,7 +1,12 @@
 package ca.bcit.fitmeet.dashboard;
 
+import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -9,6 +14,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import ca.bcit.fitmeet.MapFragment;
 import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.dashboard.model.Feature;
 import ca.bcit.fitmeet.dashboard.model.OLDAFeatures;
@@ -20,6 +26,12 @@ public class FeatureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Toolbar toolbar_main = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar_main);
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar!= null) { actionBar.setDisplayHomeAsUpEnabled(true); }
 
         String featureClass = getIntent().getExtras().getString("featureClass");
         String json = getIntent().getExtras().getString("feature");
@@ -80,7 +92,6 @@ public class FeatureActivity extends AppCompatActivity {
     }
 
     private void SetupSFFeatures(SFFeatures sfFeatures) {
-
         setContentView(R.layout.activity_sffeatures);
 
         ImageView imageView = findViewById(R.id.collapsable_image);
@@ -97,9 +108,18 @@ public class FeatureActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.activities)).setText(sfFeatures.getProperties().getACTIVITIES().replace(";", ", "));
 
-        WebView map = findViewById(R.id.map);
-        map.getSettings().setJavaScriptEnabled(true);
-        map.loadUrl("https://www.google.com/maps/search/?api=1&query=49.234281945970174,-122.88966775552288");
+        // pass the latitude and longitude
+        setMap();
+    }
+
+    private void setMap() {
+        Fragment mapFrag = new MapFragment();
+        //fill in the location
+        ((MapFragment)mapFrag).setLocation(49.283, -123.117);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, mapFrag);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.commit();
     }
 
     private String Format3CommaLocation(String location) {
