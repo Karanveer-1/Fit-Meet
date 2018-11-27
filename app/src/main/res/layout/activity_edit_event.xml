@@ -9,35 +9,6 @@
     android:id="@+id/coordinator"
     tools:context=".event.EditEventActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/placeholder"
-                android:contentDescription="@string/placeholder"
-                app:layout_collapseMode="parallax"/>
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,10 +18,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/nested_scroll_view">
+
+            <TextView
+                style="@style/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/event_subheading" />
+
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/name_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
 
                 <EditText
                     android:id="@+id/event_name"
@@ -62,8 +42,24 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/caption_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <EditText
+                    android:id="@+id/event_caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Caption" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/description_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
 
                 <EditText
                     android:id="@+id/event_description"
@@ -73,46 +69,102 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <View style="@style/Divider"/>
+
+            <TextView
+                style="@style/heading"
+                android:id="@+id/location_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/event_location" />
+
+            <EditText
+                android:id="@+id/event_location"
+                android:focusableInTouchMode="false"
+                android:background="@null"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/location_hint"
+                android:drawableEnd="@drawable/ic_action_location"
+                android:inputType="text" />
 
-                <EditText
-                    android:id="@+id/event_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/event_location"
-                    android:inputType="text" />
+            <TextView
+                style="@style/error"
+                android:id="@+id/location_error_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_error"
+                android:visibility="gone"/>
 
-            </android.support.design.widget.TextInputLayout>
+            <View style="@style/Divider"/>
 
-            <android.support.design.widget.TextInputLayout
+            <TextView
+                style="@style/heading"
+                android:id="@+id/datetime_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/event_date_time" />
+
+            <EditText
+                android:id="@+id/event_date"
+                android:focusableInTouchMode="false"
+                android:background="@null"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/dateTime_hint"
+                android:drawableEnd="@drawable/ic_action_access_time"/>
 
-                <EditText
-                    android:id="@+id/event_date"
-                    android:focusableInTouchMode="false"
+            <TextView
+                style="@style/error"
+                android:id="@+id/date_error_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/datetime_error"
+                android:visibility="gone"/>
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/event_date" />
+            <View style="@style/Divider"/>
 
-            </android.support.design.widget.TextInputLayout>
+            <TextView
+                style="@style/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upload" />
 
-            <android.support.design.widget.TextInputLayout
+            <Button
+                android:id="@+id/btn_upload_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="@string/upload"
+                android:textColor="@android:color/black" />
 
-                <EditText
-                    android:id="@+id/event_tags"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/event_tags"
-                    android:inputType="text" />
+            <TextView
+                style="@style/error"
+                android:id="@+id/upload_error_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_error"
+                android:visibility="gone"/>
 
-            </android.support.design.widget.TextInputLayout>
+            <View style="@style/Divider"/>
+            <TextView
+                style="@style/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/event_tags" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flexbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:alignContent="space_around"
+                app:alignItems="flex_start"
+                app:dividerDrawable="@drawable/div"
+                app:flexWrap="wrap"
+                app:showDivider="middle"
+                android:layout_marginBottom="20dp"/>
+
         </LinearLayout>
+
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton

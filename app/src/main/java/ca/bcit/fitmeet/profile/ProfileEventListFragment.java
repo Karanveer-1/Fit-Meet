@@ -90,7 +90,9 @@ public class ProfileEventListFragment extends Fragment {
             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                 Event event = ds.getValue(Event.class);
                 if(event.getHostToken().equals(userToken)){
-                    eventArrayList.add(event);
+                    if(!eventArrayList.contains(event)) {
+                        eventArrayList.add(event);
+                    }
                 }
             }
             adapter.notifyDataSetChanged();
