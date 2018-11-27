@@ -117,7 +117,9 @@ public class ProfileEventListFragment extends Fragment {
                 if(eventList.contains(event.getEventId())){
                     Log.e("Added", event.getEventName());
                     Log.e("Added2", event.getLocation());
-                    eventArrayList.add(event);
+                    if(!eventArrayList.contains(event)) {
+                        eventArrayList.add(event);
+                    }
                 }
             }
             adapter.notifyDataSetChanged();
