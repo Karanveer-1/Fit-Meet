@@ -149,7 +149,6 @@ public class EventDetailsActivity extends AppCompatActivity {
         TextView description = findViewById(R.id.description);
         join = findViewById(R.id.join_event);
         unjoin = findViewById(R.id.unjoin_event);
-        checkifJoinedAlready();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE MMM d, yyyy", java.util.Locale.getDefault());
         SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", java.util.Locale.getDefault());
@@ -162,7 +161,6 @@ public class EventDetailsActivity extends AppCompatActivity {
         location.setText(event.getLocation());
         hostName.setText(hostNameString);
         description.setText(event.getDescription());
-
     }
 
     private String findUserName() {
@@ -179,8 +177,6 @@ public class EventDetailsActivity extends AppCompatActivity {
                 into(image);
     }
 
-    private void checkifJoinedAlready() {
-    }
 
     public void joinEvent(String eventId, String userId) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId).child("participants");

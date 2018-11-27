@@ -34,6 +34,9 @@ public class LocationActivity extends AppCompatActivity {
     private ArrayList<String> sfLocations;
     private ArrayList<String> PRandCSPLocations;
     private ArrayList<String> OLDLocations;
+    private ArrayList<String> sfLocationsCoord;
+    private ArrayList<String> PRandCSPLocationsCoord;
+    private ArrayList<String> OLDLocationsCoord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class LocationActivity extends AppCompatActivity {
         combined.addAll(sfLocations);
         combined.addAll(OLDLocations);
         combined.addAll(PRandCSPLocations);
+
         ListView list = findViewById(R.id.locations);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, combined);
         list.setAdapter(arrayAdapter);
@@ -68,10 +72,13 @@ public class LocationActivity extends AppCompatActivity {
 
                 if (sfLocations.contains(location)) {
                     intent.putExtra("loc", "Sports");
+                    intent.putExtra("coord", sfLocationsCoord.get(sfLocations.indexOf(location)));
                 } else if (OLDLocations.contains(location)) {
                     intent.putExtra("loc", "Animals");
+                    intent.putExtra("coord", OLDLocationsCoord.get(OLDLocations.indexOf(location)));
                 } else {
                     intent.putExtra("loc", "Recreational");
+                    intent.putExtra("coord", PRandCSPLocationsCoord.get(PRandCSPLocations.indexOf(location)));
                 }
 
                 setResult(RESULT_OK, intent);
@@ -115,24 +122,30 @@ public class LocationActivity extends AppCompatActivity {
     private void readSportsFieldFeatures(Category category) {
         List<Feature> features = category.getFeatures();
         sfLocations = new ArrayList<>();
+        sfLocationsCoord = new ArrayList<>();
         for(Feature f:features) {
             sfLocations.add(f.getProperties().getName());
+            sfLocationsCoord.add(f.getGeometry().getCoordinates().toString());
         }
     }
 
     private void readRecreationFeatures(Category category) {
         List<Feature> features = category.getFeatures();
         PRandCSPLocations = new ArrayList<>();
+        PRandCSPLocationsCoord = new ArrayList<>();
         for(Feature f:features) {
             PRandCSPLocations.add(f.getProperties().getName());
+            PRandCSPLocationsCoord.add(f.getGeometry().getCoordinates().toString());
         }
     }
 
     private void readAnimalsFeatures(Category category) {
         List<Feature> features = category.getFeatures();
         OLDLocations = new ArrayList<>();
+        OLDLocationsCoord = new ArrayList<>();
         for(Feature f:features) {
             OLDLocations.add(f.getProperties().getName());
+            OLDLocationsCoord.add(f.getGeometry().getCoordinates().toString());
         }
     }
 

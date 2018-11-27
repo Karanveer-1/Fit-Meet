@@ -18,10 +18,11 @@ public class Event implements Serializable {
     private ArrayList<String> eventTags;
     private String imageReference;
     private String caption;
+    private String coord;
 
     public Event() { }
 
-    public Event(String eventId, String hostToken, String eventName, String description, String location, Date dateTime, ArrayList<String> eventTags, String imageReference, String caption) {
+    public Event(String eventId, String hostToken, String eventName, String description, String location, Date dateTime, ArrayList<String> eventTags, String imageReference, String caption, String coord) {
         this.eventId = eventId;
         this.hostToken = hostToken;
         this.eventName = eventName;
@@ -31,6 +32,15 @@ public class Event implements Serializable {
         this.eventTags = eventTags;
         this.imageReference = imageReference;
         this.caption = caption;
+        this.coord = coord;
+    }
+
+    public String getCoord() {
+        return coord;
+    }
+
+    public void setCoord(String coord) {
+        this.coord = coord;
     }
 
     public String getCaption() {

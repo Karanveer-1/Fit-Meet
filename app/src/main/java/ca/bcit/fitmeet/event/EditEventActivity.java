@@ -69,6 +69,7 @@ public class EditEventActivity extends AppCompatActivity {
     private ArrayList<String> tags;
     private String userToken;
     private Uri selectedImage;
+    private String coord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -219,40 +220,8 @@ public class EditEventActivity extends AppCompatActivity {
 
         StorageReference imageRef = storageRef.child(imageID);
 
-
-        if(selectedImage != null) {
-            initialiseProgressDialog();
-            UploadTask uploadTask = imageRef.putFile(selectedImage);
-
-            uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                    progressDialog.incrementProgressBy((int) progress);
-
-                }
-            });
-
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    Toast.makeText(EditEventActivity.this, "Got some error. Please try again later!", Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-
-                }
-            });
-
-            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    progressDialog.dismiss();
-                    Toast.makeText(EditEventActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-        }
-
-        final Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption);
+        final Event newEvent = new Event(eventID, userToken,
+                eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption, coord);
 
         if (eventID != null) {
             eventReference.child(eventID).child("eventName").setValue(newEvent.getEventName());
@@ -261,12 +230,48 @@ public class EditEventActivity extends AppCompatActivity {
             eventReference.child(eventID).child("dateTime").setValue(newEvent.getDateTime());
             eventReference.child(eventID).child("tags").setValue(newEvent.getEventTags());
             eventReference.child(eventID).child("caption").setValue(newEvent.getCaption());
+            eventReference.child(eventID).child("coord").setValue(newEvent.getCoord());
 
+            if(selectedImage != null) {
+                initialiseProgressDialog();
+                UploadTask uploadTask = imageRef.putFile(selectedImage);
 
-            Intent i = new Intent(EditEventActivity.this, EventDetailsActivity.class);
-            i.putExtra("event", newEvent);
-            startActivity(i);
-            finish();
+                uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                        progressDialog.incrementProgressBy((int) progress);
+
+                    }
+                });
+
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        Toast.makeText(EditEventActivity.this, "Got some error. Please try again later!", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+
+                    }
+                });
+
+                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        progressDialog.dismiss();
+                        Toast.makeText(EditEventActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+
+                        Intent i = new Intent(EditEventActivity.this, EventDetailsActivity.class);
+                        i.putExtra("event", newEvent);
+                        startActivity(i);
+                        finish();
+                    }
+                });
+            } else {
+                Intent i = new Intent(EditEventActivity.this, EventDetailsActivity.class);
+                i.putExtra("event", newEvent);
+                startActivity(i);
+                finish();
+            }
         }
     }
 
@@ -277,7 +282,7 @@ public class EditEventActivity extends AppCompatActivity {
         if (requestCode == LOCATION_FINDER) {
             if (resultCode == RESULT_OK && data != null) {
                 String returnString = data.getStringExtra("keyName");
-                //tags.add(data.getStringExtra("loc"));
+                coord = data.getStringExtra("coord");
                 location.setText(returnString);
             }
         } else if (requestCode == PHOTO_SELECTOR) {
@@ -338,6 +343,7 @@ public class EditEventActivity extends AppCompatActivity {
     }
 
     private void initialiseEditTextAndButtons() {
+        coord="";
         eventName = findViewById(R.id.event_name);
         description = findViewById(R.id.event_description);
         location = findViewById(R.id.event_location);
