@@ -3,6 +3,8 @@ package ca.bcit.fitmeet.dashboard.model;
 public class PRandCSPProperties extends Property {
     private String Name;
 
+    private String imageFileName;
+
     private String Description;
 
     private String Category;
@@ -88,5 +90,14 @@ public class PRandCSPProperties extends Property {
     }
     public String getY(){
         return this.Y;
+    }
+
+    @Override
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
     }
 }

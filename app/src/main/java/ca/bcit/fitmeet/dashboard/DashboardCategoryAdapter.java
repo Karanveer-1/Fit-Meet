@@ -3,6 +3,7 @@ package ca.bcit.fitmeet.dashboard;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,20 +28,6 @@ import ca.bcit.fitmeet.dashboard.model.SFFeatures;
 import ca.bcit.fitmeet.dashboard.model.SportsFields;
 
 public class DashboardCategoryAdapter extends ArrayAdapter {
-
-    public static Map<String, Integer> locationImage = new HashMap<>();
-
-    static {
-        locationImage.put("feature_queens_park_north_field", R.drawable.feature_queens_park_north_field);
-        locationImage.put("feature_queens_park_south_field", R.drawable.feature_queens_park_south_field);
-        locationImage.put("feature_grimson_park", R.drawable.feature_grimson_park);
-    }
-
-    public static Map<String, String> locationTitle = new HashMap<>();
-
-    static {
-        locationTitle.put("Queen's Park - North Field", "feature_queens_park_north_field");
-    }
 
     private Context context;
     private List<Feature> features;
@@ -67,19 +54,9 @@ public class DashboardCategoryAdapter extends ArrayAdapter {
 
         final Feature feature = features.get(position);
 
-        picture.setImageResource(R.drawable.parks_glenbrook_ravine);
-
-        if (feature.getProperties().getName().equals("Queen's Park - North Field")) {
-            picture.setImageResource(locationImage.get("feature_queens_park_north_field"));
-        }
-
-        if (feature.getProperties().getName().equals("Queen's Park - South Field")) {
-            picture.setImageResource(locationImage.get("feature_queens_park_south_field"));
-        }
-
-        if (feature.getProperties().getName().equals("Grimson Park")) {
-            picture.setImageResource(locationImage.get("feature_grimson_park"));
-        }
+        int resourceID = context.getResources().getIdentifier(
+                "drawable/" + feature.getProperties().getImageFileName(), null, context.getPackageName());
+        picture.setImageResource(resourceID);
 
         ((TextView) v.findViewById(R.id.name)).setText(feature.getProperties().getName());
 
@@ -115,5 +92,9 @@ public class DashboardCategoryAdapter extends ArrayAdapter {
         i.putExtra("featureClass", feature.getClass().getSimpleName());
         i.putExtra("feature", new Gson().toJson(feature));
         context.startActivity(i);
+    }
+
+    public static int getImageId(Context context, String imageName) {
+        return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
     }
 }

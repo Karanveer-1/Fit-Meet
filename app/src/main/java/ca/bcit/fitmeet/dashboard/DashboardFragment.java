@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import ca.bcit.fitmeet.R;
 
@@ -33,7 +34,7 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        GridView gridView = view.findViewById(R.id.grid_dashboard);
-        gridView.setAdapter(new DashboardAdapter(this, view.getContext()));
+        ListView listView = view.findViewById(R.id.dashboard_listView);
+        listView.setAdapter(new DashboardAdapter(this, view.getContext()));
     }
 }
