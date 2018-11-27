@@ -56,7 +56,6 @@ public class ProfileEventListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_profile_event_list2, container, false);
         listView = rootView.findViewById(R.id.list_data);
         eventArrayList = new ArrayList<Event>();
-
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         if(section == 1){
             FirebaseDatabase.getInstance().getReference("events").addValueEventListener(listener);
@@ -87,10 +86,13 @@ public class ProfileEventListFragment extends Fragment {
     ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            eventArrayList.clear();
             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                 Event event = ds.getValue(Event.class);
                 if(event.getHostToken().equals(userToken)){
-                    eventArrayList.add(event);
+                    if(!eventArrayList.contains(event)) {
+                        eventArrayList.add(event);
+                    }
                 }
             }
             adapter.notifyDataSetChanged();
@@ -103,6 +105,7 @@ public class ProfileEventListFragment extends Fragment {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             ArrayList<String> eventList = new ArrayList<String>();
+            eventArrayList.clear();
             for (DataSnapshot ds : dataSnapshot.child("users").child(userToken).child("participating").getChildren()) {
                 if(ds.exists()){
                     Log.e("ADD Ea", ds.getKey());
@@ -115,7 +118,9 @@ public class ProfileEventListFragment extends Fragment {
                 if(eventList.contains(event.getEventId())){
                     Log.e("Added", event.getEventName());
                     Log.e("Added2", event.getLocation());
-                    eventArrayList.add(event);
+                    if(!eventArrayList.contains(event)) {
+                        eventArrayList.add(event);
+                    }
                 }
             }
             adapter.notifyDataSetChanged();

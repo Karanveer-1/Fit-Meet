@@ -105,6 +105,11 @@ public class EventDetailsActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -115,21 +120,16 @@ public class EventDetailsActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.edit:
-//                Intent i = new Intent(EventDetailsActivity.this, EditEventActivity.class);
-//                Event event = (Event) getIntent().getSerializableExtra("event");
-//                String originalEventName = event.getEventName();
-//                String originalEventLocation = event.getLocation();
-//                ArrayList<String> originalEventTag = event.getEventTags();
-//                String originalEventDescription = event.getDescription();
-//                Date originalEventDateTime= event.getDateTime();
-//                i.putExtra("eventId", event.getEventId());
-//                i.putExtra("location", originalEventLocation);
-//                i.putExtra("eventName", originalEventName);
-//                i.putExtra("eventTags", Arrays.asList(originalEventTag).toString());
-//                i.putExtra("dateTime", originalEventDateTime.toString());
-//                i.putExtra("description", originalEventDescription);
-//                startActivity(i);
-//                finish();
+                Intent i = new Intent(EventDetailsActivity.this, EditEventActivity.class);
+                Event event = (Event) getIntent().getSerializableExtra("event");
+                String originalEventName = event.getEventName();
+                String originalEventLocation = event.getLocation();
+                ArrayList<String> originalEventTag = event.getEventTags();
+                String originalEventDescription = event.getDescription();
+                Date originalEventDateTime= event.getDateTime();
+                i.putExtra("event", event);
+                startActivity(i);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
