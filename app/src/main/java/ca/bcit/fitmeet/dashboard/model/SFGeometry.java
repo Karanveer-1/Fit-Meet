@@ -2,7 +2,7 @@ package ca.bcit.fitmeet.dashboard.model;
 
 import java.util.List;
 
-public class SFGeometry {
+public class SFGeometry extends Geometry {
     private String type;
 
     private List<Double> coordinates;

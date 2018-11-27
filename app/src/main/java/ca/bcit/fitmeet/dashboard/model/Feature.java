@@ -1,5 +1,8 @@
 package ca.bcit.fitmeet.dashboard.model;
 
-public abstract class Feature {
+import java.io.Serializable;
+
+public abstract class Feature implements Serializable {
     public abstract Property getProperties();
+    public abstract Geometry getGeometry();
 }

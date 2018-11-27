@@ -1,5 +1,7 @@
 package ca.bcit.fitmeet.dashboard.model;
 
-public abstract class Geometry {
+import java.util.List;
 
+public abstract class Geometry {
+    public abstract List<Double> getCoordinates();
 }

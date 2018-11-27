@@ -70,6 +70,7 @@ public class FeatureActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.neighbourhood)).setText(oldaFeatures.getProperties().getNeighbourhood());
 
+        setMap(oldaFeatures);
     }
 
     private void SetupPRandCSPFeatures(PRandCSPFeatures pRandCSPFeatures) {
@@ -89,6 +90,8 @@ public class FeatureActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.email)).setText(pRandCSPFeatures.getProperties().getEmail());
         ((TextView) findViewById(R.id.website)).setText(pRandCSPFeatures.getProperties().getWebsite());
         /*        ((TextView) findViewById(R.id.description)).setText(pRandCSPFeatures.getProperties().getDescription());*/
+
+        setMap(pRandCSPFeatures);
     }
 
     private void SetupSFFeatures(SFFeatures sfFeatures) {
@@ -108,14 +111,17 @@ public class FeatureActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.activities)).setText(sfFeatures.getProperties().getACTIVITIES().replace(";", ", "));
 
-        // pass the latitude and longitude
-        setMap();
+        setMap(sfFeatures);
     }
 
-    private void setMap() {
-        Fragment mapFrag = new MapFragment();
-        //fill in the location
-        ((MapFragment)mapFrag).setLocation(49.283, -123.117);
+    private void setMap(Feature feature) {
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("feature", feature);
+
+        MapFragment mapFrag = new MapFragment();
+        mapFrag.setArguments(bundle);
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, mapFrag);
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

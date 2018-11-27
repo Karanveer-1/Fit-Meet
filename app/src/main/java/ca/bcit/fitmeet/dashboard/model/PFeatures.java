@@ -1,6 +1,6 @@
 package ca.bcit.fitmeet.dashboard.model;
 
-public class PFeatures extends Feature {
+public class PFeatures {
     private String type;
 
     private PGeometry geometry;

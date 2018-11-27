@@ -2,10 +2,10 @@ package ca.bcit.fitmeet.dashboard.model;
 
 import java.util.List;
 
-public class OLDAGeometry {
+public class OLDAGeometry extends Geometry {
     private String type;
 
-    private List<List<List<Double>>> coordinates;
+    private List<Double> coordinates;
 
     public void setType(String type) {
         this.type = type;
@@ -15,11 +15,11 @@ public class OLDAGeometry {
         return this.type;
     }
 
-    public void setCoordinates(List<List<List<Double>>> coordinates) {
+    public void setCoordinates(List<Double> coordinates) {
         this.coordinates = coordinates;
     }
 
-    public List<List<List<Double>>> getCoordinates() {
+    public List<Double> getCoordinates() {
         return this.coordinates;
     }
 }

@@ -6,42 +6,63 @@
 			"type" : "Feature",
 			"geometry" : {
 				"type" : "Point",
-				"coordinates" : [ -122.91669415335146, 49.20449979069257 ]
+				"coordinates" : [ -122.92816347757771, 49.21131823811966 ]
 			},
 			"properties" : {
-				"Name" : "Fraser River Middle School - Youth Drop-In",
-				"imageFileName" : "",
+				"Name" : "Moody Park Outdoor Pool",
+				"imageFileName" : "feature_prandcsp_moody_park_pool",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
-				"Hours" : "Mondays, Wednesdays, and Fridays",
-				"Location" : "800 Queens Ave",
-				"PC" : "V3M 0J2",
-				"Phone" : "604-515-3801",
-				"Email" : null,
-				"Website" : "https://www.newwestyouth.ca/",
-				"X" : "-122.91669415335146",
-				"Y" : "49.20449979069257"
+				"Hours" : "Variable (weather-dependent) but usually open from late June to Labour Day from 1:15 pm - 8:00 pm",
+				"Location" : "701 Tenth St",
+				"PC" : null,
+				"Phone" : "604-526-4281",
+				"Email" : "active@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/canada-games-pool/articles/4977.php",
+				"X" : "-122.92816347757771",
+				"Y" : "49.21131823811966"
 			}
 		},
 		{
 			"type" : "Feature",
 			"geometry" : {
 				"type" : "Point",
-				"coordinates" : [ -122.920455471798, 49.212217450947115 ]
+				"coordinates" : [ -122.9112649353695, 49.201781761920685 ]
 			},
 			"properties" : {
-				"Name" : "Fraserside Community - Subsidy Programs",
-				"imageFileName" : "",
+				"Name" : "Museum and Archives - Anvil Centre",
+				"imageFileName" : "feature_prandcsp_anvil_center",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
-				"Hours" : "Hours vary by program, please visit website for more details",
-				"Location" : "2/F - 519 Seventh St",
-				"PC" : "V3L 3B7",
-				"Phone" : "604-522-3722 (ext 120)",
-				"Email" : "info@fraserside.bc.ca",
-				"Website" : "http://www.fraserside.bc.ca/mental-health-and-counselling/community-desk/",
-				"X" : "-122.920455471798",
-				"Y" : "49.212217450947115"
+				"Hours" : "Monday-Sunday, 10:00 am - 5:00 pm, Thursday, 10:00 am - 8:00 pm",
+				"Location" : "777 Columbia St",
+				"PC" : "V3M 1B6",
+				"Phone" : "604-527-4660",
+				"Email" : "museum@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/services/arts-and-heritage/museums-and-archives",
+				"X" : "-122.9112649353695",
+				"Y" : "49.201781761920685"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91176561673026, 49.19955078662105 ]
+			},
+			"properties" : {
+				"Name" : "Museum and Archives - Samson V",
+				"imageFileName" : "feature_prandcsp_samson",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Wednesday-Thursday, 3:00pm - 8:00 pm, Friday-Sunday, 12:00 pm - 5:00 pm (May 19 - September 2), Victoria Day and Labour Day Mondays, 12:00 pm - 5:00 pm",
+				"Location" : "880 Quayside Dr",
+				"PC" : "V3M 6B9",
+				"Phone" : null,
+				"Email" : "museum@newwestcity.ca",
+				"Website" : "https://www.newwestcity.ca/services/arts-and-heritage/museums-and-archives",
+				"X" : "-122.91176561673026",
+				"Y" : "49.19955078662105"
 			}
 		},
 		{
@@ -63,48 +84,6 @@
 				"Website" : "https://www.newwestyouth.ca/",
 				"X" : "-122.91132614091241",
 				"Y" : "49.22070089854204"
-			}
-		},
-		{
-			"type" : "Feature",
-			"geometry" : {
-				"type" : "Point",
-				"coordinates" : [ -122.91176561673026, 49.19955078662105 ]
-			},
-			"properties" : {
-				"Name" : "Museum and Archives - Samson V",
-				"imageFileName" : "",
-				"Description" : null,
-				"Category" : "Parks, Recreation and Community School Programming",
-				"Hours" : "Wednesday-Thursday, 3:00pm - 8:00 pm, Friday-Sunday, 12:00 pm - 5:00 pm (May 19 - September 2), Victoria Day and Labour Day Mondays, 12:00 pm - 5:00 pm",
-				"Location" : "880 Quayside Dr",
-				"PC" : "V3M 6B9",
-				"Phone" : null,
-				"Email" : "museum@newwestcity.ca",
-				"Website" : "https://www.newwestcity.ca/services/arts-and-heritage/museums-and-archives",
-				"X" : "-122.91176561673026",
-				"Y" : "49.19955078662105"
-			}
-		},
-		{
-			"type" : "Feature",
-			"geometry" : {
-				"type" : "Point",
-				"coordinates" : [ -122.9112649353695, 49.201781761920685 ]
-			},
-			"properties" : {
-				"Name" : "Museum and Archives - Anvil Centre",
-				"imageFileName" : "",
-				"Description" : null,
-				"Category" : "Parks, Recreation and Community School Programming",
-				"Hours" : "Monday-Sunday, 10:00 am - 5:00 pm, Thursday, 10:00 am - 8:00 pm",
-				"Location" : "777 Columbia St",
-				"PC" : "V3M 1B6",
-				"Phone" : "604-527-4660",
-				"Email" : "museum@newwestcity.ca",
-				"Website" : "https://www.newwestcity.ca/services/arts-and-heritage/museums-and-archives",
-				"X" : "-122.9112649353695",
-				"Y" : "49.201781761920685"
 			}
 		},
 		{
@@ -157,7 +136,7 @@
 			},
 			"properties" : {
 				"Name" : "Canada Games Pool",
-				"imageFileName" : "",
+				"imageFileName" : "feature_prandcsp_canada_games_pool",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Facility is open on Monday-Thursday, 6:00 am - 9:55 pm, Friday, 6:00 am - 10:25 pm, Saturday, 8:00 am - 8:25 pm, Sunday, 8:00 am - 9:55 pm , hours for particular programs and services vary",
@@ -252,27 +231,6 @@
 				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/moody-park-arena",
 				"X" : "-122.9261783718952",
 				"Y" : "49.21556332422588"
-			}
-		},
-		{
-			"type" : "Feature",
-			"geometry" : {
-				"type" : "Point",
-				"coordinates" : [ -122.92816347757771, 49.21131823811966 ]
-			},
-			"properties" : {
-				"Name" : "Moody Park Outdoor Pool",
-				"imageFileName" : "",
-				"Description" : null,
-				"Category" : "Parks, Recreation and Community School Programming",
-				"Hours" : "Variable (weather-dependent) but usually open from late June to Labour Day from 1:15 pm - 8:00 pm",
-				"Location" : "701 Tenth St",
-				"PC" : null,
-				"Phone" : "604-526-4281",
-				"Email" : "active@newwestcity.ca",
-				"Website" : "https://www.newwestcity.ca/parks-and-recreation/facilities/canada-games-pool/articles/4977.php",
-				"X" : "-122.92816347757771",
-				"Y" : "49.21131823811966"
 			}
 		},
 		{
@@ -378,6 +336,27 @@
 				"Website" : "https://www.newwestyouth.ca/",
 				"X" : "-122.92693850981581",
 				"Y" : "49.215154619414015"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ -122.91669415335146, 49.20449979069257 ]
+			},
+			"properties" : {
+				"Name" : "Fraser River Middle School - Youth Drop-In",
+				"imageFileName" : "",
+				"Description" : null,
+				"Category" : "Parks, Recreation and Community School Programming",
+				"Hours" : "Mondays, Wednesdays, and Fridays",
+				"Location" : "800 Queens Ave",
+				"PC" : "V3M 0J2",
+				"Phone" : "604-515-3801",
+				"Email" : null,
+				"Website" : "https://www.newwestyouth.ca/",
+				"X" : "-122.91669415335146",
+				"Y" : "49.20449979069257"
 			}
 		},
 		{

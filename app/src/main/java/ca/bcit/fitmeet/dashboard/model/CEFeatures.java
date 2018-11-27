@@ -1,6 +1,6 @@
 package ca.bcit.fitmeet.dashboard.model;
 
-public class CEFeatures extends Feature {
+public class CEFeatures {
     private String type;
 
     private CEGeometry geometry;
