@@ -21,18 +21,14 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_picture"
+                android:scaleType="centerCrop"
                 android:layout_width="180dp"
                 android:layout_height="120dp" />
-
-            <!--<ImageView-->
-                <!--android:id="@+id/profile_picture"-->
-                <!--android:contentDescription="@string/profile_description"-->
-                <!--android:layout_width="180dp"-->
-                <!--android:layout_height="120dp" />-->
 
             <TextView
                 android:id="@+id/profile_name"
                 android:layout_toEndOf="@+id/profile_picture"
+                android:paddingTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

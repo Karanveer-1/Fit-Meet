@@ -173,15 +173,10 @@ public class EventDetailsActivity extends AppCompatActivity {
         final ImageView image = findViewById(R.id.event_image);
         StorageReference storageReference= FirebaseStorage.getInstance().getReference();;
         final StorageReference ref = storageReference.child(event.getImageReference());
-        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Glide.with(EventDetailsActivity.this).
-                        load(uri).
-                        apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).
-                        into(image);
-            }
-        });
+        Glide.with(EventDetailsActivity.this).
+                load(ref).
+                apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).
+                into(image);
     }
 
     private void checkifJoinedAlready() {

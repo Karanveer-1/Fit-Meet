@@ -12,17 +12,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.signature.ObjectKey;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,6 +68,25 @@ public class ProfileFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         initialiseFireBase();
+        getName();
+
+//        Button editProfile = view.findViewById(R.id.edit_profile);
+//        editProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//                builder.setTitle("Edit Profile");
+//
+//                View viewInflated = LayoutInflater.from(getContext()).inflate(R.layout.profile_edit, (ViewGroup) getView(), false);
+//
+//                EditText firstName = viewInflated.findViewById(R.id.username_fn);
+//                EditText lastName = viewInflated.findViewById(R.id.username_ln);
+//
+//                builder.setView(viewInflated);
+//
+//                builder.show();
+//            }
+//        });
 
         imageView = view.findViewById(R.id.profile_picture);
 
@@ -73,6 +97,8 @@ public class ProfileFragment extends Fragment {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        setEditProfileButton(view);
 
         imageView.setClickable(true);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -87,13 +113,25 @@ public class ProfileFragment extends Fragment {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile").child(userToken);
         Log.e("load", "loading");
 
-        GlideApp.with(this).
-                load(storageReference).placeholder(R.drawable.placeholder).
-                apply(RequestOptions.bitmapTransform(new RoundedCorners(30))).
-                into(imageView);
 
-        getName();
+        // Temp solution...
+        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Uri downloadUrl = uri;
+                GlideApp.with(getActivity()).
+                        load(uri).placeholder(R.drawable.placeholder).
+                        signature(new ObjectKey(String.valueOf(System.currentTimeMillis()))).
+                        apply(RequestOptions.bitmapTransform(new RoundedCorners(30))).
+                        into(imageView);
+            }
+        });
+
         return view;
+    }
+
+    private void setEditProfileButton(View v) {
+
     }
 
     private void initialiseFireBase() {
