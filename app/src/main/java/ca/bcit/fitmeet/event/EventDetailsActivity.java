@@ -3,7 +3,9 @@ package ca.bcit.fitmeet.event;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+import ca.bcit.fitmeet.MapFragment;
 import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.event.model.Event;
 
@@ -57,6 +60,7 @@ public class EventDetailsActivity extends AppCompatActivity {
         event = (Event) i.getSerializableExtra("event");
         setContentView(R.layout.activity_event_details);
 
+
         Toolbar toolbar_main = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar_main);
 
@@ -68,6 +72,24 @@ public class EventDetailsActivity extends AppCompatActivity {
         participants = getParticipants(event.getEventId());
         fillValues();
         setListener();
+    }
+
+    private void initialiseMap() {
+        String eventCoor = event.getCoord();
+        eventCoor = eventCoor.replace("[","");
+        eventCoor = eventCoor.replace("]","");
+        String[] coord = eventCoor.split(", ");
+        setMap(Double.parseDouble(coord[1]), Double.parseDouble(coord[0]));
+    }
+
+    private void setMap(Double lat, Double longi) {
+        MapFragment mapFrag = new MapFragment();
+        mapFrag.setCoord(lat, longi);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, mapFrag);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.commit();
     }
 
     private void setListener() {
@@ -138,6 +160,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
     private void fillValues() {
         addImage();
+        initialiseMap();
         String hostNameString = findUserName();
         TextView name = findViewById(R.id.name);
         TextView caption = findViewById(R.id.caption);
@@ -183,7 +206,6 @@ public class EventDetailsActivity extends AppCompatActivity {
         ref.child(userId).setValue(true);
         DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users").child(userToken).child("participating");
         ref2.child(eventId).setValue(true);
-        Log.e("JOINED", eventId + " : " + userId);
     }
 
     public void unjoinEvent(String eventId, String userId) {
@@ -191,7 +213,6 @@ public class EventDetailsActivity extends AppCompatActivity {
         ref.child(userId).setValue(null);
         DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users").child(userToken).child("participating");
         ref2.child(eventId).setValue(null);
-        Log.e("UNJOINED", eventId + " : " + userId);
     }
 
     public void deleteEvent(){
@@ -204,15 +225,14 @@ public class EventDetailsActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
                 if (dataSnapshot.exists()) {
-                    Log.e("user", dataSnapshot.getKey());
                     String user = dataSnapshot.getKey();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         if(ds.child("participating").exists()){
                             for (DataSnapshot participatingEvents : ds.child("participating").getChildren()) {
-                                Log.e("event", participatingEvents.getKey());
                                 if(participatingEvents.getKey().equals(event.getEventId())){
-                                    Log.e("Removing", participatingEvents.getKey() + " " + ref.child(user).child("participating").child(participatingEvents.getKey()).getKey());
-                                    FirebaseDatabase.getInstance().getReference("users").child(userToken).child("participating").child(participatingEvents.getKey()).setValue(null);
+
+                                    FirebaseDatabase.getInstance().getReference("users").
+                                            child(userToken).child("participating").child(participatingEvents.getKey()).setValue(null);
 
                                 }
                             }
@@ -222,7 +242,7 @@ public class EventDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) { }
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
         };
         ref2.addValueEventListener(messageListener);
     }
@@ -234,10 +254,9 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         ValueEventListener messageListener = new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dataSnapshot = dataSnapshot.child("participants");
                 if (dataSnapshot.exists()) {
-                    Log.e("KEY", dataSnapshot.getKey());
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         String component = ds.getKey();
                         if(!participants2.contains(component)){
@@ -262,7 +281,7 @@ public class EventDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) { }
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
         };
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId);
         ref.addValueEventListener(messageListener);

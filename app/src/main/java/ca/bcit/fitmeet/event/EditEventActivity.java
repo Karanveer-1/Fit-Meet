@@ -80,16 +80,16 @@ public class EditEventActivity extends AppCompatActivity {
         Toolbar toolbar_main = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar_main);
         originalEvent = (Event) getIntent().getSerializableExtra("event");
+        getOriginalData();
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar!= null) { actionBar.setDisplayHomeAsUpEnabled(true); }
-        getOriginalData();
+
         initialiseComponents();
         setListener();
     }
 
     private void getOriginalData() {
-        Intent i = getIntent();
         EditText  name = findViewById(R.id.event_name);
         EditText desc = findViewById(R.id.event_description);
         EditText caption = findViewById(R.id.event_caption);
@@ -97,12 +97,15 @@ public class EditEventActivity extends AppCompatActivity {
         EditText date = findViewById(R.id.event_date);
         tags = originalEvent.getEventTags();
         eventDate = originalEvent.getDateTime();
-        date.setText(originalEvent.getDateTime().toString());
+        coord = originalEvent.getCoord();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy / hh:mm a", java.util.Locale.getDefault());
+
+        date.setText(dateFormat.format(originalEvent.getDateTime()));
         name.setText(originalEvent.getEventName());
         desc.setText(originalEvent.getDescription());
         caption.setText(originalEvent.getCaption());
         loc.setText(originalEvent.getLocation());
-
     }
 
     @Override
@@ -192,15 +195,6 @@ public class EditEventActivity extends AppCompatActivity {
             TextView tv = findViewById(R.id.date_error_msg);
             tv.setVisibility(View.GONE);
         }
-
-//        if (selectedImage == null) {
-//            error = true;
-//            TextView tv = findViewById(R.id.upload_error_msg);
-//            tv.setVisibility(View.VISIBLE);
-//        } else {
-//            TextView tv = findViewById(R.id.upload_error_msg);
-//            tv.setVisibility(View.GONE);
-//        }
 
         if(!error) {
             addToDB(eventNameString, descriptionString, locationString, captionString);
@@ -343,7 +337,6 @@ public class EditEventActivity extends AppCompatActivity {
     }
 
     private void initialiseEditTextAndButtons() {
-        coord="";
         eventName = findViewById(R.id.event_name);
         description = findViewById(R.id.event_description);
         location = findViewById(R.id.event_location);
@@ -407,9 +400,7 @@ public class EditEventActivity extends AppCompatActivity {
         String[] demoArray = getResources().getStringArray(R.array.demo_array);
         chipCloud.addChips(demoArray);
         for(int i= 0; i < demoArray.length; i++){
-            Log.e("Checking", demoArray[i] + " : " + Arrays.asList(tags));
             if(tags.contains(demoArray[i])){
-                Log.e("Contains", demoArray[i]);
                 chipCloud.setChecked(i);
             }
         }

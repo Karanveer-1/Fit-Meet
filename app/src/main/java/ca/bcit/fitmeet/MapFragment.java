@@ -25,28 +25,17 @@ public class MapFragment extends Fragment {
     private MapView mMapView;
     private MapboxMap mMapboxMap;
     private LatLng location;
-    private Feature feature;
 
-    public MapFragment() {
-
-    }
+    public MapFragment() { }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MapQuest.start(getActivity());
-
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        feature = (Feature) getArguments().getSerializable("feature");
-
-        double latitude = feature.getGeometry().getCoordinates().get(1);
-        double longitude = feature.getGeometry().getCoordinates().get(0);
-
-        location = new LatLng(latitude, longitude);
-
         return inflater.inflate(R.layout.fragment_map, container, false);
     }
 
@@ -68,28 +57,33 @@ public class MapFragment extends Fragment {
 
         final NestedScrollView sv = getActivity().findViewById(R.id.nestedScrollView);
 
-        mMapView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_MOVE:
-                        sv.requestDisallowInterceptTouchEvent(true);
-                        break;
-                    case MotionEvent.ACTION_UP:
-                    case MotionEvent.ACTION_CANCEL:
-                        sv.requestDisallowInterceptTouchEvent(false);
-                        break;
+        if (sv != null) {
+            mMapView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_MOVE:
+                            sv.requestDisallowInterceptTouchEvent(true);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                        case MotionEvent.ACTION_CANCEL:
+                            sv.requestDisallowInterceptTouchEvent(false);
+                            break;
+                    }
+                    return mMapView.onTouchEvent(event);
                 }
-                return mMapView.onTouchEvent(event);
-            }
-        });
+            });
+        }
     }
 
     private void addMarker(MapboxMap mapboxMap) {
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(location);
-        markerOptions.title(feature.getProperties().getName());
+        markerOptions.title("Location");
         mapboxMap.addMarker(markerOptions);
     }
 
+    public void setCoord(Double lat, Double longi) {
+        location = new LatLng(lat, longi);
+    }
 }

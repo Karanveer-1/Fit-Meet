@@ -70,7 +70,7 @@ public class FeatureActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.neighbourhood)).setText(oldaFeatures.getProperties().getNeighbourhood());
 
-        setMap(oldaFeatures);
+        setMap(oldaFeatures.getGeometry().getCoordinates().get(1), oldaFeatures.getGeometry().getCoordinates().get(0));
     }
 
     private void SetupPRandCSPFeatures(PRandCSPFeatures pRandCSPFeatures) {
@@ -91,7 +91,7 @@ public class FeatureActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.website)).setText(pRandCSPFeatures.getProperties().getWebsite());
         /*        ((TextView) findViewById(R.id.description)).setText(pRandCSPFeatures.getProperties().getDescription());*/
 
-        setMap(pRandCSPFeatures);
+        setMap(pRandCSPFeatures.getGeometry().getCoordinates().get(1), pRandCSPFeatures.getGeometry().getCoordinates().get(0));
     }
 
     private void SetupSFFeatures(SFFeatures sfFeatures) {
@@ -111,16 +111,12 @@ public class FeatureActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.activities)).setText(sfFeatures.getProperties().getACTIVITIES().replace(";", ", "));
 
-        setMap(sfFeatures);
+        setMap(sfFeatures.getGeometry().getCoordinates().get(1), sfFeatures.getGeometry().getCoordinates().get(0));
     }
 
-    private void setMap(Feature feature) {
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("feature", feature);
-
+    private void setMap(Double lat, Double longi) {
         MapFragment mapFrag = new MapFragment();
-        mapFrag.setArguments(bundle);
+        mapFrag.setCoord(lat, longi);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, mapFrag);
