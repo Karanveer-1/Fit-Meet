@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_category_listview"
+    android:background="#DDDDDD"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -14,7 +14,7 @@
         android:elevation="0dp"
         android:minHeight="0dp"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="#FFFFFFFF">
+        app:titleTextColor="#000000">
 
     </android.support.v7.widget.Toolbar>
 

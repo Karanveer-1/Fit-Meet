@@ -5,6 +5,8 @@ public class SFProperties extends Property {
 
     private String name;
 
+    private String imageFileName;
+
     private String ACTIVITIES;
 
     private String X;
@@ -49,6 +51,14 @@ public class SFProperties extends Property {
 
     public String getY() {
         return this.Y;
+    }
+
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
     }
 }
 

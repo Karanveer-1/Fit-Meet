@@ -3,6 +3,7 @@ package ca.bcit.fitmeet.dashboard;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,11 +44,9 @@ public class FeatureActivity extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.collapsable_image);
 
-        if (oldaFeatures.getProperties().getName().equals("Queen's Park - North Field")) {
-            imageView.setImageResource(
-                    DashboardCategoryAdapter.locationImage.get(
-                            DashboardCategoryAdapter.locationTitle.get(oldaFeatures.getProperties().getStrName())));
-        }
+        int resourceID = getApplication().getResources().getIdentifier(
+                "drawable/" + oldaFeatures.getProperties().getImageFileName(), null, getApplication().getPackageName());
+        imageView.setImageResource(resourceID);
 
         String title = oldaFeatures.getProperties().getName();
         ((TextView) findViewById(R.id.feature_title)).setText(title);
@@ -86,11 +85,9 @@ public class FeatureActivity extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.collapsable_image);
 
-        if (sfFeatures.getProperties().getName().equals("Queen's Park - North Field")) {
-            imageView.setImageResource(
-                    DashboardCategoryAdapter.locationImage.get(
-                            DashboardCategoryAdapter.locationTitle.get(sfFeatures.getProperties().getName())));
-        }
+        int resourceID = getApplication().getResources().getIdentifier(
+                "drawable/" + sfFeatures.getProperties().getImageFileName(), null, getApplication().getPackageName());
+        imageView.setImageResource(resourceID);
 
         String title = sfFeatures.getProperties().getName();
         ((TextView) findViewById(R.id.feature_title)).setText(title);
@@ -99,6 +96,10 @@ public class FeatureActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.location_textView)).setText(Format3CommaLocation(location));
 
         ((TextView) findViewById(R.id.activities)).setText(sfFeatures.getProperties().getACTIVITIES().replace(";", ", "));
+
+        WebView map = findViewById(R.id.map);
+        map.getSettings().setJavaScriptEnabled(true);
+        map.loadUrl("https://www.google.com/maps/search/?api=1&query=49.234281945970174,-122.88966775552288");
     }
 
     private String Format3CommaLocation(String location) {

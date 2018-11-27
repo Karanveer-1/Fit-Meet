@@ -10,6 +10,7 @@
 			},
 			"properties" : {
 				"Name" : "Fraser River Middle School - Youth Drop-In",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Mondays, Wednesdays, and Fridays",
@@ -30,6 +31,7 @@
 			},
 			"properties" : {
 				"Name" : "Fraserside Community - Subsidy Programs",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Hours vary by program, please visit website for more details",
@@ -50,6 +52,7 @@
 			},
 			"properties" : {
 				"Name" : "Glenbrook Middle School - Youth Drop-In",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Open late on Fridays",
@@ -70,6 +73,7 @@
 			},
 			"properties" : {
 				"Name" : "Museum and Archives - Samson V",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Wednesday-Thursday, 3:00pm - 8:00 pm, Friday-Sunday, 12:00 pm - 5:00 pm (May 19 - September 2), Victoria Day and Labour Day Mondays, 12:00 pm - 5:00 pm",
@@ -90,6 +94,7 @@
 			},
 			"properties" : {
 				"Name" : "Museum and Archives - Anvil Centre",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Monday-Sunday, 10:00 am - 5:00 pm, Thursday, 10:00 am - 8:00 pm",
@@ -110,6 +115,7 @@
 			},
 			"properties" : {
 				"Name" : "New Westminster Community Schools",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : null,
@@ -130,6 +136,7 @@
 			},
 			"properties" : {
 				"Name" : "Museum and Archives - Irving House",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Wednesday - Sunday, 12:00 pm - 5:00 pm (May 19-September 2 only)",
@@ -150,6 +157,7 @@
 			},
 			"properties" : {
 				"Name" : "Canada Games Pool",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Facility is open on Monday-Thursday, 6:00 am - 9:55 pm, Friday, 6:00 am - 10:25 pm, Saturday, 8:00 am - 8:25 pm, Sunday, 8:00 am - 9:55 pm , hours for particular programs and services vary",
@@ -170,6 +178,7 @@
 			},
 			"properties" : {
 				"Name" : "Centennial Community Centre",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Monday-Friday, 9:00 am - 8:30 pm, Friday, 9:00 am - 8:00 pm, Saturday, 8:00 am - 1:00 pm, Sunday, 8:30 am - 12:00 pm",
@@ -190,6 +199,7 @@
 			},
 			"properties" : {
 				"Name" : "Century House",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Monday-Friday, 9:00 am - 9:00 pm, Saturday, 9:00 am - 4:00 pm, Sunday, 12:00 pm - 4:00 pm (reduced hours during July & August)",
@@ -210,6 +220,7 @@
 			},
 			"properties" : {
 				"Name" : "Hume Park Outdoor Pool",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Variable (weather-dependent) but usually open from late June to Labour Day from 1:15 pm - 8:00 pm",
@@ -230,6 +241,7 @@
 			},
 			"properties" : {
 				"Name" : "Moody Park Arena",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Hours vary depending on season. Typically open Monday, 8:30am-8:30pm, Tuesday-Friday, 8:30am-4:30pm and Sunday, 11:30am-3:30pm",
@@ -250,6 +262,7 @@
 			},
 			"properties" : {
 				"Name" : "Moody Park Outdoor Pool",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Variable (weather-dependent) but usually open from late June to Labour Day from 1:15 pm - 8:00 pm",
@@ -270,6 +283,7 @@
 			},
 			"properties" : {
 				"Name" : "Queens Park Arena",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Office Hours: Monday-Friday, 9:00am-4:00pm",
@@ -290,6 +304,7 @@
 			},
 			"properties" : {
 				"Name" : "Queen's Park Petting Farm",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "May 19 - September 3, 10:00am-5:30pm",
@@ -310,6 +325,7 @@
 			},
 			"properties" : {
 				"Name" : "Queensborough Community Centre",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Monday-Friday, 7:00 am - 9:30 pm, Saturday, 8:30 am - 5:30 pm, Sunday, 8:30 am - 8:30 pm",
@@ -330,6 +346,7 @@
 			},
 			"properties" : {
 				"Name" : "Youth Centre",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Monday-Thursday, 3:15 pm - 9:00 pm, Friday-Saturday, 3:15pm-11:00pm, Summer hours: Monday-Saturday, 12:00pm-9:00pm",
@@ -350,6 +367,7 @@
 			},
 			"properties" : {
 				"Name" : "New Westminster Secondary - Youth Drop-In",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Friday, 7:00pm-11:00pm",
@@ -370,6 +388,7 @@
 			},
 			"properties" : {
 				"Name" : "Queensborough Middle School - Youth Drop-In",
+				"imageFileName" : "",
 				"Description" : null,
 				"Category" : "Parks, Recreation and Community School Programming",
 				"Hours" : "Three days a week",

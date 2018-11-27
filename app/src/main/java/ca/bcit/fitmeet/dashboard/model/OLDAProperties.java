@@ -9,6 +9,8 @@ public class OLDAProperties extends Property {
 
     private String Name;
 
+    private String imageFileName;
+
     private String Category;
 
     private String Neighbourhood;
@@ -140,4 +142,14 @@ public class OLDAProperties extends Property {
     public double getSHAPE_Area() {
         return this.SHAPE_Area;
     }
+
+    @Override
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
+
 }
