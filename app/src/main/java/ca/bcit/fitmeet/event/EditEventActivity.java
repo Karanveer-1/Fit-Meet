@@ -96,7 +96,10 @@ public class EditEventActivity extends AppCompatActivity {
         EditText date = findViewById(R.id.event_date);
         tags = originalEvent.getEventTags();
         eventDate = originalEvent.getDateTime();
-        date.setText(originalEvent.getDateTime().toString());
+
+        final SimpleDateFormat myDateFormat = new SimpleDateFormat("d MMM yyyy / hh:mm a", java.util.Locale.getDefault());
+
+        date.setText(myDateFormat.format(originalEvent.getDateTime()));
         name.setText(originalEvent.getEventName());
         desc.setText(originalEvent.getDescription());
         caption.setText(originalEvent.getCaption());
@@ -220,53 +223,57 @@ public class EditEventActivity extends AppCompatActivity {
         StorageReference imageRef = storageRef.child(imageID);
 
 
-        if(selectedImage != null) {
-            initialiseProgressDialog();
-            UploadTask uploadTask = imageRef.putFile(selectedImage);
-
-            uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                    progressDialog.incrementProgressBy((int) progress);
-
-                }
-            });
-
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    Toast.makeText(EditEventActivity.this, "Got some error. Please try again later!", Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-
-                }
-            });
-
-            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    progressDialog.dismiss();
-                    Toast.makeText(EditEventActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-        }
-
-        final Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption);
+        final Event newEvent = new Event(eventID, userToken,
+                eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption);
 
         if (eventID != null) {
             eventReference.child(eventID).child("eventName").setValue(newEvent.getEventName());
             eventReference.child(eventID).child("description").setValue(newEvent.getDescription());
             eventReference.child(eventID).child("location").setValue(newEvent.getLocation());
             eventReference.child(eventID).child("dateTime").setValue(newEvent.getDateTime());
-            eventReference.child(eventID).child("tags").setValue(newEvent.getEventTags());
+            eventReference.child(eventID).child("eventTags").setValue(newEvent.getEventTags());
             eventReference.child(eventID).child("caption").setValue(newEvent.getCaption());
 
+            if(selectedImage != null) {
+                initialiseProgressDialog();
+                UploadTask uploadTask = imageRef.putFile(selectedImage);
 
-            Intent i = new Intent(EditEventActivity.this, EventDetailsActivity.class);
-            i.putExtra("event", newEvent);
-            startActivity(i);
-            finish();
+                uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                        progressDialog.incrementProgressBy((int) progress);
+
+                    }
+                });
+
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        Toast.makeText(EditEventActivity.this, "Got some error. Please try again later!", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+
+                    }
+                });
+
+                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        progressDialog.dismiss();
+                        Toast.makeText(EditEventActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+
+                        Intent i = new Intent(EditEventActivity.this, EventDetailsActivity.class);
+                        i.putExtra("event", newEvent);
+                        startActivity(i);
+                        finish();
+                    }
+                });
+            } else {
+                Intent i = new Intent(EditEventActivity.this, EventDetailsActivity.class);
+                i.putExtra("event", newEvent);
+                startActivity(i);
+                finish();
+            }
         }
     }
 
