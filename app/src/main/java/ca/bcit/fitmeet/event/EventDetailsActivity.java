@@ -5,6 +5,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+import ca.bcit.fitmeet.MapFragment;
 import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.event.model.Event;
 
@@ -58,6 +60,7 @@ public class EventDetailsActivity extends AppCompatActivity {
         event = (Event) i.getSerializableExtra("event");
         setContentView(R.layout.activity_event_details);
 
+
         Toolbar toolbar_main = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar_main);
 
@@ -69,6 +72,24 @@ public class EventDetailsActivity extends AppCompatActivity {
         participants = getParticipants(event.getEventId());
         fillValues();
         setListener();
+    }
+
+    private void initialiseMap() {
+        String eventCoor = event.getCoord();
+        eventCoor = eventCoor.replace("[","");
+        eventCoor = eventCoor.replace("]","");
+        String[] coord = eventCoor.split(", ");
+        setMap(Double.parseDouble(coord[1]), Double.parseDouble(coord[0]));
+    }
+
+    private void setMap(Double lat, Double longi) {
+        MapFragment mapFrag = new MapFragment();
+        mapFrag.setCoord(lat, longi);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, mapFrag);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.commit();
     }
 
     private void setListener() {
@@ -130,6 +151,7 @@ public class EventDetailsActivity extends AppCompatActivity {
                 Date originalEventDateTime= event.getDateTime();
                 i.putExtra("event", event);
                 startActivity(i);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -138,6 +160,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
     private void fillValues() {
         addImage();
+        initialiseMap();
         String hostNameString = findUserName();
         TextView name = findViewById(R.id.name);
         TextView caption = findViewById(R.id.caption);
@@ -149,7 +172,6 @@ public class EventDetailsActivity extends AppCompatActivity {
         TextView description = findViewById(R.id.description);
         join = findViewById(R.id.join_event);
         unjoin = findViewById(R.id.unjoin_event);
-        checkifJoinedAlready();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE MMM d, yyyy", java.util.Locale.getDefault());
         SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", java.util.Locale.getDefault());
@@ -162,7 +184,6 @@ public class EventDetailsActivity extends AppCompatActivity {
         location.setText(event.getLocation());
         hostName.setText(hostNameString);
         description.setText(event.getDescription());
-
     }
 
     private String findUserName() {
@@ -179,8 +200,6 @@ public class EventDetailsActivity extends AppCompatActivity {
                 into(image);
     }
 
-    private void checkifJoinedAlready() {
-    }
 
     public void joinEvent(String eventId, String userId) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events").child(eventId).child("participants");
@@ -211,9 +230,9 @@ public class EventDetailsActivity extends AppCompatActivity {
                         if(ds.child("participating").exists()){
                             for (DataSnapshot participatingEvents : ds.child("participating").getChildren()) {
                                 if(participatingEvents.getKey().equals(event.getEventId())){
+
                                     FirebaseDatabase.getInstance().getReference("users").
-                                            child(userToken).child("participating").
-                                            child(participatingEvents.getKey()).setValue(null);
+                                            child(userToken).child("participating").child(participatingEvents.getKey()).setValue(null);
 
                                 }
                             }
@@ -271,4 +290,3 @@ public class EventDetailsActivity extends AppCompatActivity {
 
 
 }
-

@@ -69,6 +69,7 @@ public class EditEventActivity extends AppCompatActivity {
     private ArrayList<String> tags;
     private String userToken;
     private Uri selectedImage;
+    private String coord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,16 +80,16 @@ public class EditEventActivity extends AppCompatActivity {
         Toolbar toolbar_main = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar_main);
         originalEvent = (Event) getIntent().getSerializableExtra("event");
+        getOriginalData();
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar!= null) { actionBar.setDisplayHomeAsUpEnabled(true); }
-        getOriginalData();
+
         initialiseComponents();
         setListener();
     }
 
     private void getOriginalData() {
-        Intent i = getIntent();
         EditText  name = findViewById(R.id.event_name);
         EditText desc = findViewById(R.id.event_description);
         EditText caption = findViewById(R.id.event_caption);
@@ -96,15 +97,15 @@ public class EditEventActivity extends AppCompatActivity {
         EditText date = findViewById(R.id.event_date);
         tags = originalEvent.getEventTags();
         eventDate = originalEvent.getDateTime();
+        coord = originalEvent.getCoord();
 
-        final SimpleDateFormat myDateFormat = new SimpleDateFormat("d MMM yyyy / hh:mm a", java.util.Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy / hh:mm a", java.util.Locale.getDefault());
 
-        date.setText(myDateFormat.format(originalEvent.getDateTime()));
+        date.setText(dateFormat.format(originalEvent.getDateTime()));
         name.setText(originalEvent.getEventName());
         desc.setText(originalEvent.getDescription());
         caption.setText(originalEvent.getCaption());
         loc.setText(originalEvent.getLocation());
-
     }
 
     @Override
@@ -195,15 +196,6 @@ public class EditEventActivity extends AppCompatActivity {
             tv.setVisibility(View.GONE);
         }
 
-//        if (selectedImage == null) {
-//            error = true;
-//            TextView tv = findViewById(R.id.upload_error_msg);
-//            tv.setVisibility(View.VISIBLE);
-//        } else {
-//            TextView tv = findViewById(R.id.upload_error_msg);
-//            tv.setVisibility(View.GONE);
-//        }
-
         if(!error) {
             addToDB(eventNameString, descriptionString, locationString, captionString);
         }
@@ -222,17 +214,17 @@ public class EditEventActivity extends AppCompatActivity {
 
         StorageReference imageRef = storageRef.child(imageID);
 
-
         final Event newEvent = new Event(eventID, userToken,
-                eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption);
+                eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption, coord);
 
         if (eventID != null) {
             eventReference.child(eventID).child("eventName").setValue(newEvent.getEventName());
             eventReference.child(eventID).child("description").setValue(newEvent.getDescription());
             eventReference.child(eventID).child("location").setValue(newEvent.getLocation());
             eventReference.child(eventID).child("dateTime").setValue(newEvent.getDateTime());
-            eventReference.child(eventID).child("eventTags").setValue(newEvent.getEventTags());
+            eventReference.child(eventID).child("tags").setValue(newEvent.getEventTags());
             eventReference.child(eventID).child("caption").setValue(newEvent.getCaption());
+            eventReference.child(eventID).child("coord").setValue(newEvent.getCoord());
 
             if(selectedImage != null) {
                 initialiseProgressDialog();
@@ -284,7 +276,7 @@ public class EditEventActivity extends AppCompatActivity {
         if (requestCode == LOCATION_FINDER) {
             if (resultCode == RESULT_OK && data != null) {
                 String returnString = data.getStringExtra("keyName");
-                //tags.add(data.getStringExtra("loc"));
+                coord = data.getStringExtra("coord");
                 location.setText(returnString);
             }
         } else if (requestCode == PHOTO_SELECTOR) {
@@ -408,9 +400,7 @@ public class EditEventActivity extends AppCompatActivity {
         String[] demoArray = getResources().getStringArray(R.array.demo_array);
         chipCloud.addChips(demoArray);
         for(int i= 0; i < demoArray.length; i++){
-            Log.e("Checking", demoArray[i] + " : " + Arrays.asList(tags));
             if(tags.contains(demoArray[i])){
-                Log.e("Contains", demoArray[i]);
                 chipCloud.setChecked(i);
             }
         }

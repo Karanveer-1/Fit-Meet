@@ -34,7 +34,7 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ListView listView = view.findViewById(R.id.dashboard_listView);
-        listView.setAdapter(new DashboardAdapter(this, view.getContext()));
+        GridView gridView = view.findViewById(R.id.dashboard_gridview);
+        gridView.setAdapter(new DashboardAdapter(this, view.getContext()));
     }
 }

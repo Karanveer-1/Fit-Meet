@@ -72,6 +72,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private ArrayList<String> tags;
     private String userToken;
     private Uri selectedImage;
+    private String coord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -230,7 +231,8 @@ public class CreateEventActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 Toast.makeText(CreateEventActivity.this,"Saved",Toast.LENGTH_SHORT).show();
 
-                final Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption);
+                final Event newEvent = new Event(eventID, userToken, eventNameString, descriptionString,
+                                                        locationString, eventDate, tags, imageID, caption, coord);
 
                 if (eventID != null) {
                     Task setValueTask = eventReference.child(eventID).setValue(newEvent);
@@ -257,6 +259,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 String returnString = data.getStringExtra("keyName");
                 tags.add(data.getStringExtra("loc"));
                 location.setText(returnString);
+                coord = data.getStringExtra("coord");
             }
         } else if (requestCode == PHOTO_SELECTOR) {
             if (resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -316,6 +319,7 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     private void initialiseEditTextAndButtons() {
+        coord="";
         eventName = findViewById(R.id.event_name);
         description = findViewById(R.id.event_description);
         location = findViewById(R.id.event_location);

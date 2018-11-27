@@ -30,7 +30,6 @@
 
         <TextView
             android:id="@+id/name"
-            android:text="This is event"
             android:layout_toEndOf="@+id/event_image"
             android:layout_alignTop="@+id/event_image"
             android:layout_width="wrap_content"
@@ -38,7 +37,6 @@
 
         <TextView
             android:id="@+id/caption"
-            android:text="This is caption"
             android:layout_alignStart="@+id/name"
             android:layout_below="@+id/name"
             android:layout_width="wrap_content"
@@ -46,7 +44,6 @@
 
         <TextView
             android:id="@+id/goingcount"
-            android:text="Number of people going"
             android:layout_alignStart="@+id/name"
             android:layout_below="@+id/caption"
             android:layout_width="wrap_content"
@@ -54,7 +51,7 @@
 
         <Button
             android:id="@+id/join_event"
-            android:text="JOIN"
+            android:text="Join"
             android:layout_alignStart="@+id/event_image"
             android:layout_below="@+id/event_image"
             android:layout_width="match_parent"
@@ -64,7 +61,7 @@
 
         <Button
             android:id="@+id/unjoin_event"
-            android:text="UNJOIN"
+            android:text="UnJoin"
             android:layout_alignStart="@+id/event_image"
             android:layout_below="@+id/event_image"
             android:layout_width="match_parent"
@@ -84,7 +81,6 @@
 
         <TextView
             android:id="@+id/date"
-            android:text="Date"
             android:layout_toEndOf="@+id/time_icon"
             android:layout_alignTop="@+id/time_icon"
             android:layout_width="wrap_content"
@@ -92,7 +88,6 @@
 
         <TextView
             android:id="@+id/time"
-            android:text="Time"
             android:layout_alignStart="@+id/date"
             android:layout_below="@+id/date"
             android:layout_width="wrap_content"
@@ -109,7 +104,6 @@
 
         <TextView
             android:id="@+id/location"
-            android:text="Location"
             android:layout_alignStart="@+id/time"
             android:layout_alignTop="@+id/location_icon"
             android:layout_width="wrap_content"
@@ -126,132 +120,36 @@
 
         <TextView
             android:id="@+id/hostName"
-            android:text="Host name"
             android:layout_alignStart="@+id/time"
             android:layout_alignTop="@+id/host_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-
         <TextView
             android:id="@+id/description"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
             android:layout_marginTop="10dp"
             android:layout_alignStart="@+id/join_event"
             android:layout_below="@+id/host_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/flexbox"
+        <!--<com.google.android.flexbox.FlexboxLayout-->
+            <!--android:id="@+id/flexbox"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:alignContent="space_around"-->
+            <!--app:alignItems="flex_start"-->
+            <!--app:dividerDrawable="@drawable/div"-->
+            <!--app:flexWrap="wrap"-->
+            <!--app:showDivider="middle"/>-->
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_alignStart="@id/join_event"
+            android:layout_below="@+id/description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:alignContent="space_around"
-            app:alignItems="flex_start"
-            app:dividerDrawable="@drawable/div"
-            app:flexWrap="wrap"
-            app:showDivider="middle"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
-
-
-
-    <!--<TextView-->
-        <!--android:id="@+id/textView4"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="126dp"-->
-        <!--android:layout_marginTop="199dp"-->
-        <!--android:text="TextView"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/joinEventButton"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50sp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:text="JOIN EVENT"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="1.0" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/unjoinEventButton"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50sp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:text="UNJOIN EVENT"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="1.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.9" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/participants"-->
-        <!--android:layout_width="83dp"-->
-        <!--android:layout_height="25dp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.414"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.431" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/editEventButton"-->
-        <!--android:layout_width="119dp"-->
-        <!--android:layout_height="46dp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="308dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:text="EDIT EVENT"-->
-        <!--android:visibility="visible"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.911"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.234" />-->
-
-
-    <!--<Button-->
-        <!--android:id="@+id/deleteEventButton"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="308dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:text="DELETE EVENT"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.917"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.497"-->
-        <!--android:visibility="visible"/>-->
