@@ -1,15 +1,21 @@
 package ca.bcit.fitmeet.event;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,7 +23,11 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.dashboard.FileReader;
@@ -35,6 +45,8 @@ public class LocationActivity extends AppCompatActivity {
     private ArrayList<String> sfLocationsCoord;
     private ArrayList<String> PRandCSPLocationsCoord;
     private ArrayList<String> OLDLocationsCoord;
+    private List<String> combined;
+    private ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +63,13 @@ public class LocationActivity extends AppCompatActivity {
 
         readDataFromJSON();
 
-        List<String> combined = new ArrayList<String>();
+        combined = new ArrayList<String>();
         combined.addAll(sfLocations);
         combined.addAll(OLDLocations);
         combined.addAll(PRandCSPLocations);
 
         ListView list = findViewById(R.id.locations);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, combined);
+        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, combined);
         list.setAdapter(arrayAdapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -83,11 +95,74 @@ public class LocationActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        handleIntent(getIntent());
+
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Log.e("Search", query);
+            filterList(query);
+            arrayAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_menu, menu);
+
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        final SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                combined.clear();
+                combined.addAll(sfLocations);
+                combined.addAll(OLDLocations);
+                combined.addAll(PRandCSPLocations);
+                arrayAdapter.notifyDataSetChanged();
+                return false;
+            }
+        });
+
+        ImageView closeButton = (ImageView) searchView.findViewById(R.id.search_close_btn);
+
+        // Set on click listener
+        closeButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //Find EditText view
+                EditText et = (EditText) findViewById(R.id.search_src_text);
+
+                //Clear the text from EditText view
+                et.setText("");
+
+                //Clear query
+                searchView.setQuery("", false);
+                //Collapse the action view
+                searchView.onActionViewCollapsed();
+                //Collapse the search widget
+                //searchView.collapseActionView();
+                combined.clear();
+                combined.addAll(sfLocations);
+                combined.addAll(OLDLocations);
+                combined.addAll(PRandCSPLocations);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -144,6 +219,23 @@ public class LocationActivity extends AppCompatActivity {
         for(Feature f:features) {
             OLDLocations.add(f.getProperties().getName());
             OLDLocationsCoord.add(f.getGeometry().getCoordinates().toString());
+        }
+    }
+
+    private void filterList(String pattern){
+
+        if(pattern == null || pattern.equals("")){
+            combined.clear();
+            combined.addAll(sfLocations);
+            combined.addAll(OLDLocations);
+            combined.addAll(PRandCSPLocations);
+        }
+
+        for (Iterator<String> it = combined.iterator(); it.hasNext(); ) {
+            String s = it.next();
+            if (!s.toLowerCase().contains(pattern.toLowerCase())) {
+                it.remove();
+            }
         }
     }
 
