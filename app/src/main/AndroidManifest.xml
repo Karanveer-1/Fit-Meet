@@ -39,8 +39,16 @@
         <activity android:name=".dashboard.FeatureActivity" />
         <activity
             android:name=".event.LocationActivity"
-            android:parentActivityName=".event.CreateEventActivity" />
+            android:parentActivityName=".event.CreateEventActivity"
+            android:launchMode="singleTop">
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
         <activity android:name=".event.EditEventActivity" />
+
     </application>
 
 </manifest>
