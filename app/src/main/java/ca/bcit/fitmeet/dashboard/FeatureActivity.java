@@ -77,10 +77,12 @@ public class FeatureActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prandcspfeatures);
 
         ImageView imageView = findViewById(R.id.collapsable_image);
-        /*imageView.setImageResource(
-                DashboardCategoryAdapter.locationImage.get(
-                        DashboardCategoryAdapter.locationTitle.get(pRandCSPFeatures.getProperties().getName())));
-*/
+
+        int resourceID = getApplication().getResources().getIdentifier(
+                "drawable/" + pRandCSPFeatures.getProperties().getImageFileName(), null, getApplication().getPackageName());
+        imageView.setImageResource(resourceID);
+
+
         String title = pRandCSPFeatures.getProperties().getName();
         ((TextView) findViewById(R.id.feature_title)).setText(title);
 
