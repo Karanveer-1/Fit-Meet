@@ -184,7 +184,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         name.setText(event.getEventName());
         caption.setText(event.getCaption());
-        going.setText(("Number of people going: " + participants.size()));
+        going.setText(("Number of Attendees: " + participants.size()));
         date.setText(dateFormat.format(event.getDateTime()));
         time.setText(timeFormat.format(event.getDateTime()));
         location.setText(event.getLocation());
