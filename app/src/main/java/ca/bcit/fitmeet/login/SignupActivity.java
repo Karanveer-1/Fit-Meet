@@ -1,5 +1,6 @@
 package ca.bcit.fitmeet.login;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,6 +44,10 @@ public class SignupActivity extends AppCompatActivity {
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_signup);
+
+        TextView tx = findViewById(R.id.font);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "font/font.otf");
+        tx.setTypeface(custom_font);
 
         auth = FirebaseAuth.getInstance();
 
