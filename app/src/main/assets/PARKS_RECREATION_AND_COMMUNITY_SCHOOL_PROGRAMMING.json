@@ -65,7 +65,7 @@
 				"Y" : "49.22169123305114"
 			}
 		},
-		g{
+		{
 			"type" : "Feature",
 			"geometry" : {
 				"type" : "Point",
