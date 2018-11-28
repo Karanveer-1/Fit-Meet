@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +6,7 @@
     tools:context=".dashboard.DashboardFragment">
 
     <GridView
-        android:numColumns="2"
+        android:numColumns="1"
         android:id="@+id/dashboard_gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

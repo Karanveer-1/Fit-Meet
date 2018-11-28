@@ -18,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +55,8 @@ public class ProfileEventAdapter extends ArrayAdapter<Event> {
                 load(storageReference).
                 apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).into(image);
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy, hh:mm a", java.util.Locale.getDefault());
+
         TextView name = listItem.findViewById(R.id.heading);
         name.setText(currEvent.getEventName());
 
@@ -61,7 +64,7 @@ public class ProfileEventAdapter extends ArrayAdapter<Event> {
         location.setText(currEvent.getLocation());
 
         TextView date =  listItem.findViewById(R.id.timing);
-        date.setText(currEvent.getDateTime().toString());
+        date.setText(dateFormat.format(currEvent.getDateTime()));
 
         return listItem;
     }

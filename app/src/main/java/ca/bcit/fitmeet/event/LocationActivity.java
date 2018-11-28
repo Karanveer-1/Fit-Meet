@@ -109,7 +109,6 @@ public class LocationActivity extends AppCompatActivity {
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Log.e("Search", query);
             filterList(query);
             arrayAdapter.notifyDataSetChanged();
         }

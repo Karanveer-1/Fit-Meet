@@ -283,7 +283,7 @@ public class EventDetailsActivity extends AppCompatActivity {
                 }
 
                 TextView going = findViewById(R.id.goingcount);
-                going.setText(("Number of people going: " + participants2.size()));
+                going.setText(("Number of Attendees: " + participants2.size()));
             }
 
             @Override
