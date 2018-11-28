@@ -86,7 +86,7 @@ public class MoreEventsActivity extends AppCompatActivity {
                     case"Sports":
                         fillListWithSportsEvents(event);
                         break;
-                    case"Cultural":
+                    case"Cultural Events":
                         fillListWithCulturalEvents(event);
                         break;
                     case"Any":

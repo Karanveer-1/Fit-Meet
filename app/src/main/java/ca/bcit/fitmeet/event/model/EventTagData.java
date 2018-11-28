@@ -32,14 +32,11 @@ public class EventTagData {
         RELAXING.add("Meditation");
         RELAXING.add("Yoga");
         RELAXING.add("Dance");
-        RELAXING.add("Fitness");
         RELAXING.add("Beach");
 
         ANIMALS.add("Dog");
         ANIMALS.add("Cat");
-        ANIMALS.add("Fun");
         ANIMALS.add("Animals");
-        ANIMALS.add("Any age");
         ANIMALS.add("Off Leash Dog Area");
 
         SPORTS.add("Running");
@@ -53,7 +50,6 @@ public class EventTagData {
         SPORTS.add("Recreational Activities");
         SPORTS.add("Baseball");
 
-        CULTURAL.add("Fun");
         CULTURAL.add("Cultural");
     }
 
