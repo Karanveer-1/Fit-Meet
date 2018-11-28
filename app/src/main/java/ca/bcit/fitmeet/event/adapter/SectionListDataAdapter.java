@@ -48,14 +48,6 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
         StorageReference storageReference= FirebaseStorage.getInstance().getReference();;
         final StorageReference ref = storageReference.child(event.getImageReference());
 
-//        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                Uri downloadUrl = uri;
-//                Glide.with(mContext).load(downloadUrl).apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).into(holder.image);
-//            }
-//        });
-
         Glide.with(mContext).load(ref).apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).into(holder.image);
 
         final SimpleDateFormat myDateFormat = new SimpleDateFormat("EEE MMM d, hh:mm a", java.util.Locale.getDefault());

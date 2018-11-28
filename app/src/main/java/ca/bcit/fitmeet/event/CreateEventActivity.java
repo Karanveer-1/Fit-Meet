@@ -201,7 +201,7 @@ public class CreateEventActivity extends AppCompatActivity {
         final DatabaseReference eventReference = database.getReference("events");
 
         final String eventID = eventReference.push().getKey();
-        final String imageID = "image_" + eventID;
+        final String imageID = "image_" + eventID + System.currentTimeMillis();
 
         StorageReference imageRef = storageRef.child(imageID);
 

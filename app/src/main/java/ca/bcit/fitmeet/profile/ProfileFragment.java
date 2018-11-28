@@ -70,24 +70,6 @@ public class ProfileFragment extends Fragment {
         initialiseFireBase();
         getName();
 
-//        Button editProfile = view.findViewById(R.id.edit_profile);
-//        editProfile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//                builder.setTitle("Edit Profile");
-//
-//                View viewInflated = LayoutInflater.from(getContext()).inflate(R.layout.profile_edit, (ViewGroup) getView(), false);
-//
-//                EditText firstName = viewInflated.findViewById(R.id.username_fn);
-//                EditText lastName = viewInflated.findViewById(R.id.username_ln);
-//
-//                builder.setView(viewInflated);
-//
-//                builder.show();
-//            }
-//        });
-
         imageView = view.findViewById(R.id.profile_picture);
 
         SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
@@ -111,8 +93,6 @@ public class ProfileFragment extends Fragment {
         imageView.setImageResource(R.drawable.placeholder);
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile").child(userToken);
-        Log.e("load", "loading");
-
 
         // Temp solution...
         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -152,14 +132,12 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("RESULT", "" + resultCode);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             filePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
-                Log.e("IMAGE", "SET");
                 uploadImage();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -211,14 +189,12 @@ public class ProfileFragment extends Fragment {
                 DataSnapshot dataSnapshot1 = dataSnapshot.child("firstName");
 
                 if (dataSnapshot1.exists()) {
-                    Log.e("KEY", dataSnapshot1.getKey());
                     name += dataSnapshot1.getValue(String.class) + " " ;
                 }
 
                 DataSnapshot dataSnapshot2 = dataSnapshot.child("lastName");
 
                 if (dataSnapshot2.exists()) {
-                    Log.e("KEY", dataSnapshot2.getKey());
                     name += dataSnapshot2.getValue(String.class);
                 }
 
@@ -240,7 +216,6 @@ public class ProfileFragment extends Fragment {
         }
         @Override
         public Fragment getItem(int position) {
-            Log.e("SECTION", ""+position);
             return ProfileEventListFragment.newInstance(position + 1);
         }
 

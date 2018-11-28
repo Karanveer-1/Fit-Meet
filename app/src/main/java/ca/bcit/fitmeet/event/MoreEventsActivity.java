@@ -9,9 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,8 +22,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import ca.bcit.fitmeet.R;
-import ca.bcit.fitmeet.event.adapter.MoreEventsAdapter;
-import ca.bcit.fitmeet.event.adapter.RecyclerViewDataAdapter;
 import ca.bcit.fitmeet.event.adapter.RecyclerViewMoreEventsAdapter;
 import ca.bcit.fitmeet.event.model.Event;
 import ca.bcit.fitmeet.event.model.EventTagData;

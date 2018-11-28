@@ -210,9 +210,7 @@ public class EditEventActivity extends AppCompatActivity {
         final DatabaseReference eventReference = database.getReference("events");
 
         final String eventID = originalEvent.getEventId();
-        final String imageID = "image_" + eventID;
-
-        StorageReference imageRef = storageRef.child(imageID);
+        final String imageID = originalEvent.getImageReference();
 
         final Event newEvent = new Event(eventID, userToken,
                 eventNameString, descriptionString, locationString, eventDate, tags, imageID, caption, coord);
@@ -227,6 +225,11 @@ public class EditEventActivity extends AppCompatActivity {
             eventReference.child(eventID).child("coord").setValue(newEvent.getCoord());
 
             if(selectedImage != null) {
+                String newID = "image_" + eventID + System.currentTimeMillis();
+                newEvent.setImageReference(newID);
+                eventReference.child(eventID).child("imageReference").setValue(newEvent.getImageReference());
+                StorageReference imageRef = storageRef.child(newID);
+
                 initialiseProgressDialog();
                 UploadTask uploadTask = imageRef.putFile(selectedImage);
 

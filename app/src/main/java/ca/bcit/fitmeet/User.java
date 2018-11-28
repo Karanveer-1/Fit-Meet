@@ -9,6 +9,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private String profileImage;
 
     public User() { }
 
@@ -16,6 +17,14 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     public User(String email) {

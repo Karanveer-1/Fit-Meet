@@ -49,9 +49,10 @@ public class ProfileEventAdapter extends ArrayAdapter<Event> {
         ImageView image = listItem.findViewById(R.id.event_image);
 
         final StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(currEvent.getImageReference());
-        Log.e("load", "loading");
 
-        GlideApp.with(listItem).load(storageReference).apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).into(image);
+        GlideApp.with(listItem).
+                load(storageReference).
+                apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).into(image);
 
         TextView name = listItem.findViewById(R.id.heading);
         name.setText(currEvent.getEventName());
