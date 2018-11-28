@@ -2,8 +2,10 @@ package ca.bcit.fitmeet.dashboard;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -26,11 +28,24 @@ public class DashboardCategoryListActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.listview_toolbar);
         toolbar.setTitle(categoryName);
-
         setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar!= null) { actionBar.setDisplayHomeAsUpEnabled(true); }
 
         ListView listView = findViewById(R.id.category_listview);
         listView.setAdapter(new DashboardCategoryAdapter(this, category.getFeatures(), category));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private Category GetCategory(String categoryName) {

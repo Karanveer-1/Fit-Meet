@@ -72,6 +72,20 @@ public class ProfileFragment extends Fragment {
 
         imageView = view.findViewById(R.id.profile_picture);
 
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile").child(userToken);
+        // Temp solution...
+        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (getActivity() != null) {
+                    GlideApp.with(getActivity()).
+                            load(uri).placeholder(R.drawable.placeholder).
+                            apply(RequestOptions.bitmapTransform(new RoundedCorners(30))).
+                            into(imageView);
+                }
+            }
+        });
+
         SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
         ViewPager mViewPager = view.findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -90,22 +104,6 @@ public class ProfileFragment extends Fragment {
             }
         });
         TextView name = view.findViewById(R.id.profile_name);
-        imageView.setImageResource(R.drawable.placeholder);
-
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile").child(userToken);
-
-        // Temp solution...
-        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Uri downloadUrl = uri;
-                GlideApp.with(getActivity()).
-                        load(uri).placeholder(R.drawable.placeholder).
-                        signature(new ObjectKey(String.valueOf(System.currentTimeMillis()))).
-                        apply(RequestOptions.bitmapTransform(new RoundedCorners(30))).
-                        into(imageView);
-            }
-        });
 
         return view;
     }

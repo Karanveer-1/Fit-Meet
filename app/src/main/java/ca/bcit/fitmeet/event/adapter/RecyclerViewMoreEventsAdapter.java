@@ -47,9 +47,11 @@ public class RecyclerViewMoreEventsAdapter extends RecyclerView.Adapter<Recycler
         StorageReference storageReference= FirebaseStorage.getInstance().getReference();;
         final StorageReference ref = storageReference.child(event.getImageReference());
 
-        Glide.with(mContext).load(ref).
-                apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).
-                into(holder.image);
+        if (mContext != null) {
+            Glide.with(mContext).load(ref).
+                    apply(RequestOptions.bitmapTransform(new RoundedCorners(15))).
+                    into(holder.image);
+        }
 
         final SimpleDateFormat myDateFormat = new SimpleDateFormat("EEE MMM d, hh:mm a", java.util.Locale.getDefault());
 
