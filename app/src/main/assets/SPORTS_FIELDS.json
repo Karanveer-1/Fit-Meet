@@ -27,7 +27,7 @@
 				"TYPE" : "Sports Field",
 				"name" : "Queen's Park - South Field",
 				"imageFileName" : "feature_sf_queens_park_south_field",
-				"ACTIVITIES" : "Soccer;Football;Lacrosse;Softball;Baseball",
+				"ACTIVITIES" : "Rose Garden Walk",
 				"X" : "-122.90492354032453",
 				"Y" : "49.21285490409985"
 			}
@@ -72,7 +72,7 @@
 				"TYPE" : "Sports Field",
 				"name" : "Simcoe Park",
 				"imageFileName" : "feature_sf_simcoe_park",
-				"ACTIVITIES" : "Rose Garden Walk",
+				"ACTIVITIES" : "Soccer;Football;Lacrosse;Softball;Baseball",
 				"X" : "-122.91667453428478",
 				"Y" : "49.20368115312709"
 			}
