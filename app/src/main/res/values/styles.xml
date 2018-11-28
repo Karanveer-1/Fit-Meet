@@ -95,6 +95,10 @@
 
     </style>
 
+    <style name="LoginBtnDivider">
+        <item name="android:listDivider">@color/white</item>
+    </style>
+
 </resources>
 
 

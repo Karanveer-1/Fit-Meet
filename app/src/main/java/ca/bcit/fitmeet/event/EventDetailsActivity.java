@@ -1,6 +1,7 @@
 package ca.bcit.fitmeet.event;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,6 +42,9 @@ import java.util.Date;
 import ca.bcit.fitmeet.MapFragment;
 import ca.bcit.fitmeet.R;
 import ca.bcit.fitmeet.event.model.Event;
+import fisk.chipcloud.ChipCloud;
+import fisk.chipcloud.ChipCloudConfig;
+import fisk.chipcloud.ChipListener;
 
 public class EventDetailsActivity extends AppCompatActivity {
     private Event event;
@@ -58,8 +63,9 @@ public class EventDetailsActivity extends AppCompatActivity {
         initialiseFirebase();
         Intent i = getIntent();
         event = (Event) i.getSerializableExtra("event");
-        setContentView(R.layout.activity_event_details);
+        initialiseMap();
 
+        setContentView(R.layout.activity_event_details);
 
         Toolbar toolbar_main = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar_main);
@@ -160,7 +166,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
     private void fillValues() {
         addImage();
-        initialiseMap();
+        initialiseTagCloud();
         String hostNameString = findUserName();
         TextView name = findViewById(R.id.name);
         TextView caption = findViewById(R.id.caption);
@@ -288,5 +294,19 @@ public class EventDetailsActivity extends AppCompatActivity {
         return participants2;
     }
 
+    private void initialiseTagCloud() {
+        FlexboxLayout flexbox = findViewById(R.id.flexbox);
 
+        ChipCloudConfig config = new ChipCloudConfig().selectMode(ChipCloud.SelectMode.none)
+                .checkedChipColor(Color.parseColor("#ddaa00"))
+                .checkedTextColor(Color.parseColor("#ffffff"));
+
+        final ChipCloud chipCloud = new ChipCloud(this, flexbox, config);
+
+        chipCloud.addChips(event.getEventTags());
+
+        for(int i= 0; i < event.getEventTags().size(); i++){
+            chipCloud.setChecked(i);
+        }
+    }
 }

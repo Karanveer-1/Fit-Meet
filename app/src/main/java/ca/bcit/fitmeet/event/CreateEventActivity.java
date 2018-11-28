@@ -389,6 +389,8 @@ public class CreateEventActivity extends AppCompatActivity {
             public void chipCheckedChange(int index, boolean checked, boolean userClick) {
                 if(userClick) {
                     tags.add(chipCloud.getLabel(index));
+                } else {
+                    tags.remove(chipCloud.getLabel(index));
                 }
             }
         });
