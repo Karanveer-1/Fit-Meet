@@ -395,7 +395,7 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         });
     }
-
+;
     private void initialiseProgressDialog() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMax(100);

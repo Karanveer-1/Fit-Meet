@@ -2,158 +2,227 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar_main" android:id="@+id/toolbar" />
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main" />
 
-    <ScrollView android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:id="@+id/relative_layout"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/nested_scroll_view">
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/event_image"
-                android:src="@drawable/placeholder"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
-                android:scaleType="fitXY"
-                android:layout_marginEnd="10dp"/>
-
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_toEndOf="@+id/event_image"
-                android:layout_alignTop="@+id/event_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/caption"
-                android:layout_alignStart="@+id/name"
-                android:layout_below="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/goingcount"
-                android:layout_alignStart="@+id/name"
-                android:layout_below="@+id/caption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/join_event"
-                android:text="Join"
-                android:layout_alignStart="@+id/event_image"
-                android:layout_below="@+id/event_image"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:visibility="visible"/>
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp">
 
-            <Button
-                android:id="@+id/unjoin_event"
-                android:text="UnJoin"
-                android:layout_alignStart="@+id/event_image"
-                android:layout_below="@+id/event_image"
+                <ImageView
+                    android:id="@+id/event_image"
+                    android:layout_width="160dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="10dp"
+                    android:paddingRight="6dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/placeholder" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/goingcount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp">
+
+                <Button
+                    android:id="@+id/join_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/background_buttons_join"
+                    android:text="@string/join"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/unjoin_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/background_buttons_join"
+                    android:text="@string/leave"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:visibility="invisible"/>
+                android:orientation="vertical"
+                android:paddingTop="10dp">
 
-            <ImageView
-                android:id="@+id/time_icon"
-                android:layout_alignStart="@+id/join_event"
-                android:layout_below="@+id/join_event"
-                android:src="@drawable/ic_action_access_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"/>
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/date"
-                android:layout_toEndOf="@+id/time_icon"
-                android:layout_alignTop="@+id/time_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/time"
-                android:layout_alignStart="@+id/date"
-                android:layout_below="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/location_icon"
-                android:layout_alignStart="@+id/join_event"
-                android:layout_below="@+id/time"
-                android:src="@drawable/ic_action_location_on"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"/>
+                            <ImageView
+                                android:id="@+id/time_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:src="@drawable/ic_action_access_time" />
 
-            <TextView
-                android:id="@+id/location"
-                android:layout_alignStart="@+id/time"
-                android:layout_alignTop="@+id/location_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                            <TextView
+                                android:id="@+id/date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/host_icon"
-                android:layout_alignStart="@+id/join_event"
-                android:layout_below="@+id/location"
-                android:src="@drawable/ic_action_person"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"/>
+                            <TextView
+                                android:id="@+id/time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/hostName"
-                android:layout_alignStart="@+id/time"
-                android:layout_alignTop="@+id/host_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                        </LinearLayout>
 
-            <TextView
-                android:id="@+id/description"
-                android:layout_marginTop="10dp"
-                android:layout_alignStart="@+id/join_event"
-                android:layout_below="@+id/host_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-            <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/flexbox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_alignStart="@id/join_event"
-                android:layout_below="@+id/description"
-                app:alignContent="space_around"
-                app:alignItems="flex_start"
-                app:dividerDrawable="@drawable/div"
-                app:flexWrap="wrap"
-                app:showDivider="middle"/>
+                            <ImageView
+                                android:id="@+id/location_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/ic_action_location_on" />
 
-            <FrameLayout
-                android:id="@+id/fragment_container"
-                android:layout_alignStart="@id/join_event"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/flexbox"
-                android:layout_width="match_parent"
-                android:layout_height="250dp" />
+                            <TextView
+                                android:id="@+id/location"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center" />
+                        </LinearLayout>
 
-        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <ImageView
+                                android:id="@+id/host_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/ic_action_person" />
+
+                            <TextView
+                                android:id="@+id/hostName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp" />
+
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:id="@+id/flexbox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:alignContent="space_around"
+                            app:alignItems="flex_start"
+                            app:dividerDrawable="@drawable/div"
+                            app:flexWrap="wrap"
+                            app:showDivider="middle" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <FrameLayout
+                            android:id="@+id/fragment_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 

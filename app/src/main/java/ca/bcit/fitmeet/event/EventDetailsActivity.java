@@ -272,14 +272,14 @@ public class EventDetailsActivity extends AppCompatActivity {
                 }
                 if(participants2.contains(userToken)){
                     Button joinButton = findViewById(R.id.join_event);
-                    joinButton.setVisibility(View.INVISIBLE);
+                    joinButton.setVisibility(View.GONE);
                     Button unjoinButton = findViewById(R.id.unjoin_event);
                     unjoinButton.setVisibility(View.VISIBLE);
                 } else {
                     Button joinButton = findViewById(R.id.join_event);
                     joinButton.setVisibility(View.VISIBLE);
                     Button unjoinButton = findViewById(R.id.unjoin_event);
-                    unjoinButton.setVisibility(View.INVISIBLE);
+                    unjoinButton.setVisibility(View.GONE);
                 }
 
                 TextView going = findViewById(R.id.goingcount);
