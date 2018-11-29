@@ -66,6 +66,8 @@ public class EventDetailsActivity extends AppCompatActivity {
         initialiseMap();
 
         setContentView(R.layout.activity_event_details);
+        join = findViewById(R.id.join_event);
+        unjoin = findViewById(R.id.unjoin_event);
 
         Toolbar toolbar_main = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar_main);
@@ -78,6 +80,47 @@ public class EventDetailsActivity extends AppCompatActivity {
         participants = getParticipants(event.getEventId());
         fillValues();
         setListener();
+        setHostName();
+        disableJoinForHost();
+
+    }
+
+    private void disableJoinForHost() {
+        Log.e("Host", userToken + " : " + event.getHostToken());
+        if(userToken.equals(event.getHostToken())){
+            join.setVisibility(View.GONE);
+            unjoin.setVisibility(View.GONE);
+            Log.e("visibililty", "set");
+        }
+    }
+
+    public void setHostName(){
+        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users").child(event.getHostToken());
+
+        ValueEventListener messageListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("HOST", dataSnapshot.getKey());
+                String f = "";
+                String l = "";
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        if(ds.getKey().equals("firstName")) {
+                            f = ds.getValue(String.class);
+                        }
+                        if(ds.getKey().equals("lastName")) {
+                            l = ds.getValue(String.class);
+                        }
+                    }
+                }
+                TextView hostName = findViewById(R.id.hostName);
+                hostName.setText(f + " " + l);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
+        };
+        ref2.addValueEventListener(messageListener);
     }
 
     private void initialiseMap() {
@@ -270,18 +313,18 @@ public class EventDetailsActivity extends AppCompatActivity {
                         }
                     }
                 }
-                if(participants2.contains(userToken)){
-                    Button joinButton = findViewById(R.id.join_event);
-                    joinButton.setVisibility(View.GONE);
-                    Button unjoinButton = findViewById(R.id.unjoin_event);
-                    unjoinButton.setVisibility(View.VISIBLE);
-                } else {
-                    Button joinButton = findViewById(R.id.join_event);
-                    joinButton.setVisibility(View.VISIBLE);
-                    Button unjoinButton = findViewById(R.id.unjoin_event);
-                    unjoinButton.setVisibility(View.GONE);
+                if(userToken.equals(event.getHostToken())){
+                    join.setVisibility(View.GONE);
+                    unjoin.setVisibility(View.GONE);
+                }else {
+                    if (participants2.contains(userToken)) {
+                        join.setVisibility(View.GONE);
+                        unjoin.setVisibility(View.VISIBLE);
+                    } else {
+                        join.setVisibility(View.VISIBLE);
+                        unjoin.setVisibility(View.GONE);
+                    }
                 }
-
                 TextView going = findViewById(R.id.goingcount);
                 going.setText(("Number of Attendees: " + participants2.size()));
             }

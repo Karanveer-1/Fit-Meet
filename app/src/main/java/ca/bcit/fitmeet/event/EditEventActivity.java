@@ -220,7 +220,7 @@ public class EditEventActivity extends AppCompatActivity {
             eventReference.child(eventID).child("description").setValue(newEvent.getDescription());
             eventReference.child(eventID).child("location").setValue(newEvent.getLocation());
             eventReference.child(eventID).child("dateTime").setValue(newEvent.getDateTime());
-            eventReference.child(eventID).child("tags").setValue(newEvent.getEventTags());
+            eventReference.child(eventID).child("eventTags").setValue(newEvent.getEventTags());
             eventReference.child(eventID).child("caption").setValue(newEvent.getCaption());
             eventReference.child(eventID).child("coord").setValue(newEvent.getCoord());
 

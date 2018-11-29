@@ -71,6 +71,7 @@ public class ProfileFragment extends Fragment {
         getName();
 
         imageView = view.findViewById(R.id.profile_picture);
+        imageView.setImageResource(R.drawable.placeholder);
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile").child(userToken);
         // Temp solution...
@@ -79,7 +80,7 @@ public class ProfileFragment extends Fragment {
             public void onSuccess(Uri uri) {
                 if (getActivity() != null) {
                     GlideApp.with(getActivity()).
-                            load(uri).placeholder(R.drawable.placeholder).
+                            load(uri).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).
                             apply(RequestOptions.bitmapTransform(new RoundedCorners(30))).
                             into(imageView);
                 }

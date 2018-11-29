@@ -14,7 +14,7 @@
     <string name="edit_event">Edit Event</string>
     <string name="event_details">Event Details</string>
 
-    <string name="event_heading">Organize nn Event</string>
+    <string name="event_heading">Organize an Event</string>
     <string name="event_subheading">Give a name to your event. Describe what it is about and what you will do.</string>
     <string name="event_name">Event Name</string>
     <string name="event_description">Description</string>
