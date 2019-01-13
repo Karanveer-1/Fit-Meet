@@ -60,15 +60,46 @@
     <string name="profile_description">Profile Picture</string>
     <string name="edit_profile">Edit Profile</string>
 
-
-    <string name="CulturalEvents">Cultural Events</string>
     <string name="OffLeashDogAreas">Off Leash Dog Areas</string>
-    <string name="Parks">Parks</string>
     <string name="SportsFields">Sports Fields</string>
     <string name="GlenbrookRavine">Glenbrook Ravine</string>
 
-
-    <!-- TODO: Add strings below for testing. DONOT delete anything above this. -->
+    <string-array name="demo_array">
+        <item>Running</item>
+        <item>Meditation</item>
+        <item>Outdoors</item>
+        <item>Hiking</item>
+        <item>Sports</item>
+        <item>Soccer</item>
+        <item>Beach</item>
+        <item>Recreational Activities</item>
+        <item>Baseball</item>
+        <item>Football</item>
+        <item>Adventure</item>
+        <item>Fitness</item>
+        <item>Fun</item>
+        <item>Any age</item>
+        <item>Children</item>
+        <item>Animals</item>
+        <item>Dog</item>
+        <item>park</item>
+        <item>Cat</item>
+        <item>Sports Field</item>
+        <item>Cricket</item>
+        <item>Yoga</item>
+        <item>Dance</item>
+        <item>Off Leash Dog Area</item>
+        <item>Cultural</item>
+    </string-array>
+    <string name="title_activity_tabexample">tabexample</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="LoginOrCreate">Login or Create Your New Account</string>
+    <string name="join">Join</string>
+    <string name="leave">Leave</string>
 
     <string name="email">Email</string>
     <string name="change_email">Change Email</string>
@@ -86,6 +117,9 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- TODO: Add strings below for testing. DONOT delete anything above this. -->
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -161,42 +195,6 @@
     <string name="id_fmt">User ID: %s</string>
     <string name="email_fmt">Email: %s</string>
     <string name="title_activity_database_test">DatabaseTest</string>
-    <string-array name="demo_array">
-        <item>Running</item>
-        <item>Meditation</item>
-        <item>Outdoors</item>
-        <item>Hiking</item>
-        <item>Sports</item>
-        <item>Soccer</item>
-        <item>Beach</item>
-        <item>Recreational Activities</item>
-        <item>Baseball</item>
-        <item>Football</item>
-        <item>Adventure</item>
-        <item>Fitness</item>
-        <item>Fun</item>
-        <item>Any age</item>
-        <item>Children</item>
-        <item>Animals</item>
-        <item>Dog</item>
-        <item>park</item>
-        <item>Cat</item>
-        <item>Sports Field</item>
-        <item>Cricket</item>
-        <item>Yoga</item>
-        <item>Dance</item>
-        <item>Off Leash Dog Area</item>
-        <item>Cultural</item>
-    </string-array>
-    <string name="title_activity_tabexample">tabexample</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="tab_text_3">Tab 3</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="LoginOrCreate">Login or Create Your New Account</string>
-    <string name="join">Join</string>
-    <string name="leave">Leave</string>
 
 </resources>
 

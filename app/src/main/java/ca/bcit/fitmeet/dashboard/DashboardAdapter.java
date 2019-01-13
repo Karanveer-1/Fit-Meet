@@ -26,11 +26,9 @@ public class DashboardAdapter extends BaseAdapter {
 
         mInflater = LayoutInflater.from(context);
 
-        /*mItems.add(DashboardCategory.CulturalEvents);*/
         mItems.add(DashboardCategory.OffLeashDogAreas);
         mItems.add(DashboardCategory.SportsFields);
         mItems.add(DashboardCategory.PRandCSP);
-        /*mItems.add(DashboardCategory.Parks);*/
     }
 
     @Override

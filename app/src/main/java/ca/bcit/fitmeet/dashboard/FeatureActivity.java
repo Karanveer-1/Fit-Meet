@@ -91,7 +91,6 @@ public class FeatureActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.phone)).setText(pRandCSPFeatures.getProperties().getPhone());
         ((TextView) findViewById(R.id.email)).setText(pRandCSPFeatures.getProperties().getEmail());
         ((TextView) findViewById(R.id.website)).setText(pRandCSPFeatures.getProperties().getWebsite());
-        /*        ((TextView) findViewById(R.id.description)).setText(pRandCSPFeatures.getProperties().getDescription());*/
 
         setMap(pRandCSPFeatures.getGeometry().getCoordinates().get(1), pRandCSPFeatures.getGeometry().getCoordinates().get(0));
     }
@@ -143,7 +142,7 @@ public class FeatureActivity extends AppCompatActivity {
         }
         catch(ArrayIndexOutOfBoundsException ex) {
 
-            Log.d("OoB", ex.getMessage());
+            Log.d("ArrayIndexOutOfBounds", ex.getMessage());
         }
 
         return location;

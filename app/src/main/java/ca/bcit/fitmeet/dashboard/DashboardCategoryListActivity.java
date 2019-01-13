@@ -56,21 +56,11 @@ public class DashboardCategoryListActivity extends AppCompatActivity {
         String json;
 
         switch (categoryName) {
-            /*case "Cultural Events":
-                fileName = "EVENTS.json";
-                json = FileReader.loadJSONFromAsset(this, fileName);
-                category = new Gson().fromJson(json, CulturalEvents.class);
-                break;*/
             case "Off Leash Dog Areas":
                 fileName = "OFFLEASH_DOG_AREAS.json";
                 json = FileReader.loadJSONFromAsset(this, fileName);
                 category = new Gson().fromJson(json, OffLeashDogArea.class);
                 break;
-            /*case "Parks":
-                fileName = "PARKS.json";
-                json = FileReader.loadJSONFromAsset(this, fileName);
-                category = new Gson().fromJson(json, Parks.class);
-                break;*/
             case "Recreation and Community Programs":
                 fileName = "PARKS_RECREATION_AND_COMMUNITY_SCHOOL_PROGRAMMING.json";
                 json = FileReader.loadJSONFromAsset(this, fileName);
